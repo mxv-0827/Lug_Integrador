@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -10,7 +11,18 @@ namespace DAL.Mappers
 {
     public class Base_Mapper<T> where T : class
     {
-        BD_Conexion acceso = new BD_Conexion();
+        private BD_Conexion acceso = new BD_Conexion();
+
+
+        public void AsignarID(T entity)
+        {
+            Type tipoEntidad = entity.GetType();
+            string nombreEntidad = tipoEntidad.Name;
+
+            SqlParameter sqlProp = new SqlParameter("@Tabla", nombreEntidad);
+
+            acceso.AsignarID("AsignarIDGeneral", sqlProp, tipoEntidad); //1- SP a ejecutar || 2- Que tabla se va a usar para asignar el ID || 3- Tipo de entidad a la que se le asigna el ID.
+        }
 
         public virtual int Agregar(T entity, string storedProc)
         {
@@ -23,7 +35,6 @@ namespace DAL.Mappers
                 object valor = prop.GetValue(entity);
 
                 SqlParameter sqlProp = new SqlParameter($"{nombre}", valor);
-
                 sqlProps.Add(sqlProp);
             }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -58,6 +59,21 @@ namespace DAL
             adapter.Fill(tabla);
 
             return tabla;
+        }
+
+
+        internal void AsignarID(string storedProc, SqlParameter nombreTabla, Type tipoEntidad)
+        {
+            AbrirConexion();
+
+            SqlCommand comand = new SqlCommand(storedProc, conexion);
+            comand.CommandType = CommandType.StoredProcedure;
+            comand.Parameters.Add(nombreTabla);
+
+            PropertyInfo idProp = tipoEntidad.GetProperty("Id");
+            idProp.SetValue(tipoEntidad.Name, comand.ExecuteScalar());
+
+            CerrarConexion();
         }
     }
 }
