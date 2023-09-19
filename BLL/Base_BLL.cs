@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,10 +11,11 @@ namespace BLL
     class Base_BLL<T> where T : class
     {
         Base_Mapper<T> mapper = new Base_Mapper<T>();
-
+        
         public int AgregarEntidad(T entity)
         {
             string spNombre = ObtenerNombreSP("Agregar", entity.GetType().Name); //Devuelve 'AgregarUsuario', 'AgregarProducto', ...
+            mapper.AsignarID(entity);
             int linesAffected = mapper.Agregar(entity, spNombre);
 
             return linesAffected;
