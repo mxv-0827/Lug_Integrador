@@ -62,16 +62,18 @@ namespace DAL
         }
 
 
-        internal void AsignarID(string storedProc, SqlParameter nombreTabla, Type tipoEntidad)
+        internal void AsignarID(string storedProc, SqlParameter nombreTabla, object instanciaEntidad)
         {
             AbrirConexion();
 
-            SqlCommand comand = new SqlCommand(storedProc, conexion);
-            comand.CommandType = CommandType.StoredProcedure;
-            comand.Parameters.Add(nombreTabla);
+            SqlCommand command = new SqlCommand(storedProc, conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(nombreTabla);
 
-            PropertyInfo idProp = tipoEntidad.GetProperty("Id");
-            idProp.SetValue(tipoEntidad.Name, comand.ExecuteScalar());
+            int idObtenido = (int)command.ExecuteScalar();
+
+            PropertyInfo idProp = instanciaEntidad.GetType().GetProperty("Id");
+            idProp.SetValue(instanciaEntidad, idObtenido);
 
             CerrarConexion();
         }

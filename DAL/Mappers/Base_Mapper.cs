@@ -16,12 +16,8 @@ namespace DAL.Mappers
 
         public void AsignarID(T entity)
         {
-            Type tipoEntidad = entity.GetType();
-            string nombreEntidad = tipoEntidad.Name;
-
-            SqlParameter sqlProp = new SqlParameter("@Tabla", nombreEntidad);
-
-            acceso.AsignarID("AsignarIDGeneral", sqlProp, tipoEntidad); //1- SP a ejecutar || 2- Que tabla se va a usar para asignar el ID || 3- Tipo de entidad a la que se le asigna el ID.
+            SqlParameter sqlProp = new SqlParameter("@Tabla", entity.GetType().Name);
+            acceso.AsignarID("AsignarIDGeneral", sqlProp, entity); //1- SP a ejecutar || 2- Que tabla se va a usar para asignar el ID || 3- Instancia a la que se le asigna el ID.
         }
 
         public virtual int Agregar(T entity, string storedProc)

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    class Base_BLL<T> where T : class
+    public class Base_BLL<T> where T : class
     {
         Base_Mapper<T> mapper = new Base_Mapper<T>();
         
