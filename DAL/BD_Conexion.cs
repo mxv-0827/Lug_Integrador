@@ -66,14 +66,12 @@ namespace DAL
         {
             AbrirConexion();
 
-            SqlCommand command = new SqlCommand(storedProc, conexion);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.Add(nombreTabla);
-
-            int idObtenido = (int)command.ExecuteScalar();
+            SqlCommand comand = new SqlCommand(storedProc, conexion);
+            comand.CommandType = CommandType.StoredProcedure;
+            comand.Parameters.Add(nombreTabla);
 
             PropertyInfo idProp = instanciaEntidad.GetType().GetProperty("Id");
-            idProp.SetValue(instanciaEntidad, idObtenido);
+            idProp.SetValue(instanciaEntidad, comand.ExecuteScalar());
 
             CerrarConexion();
         }
