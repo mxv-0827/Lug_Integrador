@@ -47,14 +47,27 @@ namespace DAL.Mappers
 
         public int Eliminar(int id, string storedProc)
         {
-            List<SqlParameter> sqlProps = new List<SqlParameter>
-            {
-                new SqlParameter("@Id", id)
+            List<SqlParameter> sqlProps = new List<SqlParameter> { new SqlParameter("@Id", id) };
+
+            return acceso.Escribir(storedProc, sqlProps.ToArray());
+        }
+
+        //Metodo que devuelve un registro en base a su ID.
+        public DataTable ObtenerUnoPorId(int id, string storedProc, string nombreEntidad)
+        {
+            List<SqlParameter> sqlProp = new List<SqlParameter> 
+            { 
+                new SqlParameter("@Tabla", nombreEntidad),
+                new SqlParameter("@Id", id) 
             };
 
-            int linesAffected = acceso.Escribir(storedProc, sqlProps.ToArray());
+            return acceso.Leer(storedProc, sqlProp.ToArray());
+        }
 
-            return linesAffected;
+        //Metodo que devuelve todos los registros (sin aplicar filtros).
+        public DataTable ObtenerTodos(string storedProc, string nombreEntidad)
+        {
+            return acceso.Leer(storedProc, new SqlParameter[] { new SqlParameter("@Tabla", nombreEntidad) });
         }
     }
 }

@@ -51,5 +51,15 @@ namespace UI
         {
             baseBLL.EliminarEntidad("Usuario", int.Parse(TbxId.Text));
         }
+
+        private void BtnObtenerPorId_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = baseBLL.ObtenerEntidadPorId("Usuario", int.Parse(TbxId.Text));
+        }
+
+        private void BtnObtenerTodos_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = baseBLL.ObtenerTodasEntidades("Usuario");
+        }
     }
 }
