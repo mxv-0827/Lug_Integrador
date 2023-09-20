@@ -39,6 +39,10 @@ namespace UI
             this.TbxId = new System.Windows.Forms.TextBox();
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnEliminar = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.BtnObtenerPorId = new System.Windows.Forms.Button();
+            this.BtnObtenerTodos = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnAgregar
@@ -108,7 +112,7 @@ namespace UI
             // 
             // BtnModificar
             // 
-            this.BtnModificar.Location = new System.Drawing.Point(575, 118);
+            this.BtnModificar.Location = new System.Drawing.Point(458, 113);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(100, 52);
             this.BtnModificar.TabIndex = 8;
@@ -118,7 +122,7 @@ namespace UI
             // 
             // BtnEliminar
             // 
-            this.BtnEliminar.Location = new System.Drawing.Point(575, 192);
+            this.BtnEliminar.Location = new System.Drawing.Point(458, 182);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(100, 52);
             this.BtnEliminar.TabIndex = 9;
@@ -126,11 +130,43 @@ namespace UI
             this.BtnEliminar.UseVisualStyleBackColor = true;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(36, 259);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(504, 150);
+            this.dataGridView1.TabIndex = 10;
+            // 
+            // BtnObtenerPorId
+            // 
+            this.BtnObtenerPorId.Location = new System.Drawing.Point(644, 113);
+            this.BtnObtenerPorId.Name = "BtnObtenerPorId";
+            this.BtnObtenerPorId.Size = new System.Drawing.Size(100, 52);
+            this.BtnObtenerPorId.TabIndex = 11;
+            this.BtnObtenerPorId.Text = "button1";
+            this.BtnObtenerPorId.UseVisualStyleBackColor = true;
+            this.BtnObtenerPorId.Click += new System.EventHandler(this.BtnObtenerPorId_Click);
+            // 
+            // BtnObtenerTodos
+            // 
+            this.BtnObtenerTodos.Location = new System.Drawing.Point(644, 182);
+            this.BtnObtenerTodos.Name = "BtnObtenerTodos";
+            this.BtnObtenerTodos.Size = new System.Drawing.Size(100, 52);
+            this.BtnObtenerTodos.TabIndex = 12;
+            this.BtnObtenerTodos.Text = "button2";
+            this.BtnObtenerTodos.UseVisualStyleBackColor = true;
+            this.BtnObtenerTodos.Click += new System.EventHandler(this.BtnObtenerTodos_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BtnObtenerTodos);
+            this.Controls.Add(this.BtnObtenerPorId);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.BtnModificar);
             this.Controls.Add(this.TbxId);
@@ -143,6 +179,7 @@ namespace UI
             this.Controls.Add(this.BtnAgregar);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,6 +197,9 @@ namespace UI
         private System.Windows.Forms.TextBox TbxId;
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Button BtnEliminar;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button BtnObtenerPorId;
+        private System.Windows.Forms.Button BtnObtenerTodos;
     }
 }
 
