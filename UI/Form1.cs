@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
 using BLL;
+using BLL.Entity_BLLs;
+
 namespace UI
 {
     public partial class Form1 : Form
@@ -18,48 +20,43 @@ namespace UI
             InitializeComponent();
         }
 
-        readonly Base_BLL<Usuario> baseBLL = new Base_BLL<Usuario>();
-        Usuario user;
+        //Usuarios
+        Usuario_BLL usuario_BLL = new Usuario_BLL();
+        Usuario_Logueo usuario_Logueo;
+        Usuario usuario;
 
-        private void BtnAgregar_Click(object sender, EventArgs e)
+        private void BtnLogeo_Click(object sender, EventArgs e)
         {
-            Usuario user = new Usuario
+            try
             {
-                Nombre = TbxNombre.Text,
-                Apellido = TbxApellido.Text,
-                Edad = int.Parse(TbxEdad.Text)
-            };
+                usuario_Logueo = new Usuario_Logueo
+                {
+                    Email = TbxEmail.Text,
+                    Password = TbxContra.Text
+                };
 
-            baseBLL.AgregarEntidad(user);
-        }
+                DataTable tabla = usuario_BLL.IniciarSesion(usuario_Logueo);
+                DataRow usuarioLogueado = tabla.Rows[0];
 
-        private void BtnModificar_Click(object sender, EventArgs e)
-        {
-            //Dps aca habria que hacer que al seleccionar un registro devuelva un Usuario y asignarlo a 'user'
-            user = new Usuario
+                usuario = (Usuario)usuarioLogueado;
+
+                MessageBox.Show("Logueo exitoso");
+
+                if(usuario.IDRol == 1)
+                {
+
+                }
+
+                else
+                {
+
+                }
+            }
+
+            catch (Exception ex)
             {
-                Id = int.Parse(TbxId.Text),
-                Nombre = TbxNombre.Text,
-                Apellido = TbxApellido.Text,
-                Edad = int.Parse(TbxEdad.Text)
-            };
-            
-            baseBLL.ModificarEntidad(user);
-        }
-
-        private void BtnEliminar_Click(object sender, EventArgs e)
-        {
-            baseBLL.EliminarEntidad("Usuario", int.Parse(TbxId.Text));
-        }
-
-        private void BtnObtenerPorId_Click(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = baseBLL.ObtenerEntidadPorId("Usuario", int.Parse(TbxId.Text));
-        }
-
-        private void BtnObtenerTodos_Click(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = baseBLL.ObtenerTodasEntidades("Usuario");
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

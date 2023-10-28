@@ -11,7 +11,7 @@ namespace DAL.Mappers
 {
     public class Base_Mapper<T> where T : class
     {
-        private BD_Conexion acceso = new BD_Conexion();
+        internal BD_Conexion acceso = new BD_Conexion();
 
 
         public void AsignarID(T entity)
@@ -34,9 +34,7 @@ namespace DAL.Mappers
                 sqlProps.Add(sqlProp);
             }
 
-            int linesAffected = acceso.Escribir(storedProc, sqlProps.ToArray());
-
-            return linesAffected;
+            return acceso.Escribir(storedProc, sqlProps.ToArray());
         }
 
         public virtual int Modificar(T entity, string storedProc)
