@@ -29,157 +29,112 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.BtnAgregar = new System.Windows.Forms.Button();
-            this.TbxNombre = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.TbxApellido = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.TbxEdad = new System.Windows.Forms.TextBox();
-            this.TbxId = new System.Windows.Forms.TextBox();
-            this.BtnModificar = new System.Windows.Forms.Button();
-            this.BtnEliminar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.BtnObtenerPorId = new System.Windows.Forms.Button();
-            this.BtnObtenerTodos = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.BtnLogeo = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.TbxEmail = new Guna.UI2.WinForms.Guna2TextBox();
+            this.TbxContra = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.BtnRegistro = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
-            // BtnAgregar
+            // BtnLogeo
             // 
-            this.BtnAgregar.Location = new System.Drawing.Point(278, 107);
-            this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(100, 52);
-            this.BtnAgregar.TabIndex = 0;
-            this.BtnAgregar.Text = "button1";
-            this.BtnAgregar.UseVisualStyleBackColor = true;
-            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
+            this.BtnLogeo.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnLogeo.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnLogeo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnLogeo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnLogeo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnLogeo.ForeColor = System.Drawing.Color.White;
+            this.BtnLogeo.Location = new System.Drawing.Point(418, 271);
+            this.BtnLogeo.Name = "BtnLogeo";
+            this.BtnLogeo.Size = new System.Drawing.Size(180, 45);
+            this.BtnLogeo.TabIndex = 0;
+            this.BtnLogeo.Text = "INICIAR SESION";
+            this.BtnLogeo.Click += new System.EventHandler(this.BtnLogeo_Click);
             // 
-            // TbxNombre
+            // guna2HtmlLabel1
             // 
-            this.TbxNombre.Location = new System.Drawing.Point(93, 71);
-            this.TbxNombre.Name = "TbxNombre";
-            this.TbxNombre.Size = new System.Drawing.Size(149, 20);
-            this.TbxNombre.TabIndex = 1;
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(272, 139);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(31, 15);
+            this.guna2HtmlLabel1.TabIndex = 1;
+            this.guna2HtmlLabel1.Text = "Email:";
             // 
-            // label1
+            // TbxEmail
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 77);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.TbxEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbxEmail.DefaultText = "";
+            this.TbxEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TbxEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TbxEmail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxEmail.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TbxEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxEmail.Location = new System.Drawing.Point(309, 118);
+            this.TbxEmail.Name = "TbxEmail";
+            this.TbxEmail.PasswordChar = '\0';
+            this.TbxEmail.PlaceholderText = "";
+            this.TbxEmail.SelectedText = "";
+            this.TbxEmail.Size = new System.Drawing.Size(200, 36);
+            this.TbxEmail.TabIndex = 2;
             // 
-            // label2
+            // TbxContra
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "label2";
+            this.TbxContra.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbxContra.DefaultText = "";
+            this.TbxContra.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TbxContra.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TbxContra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxContra.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxContra.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxContra.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TbxContra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxContra.Location = new System.Drawing.Point(309, 182);
+            this.TbxContra.Name = "TbxContra";
+            this.TbxContra.PasswordChar = '\0';
+            this.TbxContra.PlaceholderText = "";
+            this.TbxContra.SelectedText = "";
+            this.TbxContra.Size = new System.Drawing.Size(200, 36);
+            this.TbxContra.TabIndex = 4;
             // 
-            // TbxApellido
+            // guna2HtmlLabel2
             // 
-            this.TbxApellido.Location = new System.Drawing.Point(93, 107);
-            this.TbxApellido.Name = "TbxApellido";
-            this.TbxApellido.Size = new System.Drawing.Size(149, 20);
-            this.TbxApellido.TabIndex = 3;
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(243, 203);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(60, 15);
+            this.guna2HtmlLabel2.TabIndex = 3;
+            this.guna2HtmlLabel2.Text = "Contraseña:";
             // 
-            // label3
+            // BtnRegistro
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 156);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "label3";
-            // 
-            // TbxEdad
-            // 
-            this.TbxEdad.Location = new System.Drawing.Point(93, 150);
-            this.TbxEdad.Name = "TbxEdad";
-            this.TbxEdad.Size = new System.Drawing.Size(149, 20);
-            this.TbxEdad.TabIndex = 5;
-            // 
-            // TbxId
-            // 
-            this.TbxId.Location = new System.Drawing.Point(547, 71);
-            this.TbxId.Name = "TbxId";
-            this.TbxId.Size = new System.Drawing.Size(155, 20);
-            this.TbxId.TabIndex = 7;
-            // 
-            // BtnModificar
-            // 
-            this.BtnModificar.Location = new System.Drawing.Point(458, 113);
-            this.BtnModificar.Name = "BtnModificar";
-            this.BtnModificar.Size = new System.Drawing.Size(100, 52);
-            this.BtnModificar.TabIndex = 8;
-            this.BtnModificar.Text = "button1";
-            this.BtnModificar.UseVisualStyleBackColor = true;
-            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
-            // 
-            // BtnEliminar
-            // 
-            this.BtnEliminar.Location = new System.Drawing.Point(458, 182);
-            this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(100, 52);
-            this.BtnEliminar.TabIndex = 9;
-            this.BtnEliminar.Text = "button1";
-            this.BtnEliminar.UseVisualStyleBackColor = true;
-            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(36, 259);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(504, 150);
-            this.dataGridView1.TabIndex = 10;
-            // 
-            // BtnObtenerPorId
-            // 
-            this.BtnObtenerPorId.Location = new System.Drawing.Point(644, 113);
-            this.BtnObtenerPorId.Name = "BtnObtenerPorId";
-            this.BtnObtenerPorId.Size = new System.Drawing.Size(100, 52);
-            this.BtnObtenerPorId.TabIndex = 11;
-            this.BtnObtenerPorId.Text = "button1";
-            this.BtnObtenerPorId.UseVisualStyleBackColor = true;
-            this.BtnObtenerPorId.Click += new System.EventHandler(this.BtnObtenerPorId_Click);
-            // 
-            // BtnObtenerTodos
-            // 
-            this.BtnObtenerTodos.Location = new System.Drawing.Point(644, 182);
-            this.BtnObtenerTodos.Name = "BtnObtenerTodos";
-            this.BtnObtenerTodos.Size = new System.Drawing.Size(100, 52);
-            this.BtnObtenerTodos.TabIndex = 12;
-            this.BtnObtenerTodos.Text = "button2";
-            this.BtnObtenerTodos.UseVisualStyleBackColor = true;
-            this.BtnObtenerTodos.Click += new System.EventHandler(this.BtnObtenerTodos_Click);
+            this.BtnRegistro.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnRegistro.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnRegistro.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnRegistro.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnRegistro.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnRegistro.ForeColor = System.Drawing.Color.White;
+            this.BtnRegistro.Location = new System.Drawing.Point(204, 271);
+            this.BtnRegistro.Name = "BtnRegistro";
+            this.BtnRegistro.Size = new System.Drawing.Size(180, 45);
+            this.BtnRegistro.TabIndex = 5;
+            this.BtnRegistro.Text = "REGISTRARSE";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.BtnObtenerTodos);
-            this.Controls.Add(this.BtnObtenerPorId);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.BtnEliminar);
-            this.Controls.Add(this.BtnModificar);
-            this.Controls.Add(this.TbxId);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.TbxEdad);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.TbxApellido);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.TbxNombre);
-            this.Controls.Add(this.BtnAgregar);
+            this.Controls.Add(this.BtnRegistro);
+            this.Controls.Add(this.TbxContra);
+            this.Controls.Add(this.guna2HtmlLabel2);
+            this.Controls.Add(this.TbxEmail);
+            this.Controls.Add(this.guna2HtmlLabel1);
+            this.Controls.Add(this.BtnLogeo);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,19 +142,12 @@ namespace UI
 
         #endregion
 
-        private System.Windows.Forms.Button BtnAgregar;
-        private System.Windows.Forms.TextBox TbxNombre;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TbxApellido;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TbxEdad;
-        private System.Windows.Forms.TextBox TbxId;
-        private System.Windows.Forms.Button BtnModificar;
-        private System.Windows.Forms.Button BtnEliminar;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button BtnObtenerPorId;
-        private System.Windows.Forms.Button BtnObtenerTodos;
+        private Guna.UI2.WinForms.Guna2Button BtnLogeo;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2TextBox TbxEmail;
+        private Guna.UI2.WinForms.Guna2TextBox TbxContra;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2Button BtnRegistro;
     }
 }
 

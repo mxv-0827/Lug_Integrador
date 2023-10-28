@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BD_Conexion.cs" />
-    <Compile Include="Mappers\Base_Mapper.cs" />
+    <Compile Include="Base_Mapper.cs" />
+    <Compile Include="Entity_Mappers\Usuario_Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -51,5 +52,6 @@
       <Name>BE</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
