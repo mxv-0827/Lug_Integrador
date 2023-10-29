@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Usuario
+    public class Usuarios
     {
         //Props
         public int DNI { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public int Edad { get; set; }
         public string Sexo { get; set; }
         public DateTime Fecha_Nacimiento { get; set; }
         public int IDMembresia { get; set; }
@@ -21,9 +20,9 @@ namespace BE
 
 
         //Contructores
-        public Usuario() { }
+        public Usuarios() { }
 
-        public Usuario(DataRow fila) //Usado para hacer conversion explicita entre un DataRow y un Usuario.
+        public Usuarios(DataRow fila) //Usado para hacer conversion explicita entre un DataRow y un Usuario.
         {
             DNI = Convert.ToInt32(fila["DNI"]);
             Nombre = fila["Nombre"].ToString();
@@ -36,9 +35,9 @@ namespace BE
 
 
         //Metodos
-        public static explicit operator Usuario(DataRow fila) //Metodo que permite realizar la conversion explicita.
+        public static explicit operator Usuarios(DataRow fila) //Metodo que permite realizar la conversion explicita.
         {
-            return new Usuario(fila);
+            return new Usuarios(fila);
         }
 
     }

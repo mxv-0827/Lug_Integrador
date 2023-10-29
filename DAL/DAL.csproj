@@ -43,8 +43,9 @@
   <ItemGroup>
     <Compile Include="BD_Conexion.cs" />
     <Compile Include="Base_Mapper.cs" />
-    <Compile Include="Entity_Mappers\Usuario_Mapper.cs" />
+    <Compile Include="Entity_Mappers\Credenciales_Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transacciones_Gestor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

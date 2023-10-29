@@ -13,7 +13,7 @@ namespace UI
 {
     public partial class Frm_AdminDashboard : Form
     {
-        public Usuario UsuarioLogueado { get; set; }
+        public Usuarios UsuarioLogueado { get; set; }
 
 
         public Frm_AdminDashboard()

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,22 +12,38 @@ namespace DAL
 {
     internal class BD_Conexion
     {
+        public static BD_Conexion instancia;
         private readonly SqlConnection conexion = new SqlConnection("Server=DESKTOP-GDEVITI\\SQLEXPRESS; Database=Lug_Integrador; Integrated Security= true");
 
+        public static BD_Conexion ObtenerInstancia()
+        {
+            if(instancia == null)
+            {
+                instancia = new BD_Conexion();
+            }
 
-        private void AbrirConexion() => conexion.Open();
-        private void CerrarConexion() => conexion.Close();
+            return instancia;
+        }
+
+        internal void AbrirConexion() => conexion.Open();
+        internal void CerrarConexion() => conexion.Close();
+
+        public SqlTransaction GetTransaction() 
+        {
+            return conexion.BeginTransaction();
+        }
 
 
         internal int Escribir(string storedProc, SqlParameter[] props)
         {
-            AbrirConexion();
-
             int linesAffected;
 
             SqlCommand command = new SqlCommand(storedProc, conexion);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddRange(props);
+
+            var transaccion = Transacciones_Gestor.ObtenerInstancia();
+            command.Transaction = transaccion.GetTransaction();
 
             try
             {
@@ -35,10 +52,6 @@ namespace DAL
             catch
             {
                 linesAffected = -1;
-            }
-            finally
-            {
-                CerrarConexion();
             }
 
             return linesAffected;
@@ -64,16 +77,12 @@ namespace DAL
 
         internal void AsignarID(string storedProc, SqlParameter nombreTabla, object instanciaEntidad)
         {
-            AbrirConexion();
+            SqlDataAdapter adapter = new SqlDataAdapter(storedProc, conexion);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adapter.SelectCommand.Parameters.Add(nombreTabla);
 
-            SqlCommand comand = new SqlCommand(storedProc, conexion);
-            comand.CommandType = CommandType.StoredProcedure;
-            comand.Parameters.Add(nombreTabla);
-
-            PropertyInfo idProp = instanciaEntidad.GetType().GetProperty("Id");
-            idProp.SetValue(instanciaEntidad, comand.ExecuteScalar());
-
-            CerrarConexion();
+            PropertyInfo idProp = instanciaEntidad.GetType().GetProperties()[0]; //Devuelve la primera propiedad que seria el ID (la PK).
+            idProp.SetValue(instanciaEntidad, adapter.SelectCommand.ExecuteScalar());
         }
     }
 }

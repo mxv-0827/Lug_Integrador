@@ -23,27 +23,28 @@ namespace UI
         }
 
         //Usuarios
-        Usuario_BLL usuario_BLL = new Usuario_BLL();
-        Usuario_Logueo usuario_Logueo;
-        Usuario usuario;
+        Credenciales_BLL credenciales_BLL = new Credenciales_BLL();
+        Usuarios usuario;
 
+        //Credenciales
+        Credenciales credenciales;
         private void BtnLogeo_Click(object sender, EventArgs e)
         {
             try
             {
-                usuario_Logueo = new Usuario_Logueo
+                credenciales = new Credenciales()
                 {
                     Email = TbxEmail.Text,
                     Password = TbxContra.Text
                 };
 
 
-                Generic_Validator<Usuario_Logueo>.PropertiesValidation(usuario_Logueo); //Validacion de propiedades.
+                Generic_Validator<Credenciales>.ValidarPropiedades(credenciales); //Validacion de propiedades.
 
-                DataTable tabla = usuario_BLL.IniciarSesion(usuario_Logueo);
+                DataTable tabla = credenciales_BLL.IniciarSesion(credenciales);
                 DataRow usuarioLogueado = tabla.Rows[0];
 
-                usuario = (Usuario)usuarioLogueado;
+                usuario = (Usuarios)usuarioLogueado;
 
                 MessageBox.Show("Logueo exitoso");
 

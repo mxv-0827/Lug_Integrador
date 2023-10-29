@@ -11,8 +11,7 @@ namespace DAL.Mappers
 {
     public class Base_Mapper<T> where T : class
     {
-        internal BD_Conexion acceso = new BD_Conexion();
-
+        internal BD_Conexion acceso = BD_Conexion.ObtenerInstancia();
 
         public void AsignarID(T entity)
         {
