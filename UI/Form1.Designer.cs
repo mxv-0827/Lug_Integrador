@@ -121,6 +121,7 @@ namespace UI
             this.BtnRegistro.Size = new System.Drawing.Size(180, 45);
             this.BtnRegistro.TabIndex = 5;
             this.BtnRegistro.Text = "REGISTRARSE";
+            this.BtnRegistro.Click += new System.EventHandler(this.BtnRegistro_Click);
             // 
             // Form1
             // 

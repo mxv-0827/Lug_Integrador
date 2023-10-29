@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,17 @@ namespace UI
 {
     public partial class Frm_AdminDashboard : Form
     {
+        public Usuario UsuarioLogueado { get; set; }
+
+
         public Frm_AdminDashboard()
         {
             InitializeComponent();
+        }
+
+        private void Frm_AdminDashboard_Load(object sender, EventArgs e)
+        {
+            lblBienvenida.Text += $" {UsuarioLogueado.Nombre} {UsuarioLogueado.Apellido}";
         }
     }
 }
