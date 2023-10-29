@@ -6,10 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.ModelBinding;
 using System.Windows.Forms;
 using BE;
 using BLL;
 using BLL.Entity_BLLs;
+using UI.Validators;
 
 namespace UI
 {
@@ -35,6 +37,9 @@ namespace UI
                     Password = TbxContra.Text
                 };
 
+
+                Generic_Validator<Usuario_Logueo>.PropertiesValidation(usuario_Logueo); //Validacion de propiedades.
+
                 DataTable tabla = usuario_BLL.IniciarSesion(usuario_Logueo);
                 DataRow usuarioLogueado = tabla.Rows[0];
 
@@ -42,14 +47,17 @@ namespace UI
 
                 MessageBox.Show("Logueo exitoso");
 
-                if(usuario.IDRol == 1)
+                if(usuario.IDRol == 1) //Formularios para clientes.
                 {
-
                 }
 
-                else
+                else //Formulario para admins.
                 {
+                    Frm_AdminDashboard frm_Admin = new Frm_AdminDashboard();
+                    frm_Admin.UsuarioLogueado = usuario;
 
+                    this.Hide();
+                    frm_Admin.ShowDialog();
                 }
             }
 
@@ -57,6 +65,14 @@ namespace UI
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void BtnRegistro_Click(object sender, EventArgs e)
+        {
+            Frm_Registro frm_Registro = new Frm_Registro();
+
+            this.Hide();
+            frm_Registro.ShowDialog();
         }
     }
 }

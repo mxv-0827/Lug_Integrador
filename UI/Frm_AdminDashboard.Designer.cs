@@ -52,14 +52,15 @@
             this.lblBienvenida.TabIndex = 1;
             this.lblBienvenida.Text = "Bienvenido: ";
             // 
-            // AdminDashboard
+            // Frm_AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 488);
             this.Controls.Add(this.guna2Panel1);
-            this.Name = "AdminDashboard";
+            this.Name = "Frm_AdminDashboard";
             this.Text = "AdminDashboard";
+            this.Load += new System.EventHandler(this.Frm_AdminDashboard_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
