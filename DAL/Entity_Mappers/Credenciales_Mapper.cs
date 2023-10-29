@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Entity_Mappers
 {
-    public class Usuario_Mapper : Base_Mapper<Usuario>
+    public class Credenciales_Mapper : Base_Mapper<Credenciales>
     {
-        public DataTable IniciarSesion(Usuario_Logueo usuarioALogear)
+        public DataTable IniciarSesion(Credenciales usuarioALogear)
         {
             PropertyInfo[] propsUsuario = usuarioALogear.GetType().GetProperties();
             List<SqlParameter> sqlProps = new List<SqlParameter>();

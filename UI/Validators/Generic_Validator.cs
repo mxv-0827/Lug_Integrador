@@ -11,10 +11,10 @@ namespace UI.Validators
 {
     internal static class Generic_Validator<T> where T : class
     {
-        public static void PropertiesValidation(T entidad) 
+        public static void ValidarPropiedades(T entidad) 
         {
             string tipo = entidad.GetType().Name;
-            Type tipoValidador = Type.GetType($"UI.Validators.{tipo}_Validator"); //Obtiene el tipo del validador usando como referencia el nombre del tipo de la entidad.
+            Type tipoValidador = Type.GetType($"UI.Validators.Entity_Validators.{tipo}_Validator"); //Obtiene el tipo del validador usando como referencia el nombre del tipo de la entidad.
 
             object instanciaValidador = Activator.CreateInstance(tipoValidador);
 
