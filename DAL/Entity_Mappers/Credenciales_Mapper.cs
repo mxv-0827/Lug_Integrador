@@ -27,6 +27,7 @@ namespace DAL.Entity_Mappers
 
                 sqlProps.Add(sqlProp);
             }
+            sqlProps.RemoveAt(0); //Quitamos el ID xq no lo necesitamos. Ademas, tira error si se lo deja.
 
             return base.acceso.Leer("Iniciar_Sesion", sqlProps.ToArray());
         }
