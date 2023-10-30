@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.BtnSalas = new Guna.UI2.WinForms.Guna2Button();
             this.BtnCupones = new Guna.UI2.WinForms.Guna2Button();
             this.lblBienvenida = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.PnlMainContainer = new Guna.UI2.WinForms.Guna2Panel();
             this.uC_Cupones1 = new UI.FRM_ADMIN.UC_Cupones();
+            this.uC_Salas1 = new UI.FRM_ADMIN.UC_Salas();
             this.guna2Panel1.SuspendLayout();
             this.PnlMainContainer.SuspendLayout();
             this.SuspendLayout();
@@ -41,6 +43,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.guna2Panel1.Controls.Add(this.BtnSalas);
             this.guna2Panel1.Controls.Add(this.BtnCupones);
             this.guna2Panel1.Controls.Add(this.lblBienvenida);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -48,6 +51,21 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(200, 488);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // BtnSalas
+            // 
+            this.BtnSalas.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnSalas.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnSalas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnSalas.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnSalas.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnSalas.ForeColor = System.Drawing.Color.White;
+            this.BtnSalas.Location = new System.Drawing.Point(0, 166);
+            this.BtnSalas.Name = "BtnSalas";
+            this.BtnSalas.Size = new System.Drawing.Size(200, 45);
+            this.BtnSalas.TabIndex = 2;
+            this.BtnSalas.Text = "ABM Salas";
+            this.BtnSalas.Click += new System.EventHandler(this.BtnSalas_Click);
             // 
             // BtnCupones
             // 
@@ -57,7 +75,7 @@
             this.BtnCupones.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.BtnCupones.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BtnCupones.ForeColor = System.Drawing.Color.White;
-            this.BtnCupones.Location = new System.Drawing.Point(0, 133);
+            this.BtnCupones.Location = new System.Drawing.Point(0, 217);
             this.BtnCupones.Name = "BtnCupones";
             this.BtnCupones.Size = new System.Drawing.Size(200, 45);
             this.BtnCupones.TabIndex = 0;
@@ -83,6 +101,7 @@
             // 
             // PnlMainContainer
             // 
+            this.PnlMainContainer.Controls.Add(this.uC_Salas1);
             this.PnlMainContainer.Controls.Add(this.uC_Cupones1);
             this.PnlMainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlMainContainer.Location = new System.Drawing.Point(200, 41);
@@ -97,6 +116,14 @@
             this.uC_Cupones1.Name = "uC_Cupones1";
             this.uC_Cupones1.Size = new System.Drawing.Size(629, 447);
             this.uC_Cupones1.TabIndex = 0;
+            // 
+            // uC_Salas1
+            // 
+            this.uC_Salas1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_Salas1.Location = new System.Drawing.Point(0, 0);
+            this.uC_Salas1.Name = "uC_Salas1";
+            this.uC_Salas1.Size = new System.Drawing.Size(629, 447);
+            this.uC_Salas1.TabIndex = 1;
             // 
             // Frm_AdminDashboard
             // 
@@ -123,6 +150,8 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2Panel PnlMainContainer;
         private Guna.UI2.WinForms.Guna2Button BtnCupones;
+        private Guna.UI2.WinForms.Guna2Button BtnSalas;
         private FRM_ADMIN.UC_Cupones uC_Cupones1;
+        private FRM_ADMIN.UC_Salas uC_Salas1;
     }
 }

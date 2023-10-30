@@ -18,10 +18,11 @@ namespace BLL.Transactions_BLLs
         public int CrearEntidades(Usuarios usuario, Credenciales credenciales)
         {
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
-            transacciones_Gestor.IniciarTransaccion();
 
             try
             {
+                transacciones_Gestor.IniciarTransaccion();
+
                 int cantUsuariosAfectados = usuarios_BLL.AgregarEntidad(usuario);
                 int cantCredencialesAfectadas = credenciales_BLL.AgregarEntidad(credenciales);
 

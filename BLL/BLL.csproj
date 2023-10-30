@@ -46,6 +46,7 @@
     <Compile Include="Entity_BLLs\Cupones_BLL.cs" />
     <Compile Include="Entity_BLLs\Usuarios_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transactions_BLLs\SalaAsiento_Transaction_BLL.cs" />
     <Compile Include="Transactions_BLLs\UsuCred_Transaction_BLL.cs" />
   </ItemGroup>
   <ItemGroup>

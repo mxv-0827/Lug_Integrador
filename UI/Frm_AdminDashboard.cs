@@ -30,5 +30,10 @@ namespace UI
         {
             uC_Cupones1.BringToFront();
         }
+
+        private void BtnSalas_Click(object sender, EventArgs e)
+        {
+            uC_Salas1.BringToFront();
+        }
     }
 }

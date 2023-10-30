@@ -34,6 +34,9 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.BtnCrearCupon = new Guna.UI2.WinForms.Guna2Button();
             this.CbxIDDesc = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.CbxCupones = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.BtnModificarEstado = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // BtnCrearCodigo
@@ -44,7 +47,7 @@
             this.BtnCrearCodigo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.BtnCrearCodigo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BtnCrearCodigo.ForeColor = System.Drawing.Color.White;
-            this.BtnCrearCodigo.Location = new System.Drawing.Point(351, 73);
+            this.BtnCrearCodigo.Location = new System.Drawing.Point(329, 73);
             this.BtnCrearCodigo.Name = "BtnCrearCodigo";
             this.BtnCrearCodigo.Size = new System.Drawing.Size(141, 36);
             this.BtnCrearCodigo.TabIndex = 0;
@@ -130,10 +133,62 @@
             this.CbxIDDesc.Size = new System.Drawing.Size(200, 36);
             this.CbxIDDesc.TabIndex = 6;
             // 
+            // CbxCupones
+            // 
+            this.CbxCupones.BackColor = System.Drawing.Color.Transparent;
+            this.CbxCupones.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbxCupones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxCupones.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CbxCupones.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CbxCupones.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.CbxCupones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.CbxCupones.ItemHeight = 30;
+            this.CbxCupones.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.CbxCupones.Location = new System.Drawing.Point(110, 337);
+            this.CbxCupones.Name = "CbxCupones";
+            this.CbxCupones.Size = new System.Drawing.Size(200, 36);
+            this.CbxCupones.TabIndex = 8;
+            // 
+            // guna2HtmlLabel3
+            // 
+            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(68, 358);
+            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(37, 15);
+            this.guna2HtmlLabel3.TabIndex = 7;
+            this.guna2HtmlLabel3.Text = "Cupon:";
+            // 
+            // BtnModificarEstado
+            // 
+            this.BtnModificarEstado.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnModificarEstado.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnModificarEstado.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnModificarEstado.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnModificarEstado.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnModificarEstado.ForeColor = System.Drawing.Color.White;
+            this.BtnModificarEstado.Location = new System.Drawing.Point(329, 337);
+            this.BtnModificarEstado.Name = "BtnModificarEstado";
+            this.BtnModificarEstado.Size = new System.Drawing.Size(141, 36);
+            this.BtnModificarEstado.TabIndex = 9;
+            this.BtnModificarEstado.Text = "Habilitar/Deshabilitar";
+            // 
             // UC_Cupones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.BtnModificarEstado);
+            this.Controls.Add(this.CbxCupones);
+            this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.CbxIDDesc);
             this.Controls.Add(this.BtnCrearCupon);
             this.Controls.Add(this.guna2HtmlLabel2);
@@ -155,5 +210,8 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2Button BtnCrearCupon;
         private Guna.UI2.WinForms.Guna2ComboBox CbxIDDesc;
+        private Guna.UI2.WinForms.Guna2ComboBox CbxCupones;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2Button BtnModificarEstado;
     }
 }
