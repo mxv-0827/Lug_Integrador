@@ -77,12 +77,32 @@ namespace DAL
 
         internal void AsignarID(string storedProc, SqlParameter nombreTabla, object instanciaEntidad)
         {
-            SqlDataAdapter adapter = new SqlDataAdapter(storedProc, conexion);
-            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            adapter.SelectCommand.Parameters.Add(nombreTabla);
+            AbrirConexion();
+
+            SqlCommand command = new SqlCommand(storedProc, conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(nombreTabla);
 
             PropertyInfo idProp = instanciaEntidad.GetType().GetProperties()[0]; //Devuelve la primera propiedad que seria el ID (la PK).
-            idProp.SetValue(instanciaEntidad, adapter.SelectCommand.ExecuteScalar());
+            idProp.SetValue(instanciaEntidad, command.ExecuteScalar());
+
+            CerrarConexion();
+        }
+
+        internal bool ValidarID(string storedProc, SqlParameter codigo) //Usado en casos donde el ID debe ser un conjunto de caracteres aleatorios. => 'Cupones'
+        {
+            AbrirConexion();
+
+            SqlCommand command = new SqlCommand(storedProc, conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(codigo);
+
+            int valido = int.Parse(command.ExecuteScalar().ToString());
+            bool validez = (valido == 1);
+
+            CerrarConexion();
+
+            return validez;
         }
     }
 }

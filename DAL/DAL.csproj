@@ -44,6 +44,7 @@
     <Compile Include="BD_Conexion.cs" />
     <Compile Include="Base_Mapper.cs" />
     <Compile Include="Entity_Mappers\Credenciales_Mapper.cs" />
+    <Compile Include="Entity_Mappers\Cupones_Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transacciones_Gestor.cs" />
   </ItemGroup>
@@ -51,6 +52,10 @@
     <ProjectReference Include="..\BE\BE.csproj">
       <Project>{79fbfdda-da9e-4ff0-8324-f119dca8ae0b}</Project>
       <Name>BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SEC\SEC.csproj">
+      <Project>{e4a1cab5-41c4-4b6d-9f9c-5f9b5fed129b}</Project>
+      <Name>SEC</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

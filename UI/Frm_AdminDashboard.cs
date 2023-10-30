@@ -25,5 +25,10 @@ namespace UI
         {
             lblBienvenida.Text += $" {UsuarioLogueado.Nombre} {UsuarioLogueado.Apellido}";
         }
+
+        private void BtnCupones_Click(object sender, EventArgs e)
+        {
+            uC_Cupones1.BringToFront();
+        }
     }
 }
