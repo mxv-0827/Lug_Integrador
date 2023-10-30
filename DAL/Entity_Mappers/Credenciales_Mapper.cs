@@ -1,5 +1,6 @@
 ﻿using BE;
 using DAL.Mappers;
+using SEC;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,6 +16,8 @@ namespace DAL.Entity_Mappers
     {
         public DataTable IniciarSesion(Credenciales usuarioALogear)
         {
+            usuarioALogear.Password = Password_Encriptador.EncriptarContraseña(usuarioALogear.Password, usuarioALogear.Email);
+
             PropertyInfo[] propsUsuario = usuarioALogear.GetType().GetProperties();
             List<SqlParameter> sqlProps = new List<SqlParameter>();
 
@@ -30,6 +33,13 @@ namespace DAL.Entity_Mappers
             sqlProps.RemoveAt(0); //Quitamos el ID xq no lo necesitamos. Ademas, tira error si se lo deja.
 
             return base.acceso.Leer("Iniciar_Sesion", sqlProps.ToArray());
+        }
+
+
+        public override int Agregar(Credenciales entity, string storedProc)
+        {
+            entity.Password = Password_Encriptador.EncriptarContraseña(entity.Password, entity.Email);
+            return base.Agregar(entity, storedProc);
         }
     }
 }

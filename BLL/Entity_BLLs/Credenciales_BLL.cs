@@ -16,7 +16,7 @@ namespace BLL.Entity_BLLs
         public override int AgregarEntidad(Credenciales credenciales) //Credenciales no requiere de ser asignado un ID.
         {
             string spNombre = ObtenerNombreSP("Agregar", credenciales.GetType().Name);
-            return mapper.Agregar(credenciales, spNombre);
+            return credenciales_Mapper.Agregar(credenciales, spNombre);
         }
 
         public DataTable IniciarSesion(Credenciales credenciales) => credenciales_Mapper.IniciarSesion(credenciales);
