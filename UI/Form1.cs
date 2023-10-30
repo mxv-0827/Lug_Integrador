@@ -58,7 +58,7 @@ namespace UI
                     frm_Admin.UsuarioLogueado = usuario;
 
                     this.Hide();
-                    frm_Admin.ShowDialog();
+                    frm_Admin.Show();
                 }
             }
 
@@ -73,7 +73,7 @@ namespace UI
             Frm_Registro frm_Registro = new Frm_Registro();
 
             this.Hide();
-            frm_Registro.ShowDialog();
+            frm_Registro.Show();
         }
     }
 }
