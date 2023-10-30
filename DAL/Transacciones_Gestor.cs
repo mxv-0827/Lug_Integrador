@@ -39,14 +39,15 @@ namespace DAL
         public void ConfirmarTransaccion()
         {
             transaction.Commit();
-            transaction = null; // Marcar como completada y liberar la transacción.
+            conexion.CerrarConexion();
+            instancia = null; // Marcar como completada y liberar la transacción.
         }
 
         public void RevertirTransaccion()
         {
             transaction.Rollback();
-            transaction = null; // Marcar como revertida y liberar la transacción.
             conexion.CerrarConexion();
+            instancia = null; // Marcar como revertida y liberar la transacción.
         }
 
         public SqlTransaction GetTransaction()
