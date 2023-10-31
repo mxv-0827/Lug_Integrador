@@ -102,5 +102,20 @@ namespace DAL
 
             return validez;
         }
+
+        internal object ObtenerDato(string storedProc, SqlParameter[] props = null)
+        {
+            AbrirConexion();
+
+            SqlCommand command = new SqlCommand(storedProc, conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            if(props != null) command.Parameters.AddRange(props);
+
+            object resultado = command.ExecuteScalar();
+
+            CerrarConexion();
+
+            return resultado;
+        }
     }
 }

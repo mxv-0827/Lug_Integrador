@@ -35,5 +35,10 @@ namespace UI
         {
             uC_Salas1.BringToFront();
         }
+
+        private void BtnCombos_Click(object sender, EventArgs e)
+        {
+            uC_Combos1.BringToFront();
+        }
     }
 }
