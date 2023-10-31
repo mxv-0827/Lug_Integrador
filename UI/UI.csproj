@@ -83,6 +83,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRM_ADMIN\UC_Combos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FRM_ADMIN\UC_Combos.Designer.cs">
+      <DependentUpon>UC_Combos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_ADMIN\UC_Cupones.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_ADMIN\UC_Combos.resx">
+      <DependentUpon>UC_Combos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_ADMIN\UC_Cupones.resx">
       <DependentUpon>UC_Cupones.cs</DependentUpon>

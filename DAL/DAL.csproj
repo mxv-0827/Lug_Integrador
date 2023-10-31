@@ -45,6 +45,7 @@
     <Compile Include="Base_Mapper.cs" />
     <Compile Include="Entity_Mappers\Credenciales_Mapper.cs" />
     <Compile Include="Entity_Mappers\Cupones_Mapper.cs" />
+    <Compile Include="Entity_Mappers\Producto_Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transacciones_Gestor.cs" />
   </ItemGroup>

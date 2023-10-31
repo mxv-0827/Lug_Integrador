@@ -20,13 +20,13 @@ namespace BLL
             return mapper.Agregar(entity, spNombre);
         }
 
-        public int ModificarEntidad(T entity)
+        public virtual int ModificarEntidad(T entity)
         {
             string spNombre = ObtenerNombreSP("Modificar", entity.GetType().Name); //Devuelve 'ModificarUsuario', 'ModificarProducto', ...
             return mapper.Modificar(entity, spNombre);
         }
 
-        public int EliminarEntidad(string nombreEntidad, int id)
+        public virtual int EliminarEntidad(string nombreEntidad, int id)
         {
             string spNombre = ObtenerNombreSP("Eliminar", nombreEntidad); //Devuelve 'EliminarUsuario', 'EliminarProducto', ....
             return mapper.Eliminar(id, spNombre);
