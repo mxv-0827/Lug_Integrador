@@ -40,5 +40,10 @@ namespace UI
         {
             uC_Combos1.BringToFront();
         }
+
+        private void BtnPeliculas_Click(object sender, EventArgs e)
+        {
+            uC_Peliculas1.BringToFront();
+        }
     }
 }

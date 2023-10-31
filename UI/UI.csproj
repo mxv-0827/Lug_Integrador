@@ -95,6 +95,12 @@
     <Compile Include="FRM_ADMIN\UC_Cupones.Designer.cs">
       <DependentUpon>UC_Cupones.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRM_ADMIN\UC_Peliculas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FRM_ADMIN\UC_Peliculas.Designer.cs">
+      <DependentUpon>UC_Peliculas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_ADMIN\UC_Salas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_ADMIN\UC_Cupones.resx">
       <DependentUpon>UC_Cupones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_ADMIN\UC_Peliculas.resx">
+      <DependentUpon>UC_Peliculas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_ADMIN\UC_Salas.resx">
       <DependentUpon>UC_Salas.cs</DependentUpon>

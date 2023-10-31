@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.BtnPeliculas = new Guna.UI2.WinForms.Guna2Button();
+            this.BtnCombos = new Guna.UI2.WinForms.Guna2Button();
             this.BtnSalas = new Guna.UI2.WinForms.Guna2Button();
             this.BtnCupones = new Guna.UI2.WinForms.Guna2Button();
             this.lblBienvenida = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.PnlMainContainer = new Guna.UI2.WinForms.Guna2Panel();
-            this.BtnCombos = new Guna.UI2.WinForms.Guna2Button();
+            this.uC_Combos1 = new UI.FRM_ADMIN.UC_Combos();
             this.uC_Salas1 = new UI.FRM_ADMIN.UC_Salas();
             this.uC_Cupones1 = new UI.FRM_ADMIN.UC_Cupones();
-            this.uC_Combos1 = new UI.FRM_ADMIN.UC_Combos();
+            this.uC_Peliculas1 = new UI.FRM_ADMIN.UC_Peliculas();
             this.guna2Panel1.SuspendLayout();
             this.PnlMainContainer.SuspendLayout();
             this.SuspendLayout();
@@ -45,6 +47,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.guna2Panel1.Controls.Add(this.BtnPeliculas);
             this.guna2Panel1.Controls.Add(this.BtnCombos);
             this.guna2Panel1.Controls.Add(this.BtnSalas);
             this.guna2Panel1.Controls.Add(this.BtnCupones);
@@ -54,6 +57,36 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(200, 488);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // BtnPeliculas
+            // 
+            this.BtnPeliculas.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnPeliculas.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnPeliculas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnPeliculas.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnPeliculas.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnPeliculas.ForeColor = System.Drawing.Color.White;
+            this.BtnPeliculas.Location = new System.Drawing.Point(0, 217);
+            this.BtnPeliculas.Name = "BtnPeliculas";
+            this.BtnPeliculas.Size = new System.Drawing.Size(200, 45);
+            this.BtnPeliculas.TabIndex = 3;
+            this.BtnPeliculas.Text = "ABM Peliculas";
+            this.BtnPeliculas.Click += new System.EventHandler(this.BtnPeliculas_Click);
+            // 
+            // BtnCombos
+            // 
+            this.BtnCombos.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnCombos.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnCombos.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnCombos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnCombos.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnCombos.ForeColor = System.Drawing.Color.White;
+            this.BtnCombos.Location = new System.Drawing.Point(0, 267);
+            this.BtnCombos.Name = "BtnCombos";
+            this.BtnCombos.Size = new System.Drawing.Size(200, 45);
+            this.BtnCombos.TabIndex = 2;
+            this.BtnCombos.Text = "ABM Combos";
+            this.BtnCombos.Click += new System.EventHandler(this.BtnCombos_Click);
             // 
             // BtnSalas
             // 
@@ -78,7 +111,7 @@
             this.BtnCupones.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.BtnCupones.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BtnCupones.ForeColor = System.Drawing.Color.White;
-            this.BtnCupones.Location = new System.Drawing.Point(0, 268);
+            this.BtnCupones.Location = new System.Drawing.Point(0, 318);
             this.BtnCupones.Name = "BtnCupones";
             this.BtnCupones.Size = new System.Drawing.Size(200, 45);
             this.BtnCupones.TabIndex = 0;
@@ -104,6 +137,7 @@
             // 
             // PnlMainContainer
             // 
+            this.PnlMainContainer.Controls.Add(this.uC_Peliculas1);
             this.PnlMainContainer.Controls.Add(this.uC_Combos1);
             this.PnlMainContainer.Controls.Add(this.uC_Salas1);
             this.PnlMainContainer.Controls.Add(this.uC_Cupones1);
@@ -113,20 +147,13 @@
             this.PnlMainContainer.Size = new System.Drawing.Size(629, 447);
             this.PnlMainContainer.TabIndex = 2;
             // 
-            // BtnCombos
+            // uC_Combos1
             // 
-            this.BtnCombos.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.BtnCombos.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.BtnCombos.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.BtnCombos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.BtnCombos.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.BtnCombos.ForeColor = System.Drawing.Color.White;
-            this.BtnCombos.Location = new System.Drawing.Point(0, 217);
-            this.BtnCombos.Name = "BtnCombos";
-            this.BtnCombos.Size = new System.Drawing.Size(200, 45);
-            this.BtnCombos.TabIndex = 2;
-            this.BtnCombos.Text = "ABM Combos";
-            this.BtnCombos.Click += new System.EventHandler(this.BtnCombos_Click);
+            this.uC_Combos1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_Combos1.Location = new System.Drawing.Point(0, 0);
+            this.uC_Combos1.Name = "uC_Combos1";
+            this.uC_Combos1.Size = new System.Drawing.Size(629, 447);
+            this.uC_Combos1.TabIndex = 2;
             // 
             // uC_Salas1
             // 
@@ -144,13 +171,13 @@
             this.uC_Cupones1.Size = new System.Drawing.Size(629, 447);
             this.uC_Cupones1.TabIndex = 0;
             // 
-            // uC_Combos1
+            // uC_Peliculas1
             // 
-            this.uC_Combos1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_Combos1.Location = new System.Drawing.Point(0, 0);
-            this.uC_Combos1.Name = "uC_Combos1";
-            this.uC_Combos1.Size = new System.Drawing.Size(629, 447);
-            this.uC_Combos1.TabIndex = 2;
+            this.uC_Peliculas1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_Peliculas1.Location = new System.Drawing.Point(0, 0);
+            this.uC_Peliculas1.Name = "uC_Peliculas1";
+            this.uC_Peliculas1.Size = new System.Drawing.Size(629, 447);
+            this.uC_Peliculas1.TabIndex = 3;
             // 
             // Frm_AdminDashboard
             // 
@@ -182,5 +209,7 @@
         private FRM_ADMIN.UC_Salas uC_Salas1;
         private Guna.UI2.WinForms.Guna2Button BtnCombos;
         private FRM_ADMIN.UC_Combos uC_Combos1;
+        private Guna.UI2.WinForms.Guna2Button BtnPeliculas;
+        private FRM_ADMIN.UC_Peliculas uC_Peliculas1;
     }
 }
