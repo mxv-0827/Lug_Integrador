@@ -48,6 +48,7 @@
     <Compile Include="Descuentos.cs" />
     <Compile Include="DisponibilidadAsientos.cs" />
     <Compile Include="HorarioPeliculas.cs" />
+    <Compile Include="Membresias.cs" />
     <Compile Include="Peliculas.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
