@@ -36,9 +36,33 @@ namespace BLL.Entity_BLLs
 
             catch(Exception)
             {
+                transacciones_Gestor.RevertirTransaccion();
                 throw new Exception("No pudo crearse el cupon en la BD");
             }
-            
+        }
+
+        public override int ModificarEntidad(Cupones cupon)
+        {
+            Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
+            transacciones_Gestor.IniciarTransaccion();
+
+            try
+            {
+                string spNombre = ObtenerNombreSP("Modificar", cupon.GetType().Name);
+                int linesAffected = mapper.Modificar(cupon, spNombre);
+
+                if (linesAffected < 1) throw new Exception();
+
+                transacciones_Gestor.ConfirmarTransaccion();
+
+                return linesAffected;
+            }
+
+            catch (Exception)
+            {
+                transacciones_Gestor.RevertirTransaccion();
+                throw new Exception("No pudo modificarse el cupon en la BD");
+            }
         }
     }
 }
