@@ -29,21 +29,25 @@ namespace UI
         private void BtnCupones_Click(object sender, EventArgs e)
         {
             uC_Cupones1.BringToFront();
+            uC_Cupones1.Focus();
         }
 
         private void BtnSalas_Click(object sender, EventArgs e)
         {
             uC_Salas1.BringToFront();
+            uC_Salas1.Focus();
         }
 
         private void BtnCombos_Click(object sender, EventArgs e)
         {
             uC_Combos1.BringToFront();
+            uC_Combos1.Focus();
         }
 
         private void BtnPeliculas_Click(object sender, EventArgs e)
         {
             uC_Peliculas1.BringToFront();
+            uC_Peliculas1.Focus();
         }
     }
 }

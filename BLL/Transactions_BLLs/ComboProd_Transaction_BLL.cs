@@ -18,15 +18,15 @@ namespace BLL.Transactions_BLLs
         Base_Mapper<ProductosEnCombos> Base_Mapper = new Base_Mapper<ProductosEnCombos>();
         Producto_Mapper Producto_Mapper = new Producto_Mapper();
 
-        public int AgregarEntidad(Combos combo, List<int> productosID)
+        public int AgregarEntidad(Combos combo, List<Productos> listaProductos)
         {
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
 
             try
             {
-                foreach(int ID in productosID)
+                foreach(Productos prod in listaProductos)
                 {
-                    combo.Precio += Producto_Mapper.ObtenerPrecioProducto(ID);
+                    combo.Precio += Producto_Mapper.ObtenerPrecioProducto(prod.ID);
                 }
 
                 transacciones_Gestor.IniciarTransaccion();
@@ -34,13 +34,13 @@ namespace BLL.Transactions_BLLs
                 int cantCombosAfectados = Base_BLL.AgregarEntidad(combo);
                 int cantProdCombAfectados = 0;
 
-                foreach (int ID in productosID)
+                foreach (Productos prod in listaProductos)
                 {
-                    var prodEnCombo = new ProductosEnCombos { IDCombo = combo.ID, IDProducto = ID };
+                    var prodEnCombo = new ProductosEnCombos { IDCombo = combo.ID, IDProducto = prod.ID };
                     cantProdCombAfectados += Base_Mapper.Agregar(prodEnCombo, "AgregarProductosEnCombos");
                 }
 
-                if (cantCombosAfectados + cantProdCombAfectados < productosID.Count + 1) throw new Exception();
+                if (cantCombosAfectados + cantProdCombAfectados < listaProductos.Count + 1) throw new Exception();
 
                 transacciones_Gestor.ConfirmarTransaccion();
                 return cantCombosAfectados + cantProdCombAfectados;
