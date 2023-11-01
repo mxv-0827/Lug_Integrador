@@ -45,6 +45,7 @@
     <Compile Include="Combos.cs" />
     <Compile Include="Credenciales.cs" />
     <Compile Include="Cupones.cs" />
+    <Compile Include="Descuentos.cs" />
     <Compile Include="DisponibilidadAsientos.cs" />
     <Compile Include="HorarioPeliculas.cs" />
     <Compile Include="Peliculas.cs" />

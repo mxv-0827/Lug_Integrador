@@ -117,17 +117,6 @@
             this.CbxIDDesc.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.CbxIDDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.CbxIDDesc.ItemHeight = 30;
-            this.CbxIDDesc.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
             this.CbxIDDesc.Location = new System.Drawing.Point(110, 128);
             this.CbxIDDesc.Name = "CbxIDDesc";
             this.CbxIDDesc.Size = new System.Drawing.Size(200, 36);
@@ -143,26 +132,16 @@
             this.CbxCupones.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.CbxCupones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.CbxCupones.ItemHeight = 30;
-            this.CbxCupones.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.CbxCupones.Location = new System.Drawing.Point(110, 337);
+            this.CbxCupones.Location = new System.Drawing.Point(110, 347);
             this.CbxCupones.Name = "CbxCupones";
             this.CbxCupones.Size = new System.Drawing.Size(200, 36);
             this.CbxCupones.TabIndex = 8;
+            this.CbxCupones.SelectedIndexChanged += new System.EventHandler(this.CbxCupones_SelectedIndexChanged);
             // 
             // guna2HtmlLabel3
             // 
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(68, 358);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(68, 368);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(37, 15);
             this.guna2HtmlLabel3.TabIndex = 7;
@@ -176,11 +155,12 @@
             this.BtnModificarEstado.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.BtnModificarEstado.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BtnModificarEstado.ForeColor = System.Drawing.Color.White;
-            this.BtnModificarEstado.Location = new System.Drawing.Point(329, 337);
+            this.BtnModificarEstado.Location = new System.Drawing.Point(345, 347);
             this.BtnModificarEstado.Name = "BtnModificarEstado";
             this.BtnModificarEstado.Size = new System.Drawing.Size(141, 36);
             this.BtnModificarEstado.TabIndex = 9;
             this.BtnModificarEstado.Text = "Habilitar/Deshabilitar";
+            this.BtnModificarEstado.Click += new System.EventHandler(this.BtnModificarEstado_Click);
             // 
             // UC_Cupones
             // 
@@ -197,6 +177,7 @@
             this.Controls.Add(this.BtnCrearCodigo);
             this.Name = "UC_Cupones";
             this.Size = new System.Drawing.Size(629, 447);
+            this.Load += new System.EventHandler(this.UC_Cupones_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
