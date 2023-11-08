@@ -13,12 +13,6 @@ namespace BLL.Entity_BLLs
     {
         private readonly Credenciales_Mapper credenciales_Mapper = new Credenciales_Mapper();
 
-        public override int AgregarEntidad(Credenciales credenciales) //Credenciales no requiere de ser asignado un ID.
-        {
-            string spNombre = ObtenerNombreSP("Agregar", credenciales.GetType().Name);
-            return credenciales_Mapper.Agregar(credenciales, spNombre);
-        }
-
         public DataTable IniciarSesion(Credenciales credenciales) => credenciales_Mapper.IniciarSesion(credenciales);
     }
 }

@@ -13,7 +13,7 @@ namespace BLL.Transactions_BLLs
 {
     public class GenPeli_Transaction_BLL
     {
-        Base_BLL<Peliculas> Base_BLL = new Base_BLL<Peliculas>();
+        Base_BLL<Peliculas> Base_BLL_Peliculas = new Base_BLL<Peliculas>();
 
         Base_Mapper<GenerosEnPeliculas> Base_Mapper = new Base_Mapper<GenerosEnPeliculas>();
 
@@ -23,9 +23,11 @@ namespace BLL.Transactions_BLLs
 
             try
             {
+                Base_BLL_Peliculas.AsignarID(pelicula);
+
                 transacciones_Gestor.IniciarTransaccion();
 
-                int cantPeliculasAfectadas = Base_BLL.AgregarEntidad(pelicula);
+                int cantPeliculasAfectadas = Base_BLL_Peliculas.AgregarEntidad(pelicula);
                 int cantGenPeliAfectadas = 0;
 
                 foreach (int ID in generosID)

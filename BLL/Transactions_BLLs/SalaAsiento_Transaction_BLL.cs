@@ -1,6 +1,7 @@
 ﻿using BE;
 using BLL.Entity_BLLs;
 using DAL;
+using DAL.Entity_Mappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,17 @@ namespace BLL.Transactions_BLLs
         private readonly Base_BLL<Salas> salas_BLL = new Base_BLL<Salas>();
         private readonly Base_BLL<Asientos> asientos_BLL = new Base_BLL<Asientos>();
 
+        private readonly Asientos_Mapper asientos_Mapper = new Asientos_Mapper();
+
         public int CrearEntidades(Salas sala)
         {
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
 
             try
             {
+                salas_BLL.AsignarID(sala);
+                int cantidadAsientos = asientos_Mapper.ObtenerTotalidadAsientos();
+
                 transacciones_Gestor.IniciarTransaccion();
 
                 int cantSalasAfectadas = salas_BLL.AgregarEntidad(sala);
@@ -29,6 +35,7 @@ namespace BLL.Transactions_BLLs
                 {
                     Asientos asiento = new Asientos
                     {
+                        ID = cantidadAsientos + (i + 1), 
                         IDSala = sala.ID,
                         NroAsiento = i + 1,
                     };

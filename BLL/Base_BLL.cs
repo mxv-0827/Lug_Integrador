@@ -13,10 +13,11 @@ namespace BLL
     {
         protected readonly Base_Mapper<T> mapper = new Base_Mapper<T>();
         
+        public virtual void AsignarID(T entity) => mapper.AsignarID(entity);
+
         public virtual int AgregarEntidad(T entity)
         {
             string spNombre = ObtenerNombreSP("Agregar", entity.GetType().Name); //Devuelve 'AgregarUsuario', 'AgregarProducto', ...
-            mapper.AsignarID(entity);
             return mapper.Agregar(entity, spNombre);
         }
 

@@ -34,8 +34,11 @@ namespace UI.FRM_ADMIN
 
             DataTable tablaCupones = cupones_BLL.ObtenerTodasEntidades("Cupones");
 
+            CbxCupones.SelectedIndexChanged -= CbxCupones_SelectedIndexChanged;
             CbxCupones.DataSource = tablaCupones;
             CbxCupones.DisplayMember = "ID";
+            CbxCupones.SelectedIndex = -1;
+            CbxCupones.SelectedIndexChanged += CbxCupones_SelectedIndexChanged;
         }
 
 
@@ -49,10 +52,7 @@ namespace UI.FRM_ADMIN
 
             CbxIDDesc.SelectedIndex = -1;
 
-            CbxCupones.SelectedIndexChanged -= CbxCupones_SelectedIndexChanged;
             LlenarCodigosCBX();
-            CbxCupones.SelectedIndex = -1;
-            CbxCupones.SelectedIndexChanged += CbxCupones_SelectedIndexChanged;
         }
 
         private void BtnCrearCodigo_Click(object sender, EventArgs e)
@@ -118,10 +118,7 @@ namespace UI.FRM_ADMIN
 
                 MessageBox.Show("Cupon modificado exitosamente.");
 
-                CbxCupones.SelectedIndexChanged -= CbxCupones_SelectedIndexChanged;
                 LlenarCodigosCBX();
-                CbxCupones.SelectedIndex = -1;
-                CbxCupones.SelectedIndexChanged += CbxCupones_SelectedIndexChanged;
             }
 
             catch (Exception ex)

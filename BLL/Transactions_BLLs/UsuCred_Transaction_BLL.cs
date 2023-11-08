@@ -1,6 +1,7 @@
 ﻿using BE;
 using BLL.Entity_BLLs;
 using DAL;
+using DAL.Entity_Mappers;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,8 +13,8 @@ namespace BLL.Transactions_BLLs
 {
     public class UsuCred_Transaction_BLL
     {
-        private readonly Usuarios_BLL usuarios_BLL = new Usuarios_BLL();
-        private readonly Credenciales_BLL credenciales_BLL = new Credenciales_BLL();
+        private readonly Base_BLL<Usuarios> base_BLL_Usuarios = new Base_BLL<Usuarios>();
+        private readonly Credenciales_Mapper Credenciales_Mapper = new Credenciales_Mapper();
 
         public int CrearEntidades(Usuarios usuario, Credenciales credenciales)
         {
@@ -23,8 +24,8 @@ namespace BLL.Transactions_BLLs
             {
                 transacciones_Gestor.IniciarTransaccion();
 
-                int cantUsuariosAfectados = usuarios_BLL.AgregarEntidad(usuario);
-                int cantCredencialesAfectadas = credenciales_BLL.AgregarEntidad(credenciales);
+                int cantUsuariosAfectados = base_BLL_Usuarios.AgregarEntidad(usuario);
+                int cantCredencialesAfectadas = Credenciales_Mapper.Agregar(credenciales, "AgregarCredenciales"); //No hace el de Base_BLL xq requiere encriptar la password.
 
                 if (cantCredencialesAfectadas + cantUsuariosAfectados < 2) throw new Exception();
 
@@ -32,7 +33,7 @@ namespace BLL.Transactions_BLLs
                 return cantUsuariosAfectados + cantCredencialesAfectadas;
             }
 
-            catch(Exception)
+            catch (Exception)
             {
                 transacciones_Gestor.RevertirTransaccion();
                 throw new Exception("No se pudo cargar el usuario junto con sus credenciales");
