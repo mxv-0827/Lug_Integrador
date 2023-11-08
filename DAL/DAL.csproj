@@ -46,6 +46,7 @@
     <Compile Include="Entity_Mappers\Asientos_Mapper.cs" />
     <Compile Include="Entity_Mappers\Credenciales_Mapper.cs" />
     <Compile Include="Entity_Mappers\Cupones_Mapper.cs" />
+    <Compile Include="Entity_Mappers\HorarioPeliculas_Mapper.cs" />
     <Compile Include="Entity_Mappers\Peliculas_Mapper.cs" />
     <Compile Include="Entity_Mappers\Producto_Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
