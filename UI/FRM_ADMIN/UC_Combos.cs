@@ -67,9 +67,11 @@ namespace UI.FRM_ADMIN
         {
             CbxProductos.SelectedIndexChanged -= CbxProductos_SelectedIndexChanged;
             CbxProductos.Items.Clear();
-            CbxProductos.SelectedIndexChanged -= CbxProductos_SelectedIndexChanged;
+            CbxProductos.SelectedIndexChanged += CbxProductos_SelectedIndexChanged;
 
             CterProductos.Controls.Clear();
+
+            productosAgregados.Clear();
 
             locationX = 15;
             locationY = 15;
