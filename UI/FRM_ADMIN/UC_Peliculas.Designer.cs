@@ -42,11 +42,9 @@
             this.TbxPortada = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.CbxIDRest = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.CbxIDGenero1 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.CbxRestriccionEdad = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.CbxGeneros = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.CbxIDGenero2 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.CbxPelicula = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.CbxSala = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -58,6 +56,7 @@
             this.BtnAsignar = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel12 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel13 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.CterGeneros = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.SuspendLayout();
             // 
             // BtnCrearPelicula
@@ -68,9 +67,9 @@
             this.BtnCrearPelicula.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.BtnCrearPelicula.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BtnCrearPelicula.ForeColor = System.Drawing.Color.White;
-            this.BtnCrearPelicula.Location = new System.Drawing.Point(393, 386);
+            this.BtnCrearPelicula.Location = new System.Drawing.Point(409, 396);
             this.BtnCrearPelicula.Name = "BtnCrearPelicula";
-            this.BtnCrearPelicula.Size = new System.Drawing.Size(180, 45);
+            this.BtnCrearPelicula.Size = new System.Drawing.Size(164, 35);
             this.BtnCrearPelicula.TabIndex = 0;
             this.BtnCrearPelicula.Text = "CREAR PELICULA";
             this.BtnCrearPelicula.Click += new System.EventHandler(this.BtnCrearPelicula_Click);
@@ -253,74 +252,47 @@
             this.guna2HtmlLabel8.TabIndex = 15;
             this.guna2HtmlLabel8.Text = "Restriccion de edad:";
             // 
-            // CbxIDRest
+            // CbxRestriccionEdad
             // 
-            this.CbxIDRest.BackColor = System.Drawing.Color.Transparent;
-            this.CbxIDRest.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.CbxIDRest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbxIDRest.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CbxIDRest.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CbxIDRest.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.CbxIDRest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.CbxIDRest.ItemHeight = 30;
-            this.CbxIDRest.Items.AddRange(new object[] {
+            this.CbxRestriccionEdad.BackColor = System.Drawing.Color.Transparent;
+            this.CbxRestriccionEdad.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbxRestriccionEdad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxRestriccionEdad.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CbxRestriccionEdad.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CbxRestriccionEdad.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.CbxRestriccionEdad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.CbxRestriccionEdad.ItemHeight = 30;
+            this.CbxRestriccionEdad.Items.AddRange(new object[] {
             "1"});
-            this.CbxIDRest.Location = new System.Drawing.Point(409, 236);
-            this.CbxIDRest.Name = "CbxIDRest";
-            this.CbxIDRest.Size = new System.Drawing.Size(164, 36);
-            this.CbxIDRest.TabIndex = 16;
+            this.CbxRestriccionEdad.Location = new System.Drawing.Point(409, 236);
+            this.CbxRestriccionEdad.Name = "CbxRestriccionEdad";
+            this.CbxRestriccionEdad.Size = new System.Drawing.Size(164, 36);
+            this.CbxRestriccionEdad.TabIndex = 16;
             // 
-            // CbxIDGenero1
+            // CbxGeneros
             // 
-            this.CbxIDGenero1.BackColor = System.Drawing.Color.Transparent;
-            this.CbxIDGenero1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.CbxIDGenero1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbxIDGenero1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CbxIDGenero1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CbxIDGenero1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.CbxIDGenero1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.CbxIDGenero1.ItemHeight = 30;
-            this.CbxIDGenero1.Items.AddRange(new object[] {
-            "2"});
-            this.CbxIDGenero1.Location = new System.Drawing.Point(409, 282);
-            this.CbxIDGenero1.Name = "CbxIDGenero1";
-            this.CbxIDGenero1.Size = new System.Drawing.Size(164, 36);
-            this.CbxIDGenero1.TabIndex = 18;
+            this.CbxGeneros.BackColor = System.Drawing.Color.Transparent;
+            this.CbxGeneros.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbxGeneros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxGeneros.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CbxGeneros.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CbxGeneros.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.CbxGeneros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.CbxGeneros.ItemHeight = 30;
+            this.CbxGeneros.Location = new System.Drawing.Point(409, 282);
+            this.CbxGeneros.Name = "CbxGeneros";
+            this.CbxGeneros.Size = new System.Drawing.Size(164, 36);
+            this.CbxGeneros.TabIndex = 18;
+            this.CbxGeneros.SelectedIndexChanged += new System.EventHandler(this.CbxGeneros_SelectedIndexChanged);
             // 
             // guna2HtmlLabel9
             // 
             this.guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel9.Location = new System.Drawing.Point(353, 303);
+            this.guna2HtmlLabel9.Location = new System.Drawing.Point(352, 303);
             this.guna2HtmlLabel9.Name = "guna2HtmlLabel9";
-            this.guna2HtmlLabel9.Size = new System.Drawing.Size(50, 15);
+            this.guna2HtmlLabel9.Size = new System.Drawing.Size(51, 15);
             this.guna2HtmlLabel9.TabIndex = 17;
-            this.guna2HtmlLabel9.Text = "Genero 1:";
-            // 
-            // CbxIDGenero2
-            // 
-            this.CbxIDGenero2.BackColor = System.Drawing.Color.Transparent;
-            this.CbxIDGenero2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.CbxIDGenero2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbxIDGenero2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CbxIDGenero2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CbxIDGenero2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.CbxIDGenero2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.CbxIDGenero2.ItemHeight = 30;
-            this.CbxIDGenero2.Items.AddRange(new object[] {
-            "3"});
-            this.CbxIDGenero2.Location = new System.Drawing.Point(409, 324);
-            this.CbxIDGenero2.Name = "CbxIDGenero2";
-            this.CbxIDGenero2.Size = new System.Drawing.Size(164, 36);
-            this.CbxIDGenero2.TabIndex = 20;
-            // 
-            // guna2HtmlLabel10
-            // 
-            this.guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel10.Location = new System.Drawing.Point(353, 344);
-            this.guna2HtmlLabel10.Name = "guna2HtmlLabel10";
-            this.guna2HtmlLabel10.Size = new System.Drawing.Size(50, 15);
-            this.guna2HtmlLabel10.TabIndex = 19;
-            this.guna2HtmlLabel10.Text = "Genero 2:";
+            this.guna2HtmlLabel9.Text = "Genero/s:";
             // 
             // CbxPelicula
             // 
@@ -449,7 +421,7 @@
             // guna2HtmlLabel12
             // 
             this.guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel12.Location = new System.Drawing.Point(755, 303);
+            this.guna2HtmlLabel12.Location = new System.Drawing.Point(829, 268);
             this.guna2HtmlLabel12.Name = "guna2HtmlLabel12";
             this.guna2HtmlLabel12.Size = new System.Drawing.Size(467, 15);
             this.guna2HtmlLabel12.TabIndex = 40;
@@ -459,17 +431,27 @@
             // guna2HtmlLabel13
             // 
             this.guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel13.Location = new System.Drawing.Point(755, 324);
+            this.guna2HtmlLabel13.Location = new System.Drawing.Point(829, 289);
             this.guna2HtmlLabel13.Name = "guna2HtmlLabel13";
             this.guna2HtmlLabel13.Size = new System.Drawing.Size(324, 15);
             this.guna2HtmlLabel13.TabIndex = 41;
             this.guna2HtmlLabel13.Text = "en intervalos de duracion de la pelicula y un adicional de 30 minutos";
+            // 
+            // CterGeneros
+            // 
+            this.CterGeneros.AutoScroll = true;
+            this.CterGeneros.Location = new System.Drawing.Point(319, 335);
+            this.CterGeneros.Name = "CterGeneros";
+            this.CterGeneros.Size = new System.Drawing.Size(364, 45);
+            this.CterGeneros.TabIndex = 42;
+            this.CterGeneros.Text = "guna2ContainerControl1";
             // 
             // UC_Peliculas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.CterGeneros);
             this.Controls.Add(this.guna2HtmlLabel13);
             this.Controls.Add(this.guna2HtmlLabel12);
             this.Controls.Add(this.CbxPelicula);
@@ -481,11 +463,9 @@
             this.Controls.Add(this.TbxFecha);
             this.Controls.Add(this.guna2HtmlLabel16);
             this.Controls.Add(this.BtnAsignar);
-            this.Controls.Add(this.CbxIDGenero2);
-            this.Controls.Add(this.guna2HtmlLabel10);
-            this.Controls.Add(this.CbxIDGenero1);
+            this.Controls.Add(this.CbxGeneros);
             this.Controls.Add(this.guna2HtmlLabel9);
-            this.Controls.Add(this.CbxIDRest);
+            this.Controls.Add(this.CbxRestriccionEdad);
             this.Controls.Add(this.guna2HtmlLabel8);
             this.Controls.Add(this.TbxTrailer);
             this.Controls.Add(this.guna2HtmlLabel6);
@@ -502,6 +482,8 @@
             this.Controls.Add(this.BtnCrearPelicula);
             this.Name = "UC_Peliculas";
             this.Size = new System.Drawing.Size(1353, 447);
+            this.Load += new System.EventHandler(this.UC_Peliculas_Load);
+            this.Leave += new System.EventHandler(this.UC_Peliculas_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,11 +505,9 @@
         private Guna.UI2.WinForms.Guna2TextBox TbxPortada;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
-        private Guna.UI2.WinForms.Guna2ComboBox CbxIDRest;
-        private Guna.UI2.WinForms.Guna2ComboBox CbxIDGenero1;
+        private Guna.UI2.WinForms.Guna2ComboBox CbxRestriccionEdad;
+        private Guna.UI2.WinForms.Guna2ComboBox CbxGeneros;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
-        private Guna.UI2.WinForms.Guna2ComboBox CbxIDGenero2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
         private Guna.UI2.WinForms.Guna2ComboBox CbxPelicula;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2ComboBox CbxSala;
@@ -539,5 +519,6 @@
         private Guna.UI2.WinForms.Guna2Button BtnAsignar;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel12;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel13;
+        private Guna.UI2.WinForms.Guna2ContainerControl CterGeneros;
     }
 }

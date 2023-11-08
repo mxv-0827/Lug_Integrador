@@ -17,7 +17,7 @@ namespace BLL.Transactions_BLLs
 
         Base_Mapper<GenerosEnPeliculas> Base_Mapper = new Base_Mapper<GenerosEnPeliculas>();
 
-        public int AgregarEntidad(Peliculas pelicula, List<int> generosID)
+        public int AgregarEntidad(Peliculas pelicula, List<Generos> listaGeneros)
         {
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
 
@@ -30,13 +30,13 @@ namespace BLL.Transactions_BLLs
                 int cantPeliculasAfectadas = Base_BLL_Peliculas.AgregarEntidad(pelicula);
                 int cantGenPeliAfectadas = 0;
 
-                foreach (int ID in generosID)
+                foreach (Generos genero in listaGeneros)
                 {
-                    var genEnPeli = new GenerosEnPeliculas { IDPelicula = pelicula.ID, IDGenero = ID };
+                    var genEnPeli = new GenerosEnPeliculas { IDPelicula = pelicula.ID, IDGenero = genero.ID };
                     cantGenPeliAfectadas += Base_Mapper.Agregar(genEnPeli, "AgregarGenerosEnPeliculas");
                 }
 
-                if (cantPeliculasAfectadas + cantGenPeliAfectadas < generosID.Count + 1) throw new Exception();
+                if (cantPeliculasAfectadas + cantGenPeliAfectadas < listaGeneros.Count + 1) throw new Exception();
 
                 transacciones_Gestor.ConfirmarTransaccion();
                 return cantPeliculasAfectadas + cantGenPeliAfectadas;
