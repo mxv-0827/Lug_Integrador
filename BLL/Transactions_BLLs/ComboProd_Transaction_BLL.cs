@@ -13,7 +13,7 @@ namespace BLL.Transactions_BLLs
 {
     public class ComboProd_Transaction_BLL
     {
-        Base_BLL<Combos> Base_BLL = new Base_BLL<Combos>();
+        Base_BLL<Combos> Base_BLL_Combos = new Base_BLL<Combos>();
 
         Base_Mapper<ProductosEnCombos> Base_Mapper = new Base_Mapper<ProductosEnCombos>();
         Producto_Mapper Producto_Mapper = new Producto_Mapper();
@@ -24,14 +24,16 @@ namespace BLL.Transactions_BLLs
 
             try
             {
-                foreach(Productos prod in listaProductos)
+                foreach (Productos prod in listaProductos)
                 {
                     combo.Precio += Producto_Mapper.ObtenerPrecioProducto(prod.ID);
                 }
 
+                Base_BLL_Combos.AsignarID(combo);
+
                 transacciones_Gestor.IniciarTransaccion();
 
-                int cantCombosAfectados = Base_BLL.AgregarEntidad(combo);
+                int cantCombosAfectados = Base_BLL_Combos.AgregarEntidad(combo);
                 int cantProdCombAfectados = 0;
 
                 foreach (Productos prod in listaProductos)

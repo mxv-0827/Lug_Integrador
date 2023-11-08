@@ -16,6 +16,8 @@ namespace BLL.Entity_BLLs
 
             try
             {
+                base.AsignarID(producto);
+
                 transacciones_Gestor.IniciarTransaccion();
 
                 int cantProductosAfectados = base.AgregarEntidad(producto);
@@ -26,7 +28,7 @@ namespace BLL.Entity_BLLs
                 return cantProductosAfectados;
             }
 
-            catch(Exception)
+            catch (Exception)
             {
                 transacciones_Gestor.RevertirTransaccion();
                 throw new Exception("El producto no pudo crearse.");

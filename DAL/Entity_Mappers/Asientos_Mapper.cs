@@ -17,5 +17,11 @@ namespace DAL.Entity_Mappers
             List<SqlParameter> sqlProp = new List<SqlParameter> { new SqlParameter("@IDSala", salaID) };
             return acceso.Leer("ObtenerAsientosPorSala", sqlProp.ToArray());
         }
+
+        public int ObtenerTotalidadAsientos() //Obtiene la totalidad de asientos. Esto servira para establecer el ID a cada asiento.
+        {
+            List<SqlParameter> sqlProp = new List<SqlParameter> { new SqlParameter("@Tabla", "Asientos") };
+            return (int)acceso.ObtenerDato("ObtenerCantidadRegistros", sqlProp.ToArray());
+        }
     }
 }

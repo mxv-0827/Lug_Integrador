@@ -20,7 +20,13 @@ namespace DAL.Entity_Mappers
             while (!valido)
             {
                 codigoCupon = CodigoUnico_Generador.CrearCodigo();
-                valido = acceso.ValidarID("ValidarCodigo",new SqlParameter("@Codigo", codigoCupon));
+
+                SqlParameter[] sqlProp = new SqlParameter[]
+                {
+                    new SqlParameter("@Codigo", codigoCupon)
+                };
+
+                valido = (int)acceso.ObtenerDato("ValidarCodigo", sqlProp) == 1 ? true : false;
             }
 
             return codigoCupon;
