@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Peliculas));
             this.BtnCrearPelicula = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.TbxNombre = new Guna.UI2.WinForms.Guna2TextBox();
@@ -37,10 +38,7 @@
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.TbxEstreno = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.TbxTrailer = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.TbxPortada = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.TbxRutaPortada = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.CbxRestriccionEdad = new Guna.UI2.WinForms.Guna2ComboBox();
             this.CbxGeneros = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -54,10 +52,17 @@
             this.TbxFecha = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel16 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.BtnAsignar = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2HtmlLabel12 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel13 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.CterGeneros = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.CterHorariosPelicula = new Guna.UI2.WinForms.Guna2ContainerControl();
+            this.OfdImagenPeli = new System.Windows.Forms.OpenFileDialog();
+            this.PctbxImagen = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.BtnElegirImagen = new Guna.UI2.WinForms.Guna2Button();
+            this.BtnElegirTrailer = new Guna.UI2.WinForms.Guna2Button();
+            this.TbxRutaTrailer = new Guna.UI2.WinForms.Guna2TextBox();
+            this.OfdTrailer = new System.Windows.Forms.OpenFileDialog();
+            this.WmpTrailer = new AxWMPLib.AxWindowsMediaPlayer();
+            ((System.ComponentModel.ISupportInitialize)(this.PctbxImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WmpTrailer)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnCrearPelicula
@@ -188,61 +193,25 @@
             this.guna2HtmlLabel5.TabIndex = 7;
             this.guna2HtmlLabel5.Text = "Estreno:";
             // 
-            // TbxTrailer
+            // TbxRutaPortada
             // 
-            this.TbxTrailer.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TbxTrailer.DefaultText = "";
-            this.TbxTrailer.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TbxTrailer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TbxTrailer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TbxTrailer.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TbxTrailer.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TbxTrailer.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TbxTrailer.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TbxTrailer.Location = new System.Drawing.Point(92, 395);
-            this.TbxTrailer.Name = "TbxTrailer";
-            this.TbxTrailer.PasswordChar = '\0';
-            this.TbxTrailer.PlaceholderText = "";
-            this.TbxTrailer.SelectedText = "";
-            this.TbxTrailer.Size = new System.Drawing.Size(200, 36);
-            this.TbxTrailer.TabIndex = 14;
-            // 
-            // guna2HtmlLabel6
-            // 
-            this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(51, 416);
-            this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(35, 15);
-            this.guna2HtmlLabel6.TabIndex = 13;
-            this.guna2HtmlLabel6.Text = "Trailer:";
-            // 
-            // TbxPortada
-            // 
-            this.TbxPortada.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TbxPortada.DefaultText = "";
-            this.TbxPortada.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TbxPortada.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TbxPortada.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TbxPortada.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TbxPortada.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TbxPortada.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TbxPortada.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TbxPortada.Location = new System.Drawing.Point(92, 344);
-            this.TbxPortada.Name = "TbxPortada";
-            this.TbxPortada.PasswordChar = '\0';
-            this.TbxPortada.PlaceholderText = "";
-            this.TbxPortada.SelectedText = "";
-            this.TbxPortada.Size = new System.Drawing.Size(200, 36);
-            this.TbxPortada.TabIndex = 12;
-            // 
-            // guna2HtmlLabel7
-            // 
-            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(45, 365);
-            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(43, 15);
-            this.guna2HtmlLabel7.TabIndex = 11;
-            this.guna2HtmlLabel7.Text = "Portada:";
+            this.TbxRutaPortada.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbxRutaPortada.DefaultText = "";
+            this.TbxRutaPortada.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TbxRutaPortada.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TbxRutaPortada.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxRutaPortada.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxRutaPortada.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxRutaPortada.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TbxRutaPortada.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxRutaPortada.Location = new System.Drawing.Point(92, 407);
+            this.TbxRutaPortada.Name = "TbxRutaPortada";
+            this.TbxRutaPortada.PasswordChar = '\0';
+            this.TbxRutaPortada.PlaceholderText = "";
+            this.TbxRutaPortada.ReadOnly = true;
+            this.TbxRutaPortada.SelectedText = "";
+            this.TbxRutaPortada.Size = new System.Drawing.Size(200, 36);
+            this.TbxRutaPortada.TabIndex = 12;
             // 
             // guna2HtmlLabel8
             // 
@@ -422,25 +391,6 @@
             this.BtnAsignar.Text = "ASIGNAR PELICULA";
             this.BtnAsignar.Click += new System.EventHandler(this.BtnAsignar_Click);
             // 
-            // guna2HtmlLabel12
-            // 
-            this.guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel12.Location = new System.Drawing.Point(427, 14);
-            this.guna2HtmlLabel12.Name = "guna2HtmlLabel12";
-            this.guna2HtmlLabel12.Size = new System.Drawing.Size(467, 15);
-            this.guna2HtmlLabel12.TabIndex = 40;
-            this.guna2HtmlLabel12.Text = "Al seleccionar sala, pelicula y establecer fecha, se deben de obtener todos los h" +
-    "orarios disponibles";
-            // 
-            // guna2HtmlLabel13
-            // 
-            this.guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel13.Location = new System.Drawing.Point(427, 35);
-            this.guna2HtmlLabel13.Name = "guna2HtmlLabel13";
-            this.guna2HtmlLabel13.Size = new System.Drawing.Size(324, 15);
-            this.guna2HtmlLabel13.TabIndex = 41;
-            this.guna2HtmlLabel13.Text = "en intervalos de duracion de la pelicula y un adicional de 30 minutos";
-            // 
             // CterGeneros
             // 
             this.CterGeneros.AutoScroll = true;
@@ -452,21 +402,101 @@
             // 
             // CterHorariosPelicula
             // 
-            this.CterHorariosPelicula.Location = new System.Drawing.Point(758, 287);
+            this.CterHorariosPelicula.Location = new System.Drawing.Point(758, 264);
             this.CterHorariosPelicula.Name = "CterHorariosPelicula";
             this.CterHorariosPelicula.Size = new System.Drawing.Size(548, 137);
             this.CterHorariosPelicula.TabIndex = 43;
             this.CterHorariosPelicula.Text = "guna2ContainerControl1";
+            // 
+            // OfdImagenPeli
+            // 
+            this.OfdImagenPeli.FileName = "openFileDialog1";
+            // 
+            // PctbxImagen
+            // 
+            this.PctbxImagen.ImageRotate = 0F;
+            this.PctbxImagen.Location = new System.Drawing.Point(92, 449);
+            this.PctbxImagen.Name = "PctbxImagen";
+            this.PctbxImagen.Size = new System.Drawing.Size(200, 133);
+            this.PctbxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PctbxImagen.TabIndex = 44;
+            this.PctbxImagen.TabStop = false;
+            // 
+            // BtnElegirImagen
+            // 
+            this.BtnElegirImagen.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnElegirImagen.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnElegirImagen.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnElegirImagen.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnElegirImagen.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnElegirImagen.ForeColor = System.Drawing.Color.White;
+            this.BtnElegirImagen.Location = new System.Drawing.Point(112, 366);
+            this.BtnElegirImagen.Name = "BtnElegirImagen";
+            this.BtnElegirImagen.Size = new System.Drawing.Size(164, 35);
+            this.BtnElegirImagen.TabIndex = 45;
+            this.BtnElegirImagen.Text = "SELECCIONAR IMAGEN";
+            this.BtnElegirImagen.Click += new System.EventHandler(this.BtnElegirImagen_Click);
+            // 
+            // BtnElegirTrailer
+            // 
+            this.BtnElegirTrailer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnElegirTrailer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnElegirTrailer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnElegirTrailer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnElegirTrailer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnElegirTrailer.ForeColor = System.Drawing.Color.White;
+            this.BtnElegirTrailer.Location = new System.Drawing.Point(468, 469);
+            this.BtnElegirTrailer.Name = "BtnElegirTrailer";
+            this.BtnElegirTrailer.Size = new System.Drawing.Size(164, 35);
+            this.BtnElegirTrailer.TabIndex = 47;
+            this.BtnElegirTrailer.Text = "SELECCIONAR TRAILER";
+            this.BtnElegirTrailer.Click += new System.EventHandler(this.BtnElegirTrailer_Click);
+            // 
+            // TbxRutaTrailer
+            // 
+            this.TbxRutaTrailer.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbxRutaTrailer.DefaultText = "";
+            this.TbxRutaTrailer.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TbxRutaTrailer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TbxRutaTrailer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxRutaTrailer.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxRutaTrailer.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxRutaTrailer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TbxRutaTrailer.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxRutaTrailer.Location = new System.Drawing.Point(447, 510);
+            this.TbxRutaTrailer.Name = "TbxRutaTrailer";
+            this.TbxRutaTrailer.PasswordChar = '\0';
+            this.TbxRutaTrailer.PlaceholderText = "";
+            this.TbxRutaTrailer.ReadOnly = true;
+            this.TbxRutaTrailer.SelectedText = "";
+            this.TbxRutaTrailer.Size = new System.Drawing.Size(200, 36);
+            this.TbxRutaTrailer.TabIndex = 48;
+            // 
+            // OfdTrailer
+            // 
+            this.OfdTrailer.FileName = "openFileDialog1";
+            // 
+            // WmpTrailer
+            // 
+            this.WmpTrailer.Enabled = true;
+            this.WmpTrailer.Location = new System.Drawing.Point(758, 421);
+            this.WmpTrailer.Name = "WmpTrailer";
+            this.WmpTrailer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("WmpTrailer.OcxState")));
+            this.WmpTrailer.Size = new System.Drawing.Size(548, 161);
+            this.WmpTrailer.TabIndex = 46;
             // 
             // UC_Peliculas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.TbxRutaTrailer);
+            this.Controls.Add(this.BtnElegirTrailer);
+            this.Controls.Add(this.WmpTrailer);
+            this.Controls.Add(this.BtnElegirImagen);
+            this.Controls.Add(this.PctbxImagen);
             this.Controls.Add(this.CterHorariosPelicula);
             this.Controls.Add(this.CterGeneros);
-            this.Controls.Add(this.guna2HtmlLabel13);
-            this.Controls.Add(this.guna2HtmlLabel12);
             this.Controls.Add(this.CbxPelicula);
             this.Controls.Add(this.guna2HtmlLabel2);
             this.Controls.Add(this.CbxSala);
@@ -480,10 +510,7 @@
             this.Controls.Add(this.guna2HtmlLabel9);
             this.Controls.Add(this.CbxRestriccionEdad);
             this.Controls.Add(this.guna2HtmlLabel8);
-            this.Controls.Add(this.TbxTrailer);
-            this.Controls.Add(this.guna2HtmlLabel6);
-            this.Controls.Add(this.TbxPortada);
-            this.Controls.Add(this.guna2HtmlLabel7);
+            this.Controls.Add(this.TbxRutaPortada);
             this.Controls.Add(this.TbxDuracion);
             this.Controls.Add(this.guna2HtmlLabel4);
             this.Controls.Add(this.TbxEstreno);
@@ -494,10 +521,12 @@
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.BtnCrearPelicula);
             this.Name = "UC_Peliculas";
-            this.Size = new System.Drawing.Size(1353, 447);
+            this.Size = new System.Drawing.Size(1353, 598);
             this.Load += new System.EventHandler(this.UC_Peliculas_Load);
             this.Enter += new System.EventHandler(this.UC_Peliculas_Enter);
             this.Leave += new System.EventHandler(this.UC_Peliculas_Leave);
+            ((System.ComponentModel.ISupportInitialize)(this.PctbxImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WmpTrailer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -514,10 +543,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2TextBox TbxEstreno;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
-        private Guna.UI2.WinForms.Guna2TextBox TbxTrailer;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
-        private Guna.UI2.WinForms.Guna2TextBox TbxPortada;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
+        private Guna.UI2.WinForms.Guna2TextBox TbxRutaPortada;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
         private Guna.UI2.WinForms.Guna2ComboBox CbxRestriccionEdad;
         private Guna.UI2.WinForms.Guna2ComboBox CbxGeneros;
@@ -531,9 +557,14 @@
         private Guna.UI2.WinForms.Guna2TextBox TbxFecha;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel16;
         private Guna.UI2.WinForms.Guna2Button BtnAsignar;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel12;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel13;
         private Guna.UI2.WinForms.Guna2ContainerControl CterGeneros;
         private Guna.UI2.WinForms.Guna2ContainerControl CterHorariosPelicula;
+        private System.Windows.Forms.OpenFileDialog OfdImagenPeli;
+        private Guna.UI2.WinForms.Guna2PictureBox PctbxImagen;
+        private Guna.UI2.WinForms.Guna2Button BtnElegirImagen;
+        private AxWMPLib.AxWindowsMediaPlayer WmpTrailer;
+        private Guna.UI2.WinForms.Guna2Button BtnElegirTrailer;
+        private Guna.UI2.WinForms.Guna2TextBox TbxRutaTrailer;
+        private System.Windows.Forms.OpenFileDialog OfdTrailer;
     }
 }
