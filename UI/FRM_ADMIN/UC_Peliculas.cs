@@ -15,6 +15,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Extras;
+using Svg;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace UI.FRM_ADMIN
@@ -50,10 +52,13 @@ namespace UI.FRM_ADMIN
             generosObtenidos = Base_BLL_Generos.ObtenerTodasEntidades("Generos");
 
             CbxGeneros.SelectedIndexChanged -= CbxGeneros_SelectedIndexChanged;
+
             foreach (DataRow row in generosObtenidos.Rows)
             {
                 CbxGeneros.Items.Add(row["Nombre"].ToString());
             }
+            CbxGeneros.SelectedIndex = -1;
+
             CbxGeneros.SelectedIndexChanged += CbxGeneros_SelectedIndexChanged;
         }
 
@@ -73,12 +78,13 @@ namespace UI.FRM_ADMIN
         private void ObtenerPeliculasCBX()
         {
             CbxPelicula.SelectedIndexChanged -= CbxPelicula_SelectedIndexChanged;
-            CbxPelicula.DataSource = Base_BLL_Peliculas.ObtenerTodasEntidades("Peliculas");
-            CbxPelicula.SelectedIndex = -1;
-            CbxPelicula.SelectedIndexChanged += CbxPelicula_SelectedIndexChanged;
 
+            CbxPelicula.DataSource = Base_BLL_Peliculas.ObtenerTodasEntidades("Peliculas");
             CbxPelicula.DisplayMember = "Nombre";
             CbxPelicula.ValueMember = "ID";
+            CbxPelicula.SelectedIndex = -1;
+
+            CbxPelicula.SelectedIndexChanged += CbxPelicula_SelectedIndexChanged;
         }
 
         private void ReiniciarPeliculasCBX()
@@ -164,6 +170,10 @@ namespace UI.FRM_ADMIN
             //--------------------------------------------------------------------------------------------------------------
 
             ObtenerPeliculasCBX();
+
+            //--------------------------------------------------------------------------------------------------------------
+            OfdImagenPeli.Filter = "Archivos SVG|*.svg";
+            OfdTrailer.Filter = "Archivos MP4|*.mp4";
         }
 
 
@@ -214,6 +224,28 @@ namespace UI.FRM_ADMIN
             CbxGeneros.Items.Add(genero.Nombre);
         }
 
+        private void BtnElegirImagen_Click(object sender, EventArgs e)
+        {
+            if(OfdImagenPeli.ShowDialog() == DialogResult.OK)
+            {
+                string rutaSVG = OfdImagenPeli.FileName;
+                TbxRutaPortada.Text = rutaSVG;
+
+                SvgDocument imagen = SvgDocument.Open(rutaSVG);
+                PctbxImagen.Image = imagen.Draw();
+            }
+        }
+
+        private void BtnElegirTrailer_Click(object sender, EventArgs e)
+        {
+            if (OfdTrailer.ShowDialog() == DialogResult.OK)
+            {
+                string rutaVideo = OfdTrailer.FileName;
+                TbxRutaTrailer.Text = rutaVideo;
+                
+                WmpTrailer.URL = rutaVideo;
+            }
+        }
 
         private void BtnCrearPelicula_Click(object sender, EventArgs e)
         {
@@ -229,8 +261,8 @@ namespace UI.FRM_ADMIN
                     Descripcion = TbxDescripcion.Text,
                     Estreno = DateTime.ParseExact(TbxEstreno.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture),
                     Duracion = new TimeSpan(horas, minutos, 0),
-                    Portada = "nada",
-                    Trailer = "nada",
+                    Portada = Imagen_Convertidor.ImgAHexa(TbxRutaPortada.Text),
+                    Trailer = TbxRutaTrailer.Text,
                     IDRestriccion = int.Parse(CbxRestriccionEdad.SelectedValue.ToString())
                 };
 
