@@ -84,7 +84,7 @@ namespace UI.FRM_ADMIN
         private void ReiniciarPeliculasCBX()
         {
             CbxPelicula.SelectedIndexChanged -= CbxPelicula_SelectedIndexChanged;
-            CbxPelicula.Items.Clear();
+            CbxPelicula.DataSource = null;
             CbxPelicula.SelectedIndex = -1;
             CbxPelicula.SelectedIndexChanged += CbxPelicula_SelectedIndexChanged;
         }
@@ -169,7 +169,7 @@ namespace UI.FRM_ADMIN
 
         private void UC_Peliculas_Enter(object sender, EventArgs e)
         {
-            CbxSala.Items.Clear();
+            CbxSala.DataSource = null;
 
             CbxSala.SelectedIndexChanged -= CbxSala_SelectedIndexChanged;
             CbxSala.DataSource = Base_BLL_Salas.ObtenerTodasEntidades("Salas");
