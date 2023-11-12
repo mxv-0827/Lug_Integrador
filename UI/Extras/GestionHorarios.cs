@@ -30,7 +30,7 @@ namespace UI.Extras
                 if (lstHorariosOcupados.Count == 0)
                 {
                     horariosDisponibles.Add(horaActual);
-                    horaActual = horaActual.Add(duracionPelicula + tiempoLimpieza);
+                    horaActual = horaActual.Add(new TimeSpan(1, 0, 0));
                 }
 
                 else 
@@ -54,7 +54,7 @@ namespace UI.Extras
                     if (posibilidadDisponibilidad == lstHorariosOcupados.Count)
                     {
                         horariosDisponibles.Add(horaActual); //Osea, si el horario no se interpone con un registro de horarios, se agrega.
-                        horaActual = horaActual.Add(duracionPelicula + tiempoLimpieza);
+                        horaActual = horaActual.Add(new TimeSpan(1, 0, 0));
                     }
                 }
             }

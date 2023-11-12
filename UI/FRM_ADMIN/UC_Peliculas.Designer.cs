@@ -372,9 +372,10 @@
             // 
             // CterHorariosPelicula
             // 
+            this.CterHorariosPelicula.AutoScroll = true;
             this.CterHorariosPelicula.Location = new System.Drawing.Point(758, 218);
             this.CterHorariosPelicula.Name = "CterHorariosPelicula";
-            this.CterHorariosPelicula.Size = new System.Drawing.Size(548, 137);
+            this.CterHorariosPelicula.Size = new System.Drawing.Size(548, 183);
             this.CterHorariosPelicula.TabIndex = 43;
             this.CterHorariosPelicula.Text = "guna2ContainerControl1";
             // 
@@ -449,10 +450,10 @@
             // WmpTrailer
             // 
             this.WmpTrailer.Enabled = true;
-            this.WmpTrailer.Location = new System.Drawing.Point(758, 375);
+            this.WmpTrailer.Location = new System.Drawing.Point(758, 436);
             this.WmpTrailer.Name = "WmpTrailer";
             this.WmpTrailer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("WmpTrailer.OcxState")));
-            this.WmpTrailer.Size = new System.Drawing.Size(548, 207);
+            this.WmpTrailer.Size = new System.Drawing.Size(548, 146);
             this.WmpTrailer.TabIndex = 46;
             // 
             // UC_Peliculas
