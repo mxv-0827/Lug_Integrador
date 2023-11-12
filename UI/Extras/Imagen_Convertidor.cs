@@ -12,11 +12,19 @@ namespace UI.Extras
     {
         public static string ImgAHexa(string rutaImagen)
         {
-            using (FileStream stream = new FileStream(rutaImagen, FileMode.Open, FileAccess.Read))
+            try
             {
-                byte[] buffer = new byte[stream.Length];
-                stream.Read(buffer, 0, (int)stream.Length);
-                return BitConverter.ToString(buffer).Replace("-", "");
+                using (FileStream stream = new FileStream(rutaImagen, FileMode.Open, FileAccess.Read))
+                {
+                    byte[] buffer = new byte[stream.Length];
+                    stream.Read(buffer, 0, (int)stream.Length);
+                    return BitConverter.ToString(buffer).Replace("-", "");
+                }
+            }
+
+            catch (Exception)
+            {
+                return "Fallo.";
             }
         }
 

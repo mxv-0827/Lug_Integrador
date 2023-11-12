@@ -47,8 +47,6 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.CbxSala = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.TbxHoraInicio = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2HtmlLabel15 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.TbxFecha = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel16 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.BtnAsignar = new Guna.UI2.WinForms.Guna2Button();
@@ -319,34 +317,6 @@
             this.guna2HtmlLabel11.TabIndex = 36;
             this.guna2HtmlLabel11.Text = "Sala:";
             // 
-            // TbxHoraInicio
-            // 
-            this.TbxHoraInicio.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TbxHoraInicio.DefaultText = "";
-            this.TbxHoraInicio.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TbxHoraInicio.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TbxHoraInicio.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TbxHoraInicio.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TbxHoraInicio.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TbxHoraInicio.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TbxHoraInicio.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TbxHoraInicio.Location = new System.Drawing.Point(829, 215);
-            this.TbxHoraInicio.Name = "TbxHoraInicio";
-            this.TbxHoraInicio.PasswordChar = '\0';
-            this.TbxHoraInicio.PlaceholderText = "";
-            this.TbxHoraInicio.SelectedText = "";
-            this.TbxHoraInicio.Size = new System.Drawing.Size(200, 36);
-            this.TbxHoraInicio.TabIndex = 29;
-            // 
-            // guna2HtmlLabel15
-            // 
-            this.guna2HtmlLabel15.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel15.Location = new System.Drawing.Point(755, 236);
-            this.guna2HtmlLabel15.Name = "guna2HtmlLabel15";
-            this.guna2HtmlLabel15.Size = new System.Drawing.Size(68, 15);
-            this.guna2HtmlLabel15.TabIndex = 28;
-            this.guna2HtmlLabel15.Text = "Horario Inicio:";
-            // 
             // TbxFecha
             // 
             this.TbxFecha.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -402,7 +372,7 @@
             // 
             // CterHorariosPelicula
             // 
-            this.CterHorariosPelicula.Location = new System.Drawing.Point(758, 264);
+            this.CterHorariosPelicula.Location = new System.Drawing.Point(758, 218);
             this.CterHorariosPelicula.Name = "CterHorariosPelicula";
             this.CterHorariosPelicula.Size = new System.Drawing.Size(548, 137);
             this.CterHorariosPelicula.TabIndex = 43;
@@ -479,10 +449,10 @@
             // WmpTrailer
             // 
             this.WmpTrailer.Enabled = true;
-            this.WmpTrailer.Location = new System.Drawing.Point(758, 421);
+            this.WmpTrailer.Location = new System.Drawing.Point(758, 375);
             this.WmpTrailer.Name = "WmpTrailer";
             this.WmpTrailer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("WmpTrailer.OcxState")));
-            this.WmpTrailer.Size = new System.Drawing.Size(548, 161);
+            this.WmpTrailer.Size = new System.Drawing.Size(548, 207);
             this.WmpTrailer.TabIndex = 46;
             // 
             // UC_Peliculas
@@ -501,8 +471,6 @@
             this.Controls.Add(this.guna2HtmlLabel2);
             this.Controls.Add(this.CbxSala);
             this.Controls.Add(this.guna2HtmlLabel11);
-            this.Controls.Add(this.TbxHoraInicio);
-            this.Controls.Add(this.guna2HtmlLabel15);
             this.Controls.Add(this.TbxFecha);
             this.Controls.Add(this.guna2HtmlLabel16);
             this.Controls.Add(this.BtnAsignar);
@@ -552,8 +520,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2ComboBox CbxSala;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel11;
-        private Guna.UI2.WinForms.Guna2TextBox TbxHoraInicio;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel15;
         private Guna.UI2.WinForms.Guna2TextBox TbxFecha;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel16;
         private Guna.UI2.WinForms.Guna2Button BtnAsignar;

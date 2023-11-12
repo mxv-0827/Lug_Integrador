@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Validators;
 
 namespace UI.FRM_ADMIN
 {
@@ -67,9 +68,11 @@ namespace UI.FRM_ADMIN
                 cupon = new Cupones
                 {
                     ID = TbxCodigo.Text,
-                    IDDescuento = (int)CbxIDDesc.SelectedValue,
+                    IDDescuento = CbxIDDesc.SelectedIndex == -1 ? 0 : (int)CbxIDDesc.SelectedValue,
                     Estado = true
                 };
+
+                Generic_Validator<Cupones>.ValidarPropiedades(cupon);
 
                 cupones_BLL.AgregarEntidad(cupon);
 
@@ -112,6 +115,10 @@ namespace UI.FRM_ADMIN
         {
             try
             {
+                //cupon.ID = CbxCupones.SelectedIndex == -1 ? "" : CbxCupones.Text;
+
+                Generic_Validator<Cupones>.ValidarPropiedades(cupon);
+
                 cupon.Estado = !cupon.Estado; //Osea, le asigna el valor opuesto al que tenia previamente.
 
                 cupones_BLL.ModificarEntidad(cupon);

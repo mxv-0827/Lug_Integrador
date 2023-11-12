@@ -13,20 +13,21 @@ namespace UI.Validators.Entity_Validators
         public Usuarios_Validator()
         {
             //Al 'DNI' hay q hacerlo string ya que sino no deja meter muchos metodos.
-            //El resto de propiedades no incluidas se validan antes de ingresar aca.
 
-            RuleFor(x => x.DNI).NotEmpty().WithMessage("no puede estar vacio.");
-            RuleFor(x => x.DNI.ToString()).Matches(@"^\d+$").WithMessage("solo debe de contener numeros.").OverridePropertyName("DNI");
+            RuleFor(x => x.DNI).NotEqual(00000000).WithMessage("no puede estar vacio.");
             RuleFor(x => x.DNI.ToString()).MaximumLength(8).WithMessage("debe contener 8 caracteres como maximo.").OverridePropertyName("DNI"); 
             RuleFor(x => x.DNI.ToString()).MinimumLength(8).WithMessage("debe contener 8 caracteres como minimo.").OverridePropertyName("DNI");
 
             RuleFor(x => x.Nombre).NotEmpty().WithMessage("no puede estar vacio.");
-            RuleFor(x => x.Nombre).Matches("^[A-Za-z]+$").WithMessage("solo debe de contener letras.");
 
             RuleFor(x => x.Apellido).NotEmpty().WithMessage("no puede estar vacio.");
-            RuleFor(x => x.Apellido).Matches("^[A-Za-z]+$").WithMessage("solo debe de contener letras.");
 
             RuleFor(x => x.Sexo).NotEmpty().WithMessage("no puede estar vacio.");
+
+            RuleFor(x => x.Fecha_Nacimiento).NotEqual(new DateTime(1111, 11, 11)).WithMessage("no puede estar vacio y ademas requiere de un formato valido.");
+            RuleFor(x => DateTime.Today.Year - x.Fecha_Nacimiento.Year).GreaterThan(18).WithMessage("debe ser una fecha de nacimiento de un mayor de edad.").OverridePropertyName("Fecha_Nacimiento");
+
+            RuleFor(x => x.IDMembresia).NotEqual(0).WithMessage("no puede estar vacio.");
         }
     }
 }

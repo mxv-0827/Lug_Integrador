@@ -3,6 +3,7 @@ using BLL;
 using BLL.Entity_BLLs;
 using BLL.Transactions_BLLs;
 using Guna.UI2.WinForms;
+using Svg;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Extras;
+using UI.Validators;
 
 namespace UI.FRM_ADMIN
 {
@@ -99,9 +102,11 @@ namespace UI.FRM_ADMIN
         {
             DataTable tablaMembresias = Base_BLL_Membresias.ObtenerTodasEntidades("Membresias");
 
-            CbxMenbresias.DataSource = tablaMembresias;
-            CbxMenbresias.DisplayMember = "Nombre";
-            CbxMenbresias.ValueMember = "ID";
+            CbxMembresias.DataSource = tablaMembresias;
+            CbxMembresias.DisplayMember = "Nombre";
+            CbxMembresias.ValueMember = "ID";
+
+            CbxMembresias.SelectedIndex = -1;
         }
 
 
@@ -110,6 +115,17 @@ namespace UI.FRM_ADMIN
             ObtenerProductosCBX();
         }
 
+        private void BtnProdImg_Click(object sender, EventArgs e)
+        {
+            if (OfdImgProd.ShowDialog() == DialogResult.OK)
+            {
+                string rutaSVG = OfdImgProd.FileName;
+                TbxRutaProdImg.Text = rutaSVG;
+
+                SvgDocument imagen = SvgDocument.Open(rutaSVG);
+                PctbxImgProd.Image = imagen.Draw();
+            }
+        }
 
         private void BtnCrearProducto_Click(object sender, EventArgs e)
         {
@@ -118,11 +134,13 @@ namespace UI.FRM_ADMIN
                 producto = new Productos
                 {
                     Nombre = TbxNombre.Text,
-                    Precio = decimal.Parse(TbxPrecio.Text),
+                    Precio = string.IsNullOrEmpty(TbxPrecio.Text) ? 0 : decimal.Parse(TbxPrecio.Text),
                     Dimension = CbxDimension.Text,
                     Stock = 10, //Por defecto.
-                    Imagen = "gg" //Por ahora.
+                    Imagen = Imagen_Convertidor.ImgAHexa(TbxRutaProdImg.Text) != "Fallo." ? Imagen_Convertidor.ImgAHexa(TbxRutaProdImg.Text) : "Fracaso."
                 };
+
+                Generic_Validator<Productos>.ValidarPropiedades(producto);
 
                 Productos_BLL.AgregarEntidad(producto);
 
@@ -188,6 +206,17 @@ namespace UI.FRM_ADMIN
             TbxPrecioCombo.Text = (decimal.Parse(TbxPrecioCombo.Text) - producto.Precio).ToString();
         }
 
+        private void BtnComboImg_Click(object sender, EventArgs e)
+        {
+            if (OfdImgCombo.ShowDialog() == DialogResult.OK)
+            {
+                string rutaSVG = OfdImgCombo.FileName;
+                TbxRutaComboImg.Text = rutaSVG;
+
+                SvgDocument imagen = SvgDocument.Open(rutaSVG);
+                PctbxComboImg.Image = imagen.Draw();
+            }
+        }
 
         private void BtnCrearCombo_Click(object sender, EventArgs e)
         {
@@ -197,9 +226,11 @@ namespace UI.FRM_ADMIN
                 {
                     Nombre = TbxNombreCombo.Text,
                     Descripcion = TbxDescripcion.Text,
-                    Imagen = "gg",
-                    IDMembresia = (int)CbxMenbresias.SelectedValue
+                    Imagen = Imagen_Convertidor.ImgAHexa(TbxRutaComboImg.Text) != "Fallo." ? Imagen_Convertidor.ImgAHexa(TbxRutaComboImg.Text) : "Fracaso.",
+                    IDMembresia = CbxMembresias.SelectedIndex == -1 ? 0 : (int)CbxMembresias.SelectedValue //Si no eligio valor, que ponga un '0'. Luego, el validador le mostrara el error.
                 };
+
+                Generic_Validator<Combos>.ValidarPropiedades(combo);
 
                 ComboProd_Transaction_BLL.AgregarEntidad(combo, productosAgregados);
 
@@ -215,6 +246,8 @@ namespace UI.FRM_ADMIN
                 MessageBox.Show(ex.Message);
             }
         }
+
+        
 
         private void UC_Combos_Leave(object sender, EventArgs e)
         {
