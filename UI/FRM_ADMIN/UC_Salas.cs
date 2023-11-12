@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Validators;
 
 namespace UI.FRM_ADMIN
 {
@@ -101,8 +102,10 @@ namespace UI.FRM_ADMIN
                 sala = new Salas
                 {
                     Nombre = TbxNombre.Text,
-                    CapacidadTotal = int.Parse(TbxCapacidad.Text)
+                    CapacidadTotal = string.IsNullOrEmpty(TbxCapacidad.Text) ? 0 : int.Parse(TbxCapacidad.Text)
                 };
+
+                Generic_Validator<Salas>.ValidarPropiedades(sala);
 
                 SalaAsiento_Transaction_BLL.CrearEntidades(sala);
 

@@ -133,6 +133,12 @@
     <Compile Include="Frm_Registro.Designer.cs">
       <DependentUpon>Frm_Registro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Validators\Entity_Validators\Combos_Validator.cs" />
+    <Compile Include="Validators\Entity_Validators\Cupones_Validator.cs" />
+    <Compile Include="Validators\Entity_Validators\HorarioPeliculas_Validator.cs" />
+    <Compile Include="Validators\Entity_Validators\Peliculas_Validator.cs" />
+    <Compile Include="Validators\Entity_Validators\Productos_Validator.cs" />
+    <Compile Include="Validators\Entity_Validators\Salas_Validator.cs" />
     <Compile Include="Validators\Entity_Validators\Usuarios_Validator.cs" />
     <Compile Include="Validators\Generic_Validator.cs" />
     <Compile Include="Validators\Entity_Validators\Credenciales_Validator.cs" />

@@ -18,6 +18,7 @@ using UI.Extras;
 using Svg;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using UI.Validators;
 
 namespace UI.FRM_ADMIN
 {
@@ -98,9 +99,7 @@ namespace UI.FRM_ADMIN
 
         private void MostrarHorariosDisponibles()
         {
-            DateTime fechaElegida;
-
-            if(!string.IsNullOrEmpty(CbxSala.Text) && !string.IsNullOrEmpty(CbxPelicula.Text) && DateTime.TryParseExact(TbxFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fechaElegida))
+            if (!string.IsNullOrEmpty(CbxSala.Text) && !string.IsNullOrEmpty(CbxPelicula.Text) && DateTime.TryParseExact(TbxFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fechaElegida))
             {
                 CterHorariosPelicula.Controls.Clear();
 
@@ -112,7 +111,7 @@ namespace UI.FRM_ADMIN
                 DataTable disponibilidadAsientosObtenidos = HorarioPeliculas_BLL.ObtenerHorariosCoincidentes(fechaElegida, int.Parse(CbxSala.SelectedValue.ToString()));
                 List<HorarioPeliculas> horariosOcupados = new List<HorarioPeliculas>();
 
-                foreach(DataRow row in disponibilidadAsientosObtenidos.Rows)
+                foreach (DataRow row in disponibilidadAsientosObtenidos.Rows)
                 {
                     horariosOcupados.Add((HorarioPeliculas)row);
                 };
@@ -251,20 +250,22 @@ namespace UI.FRM_ADMIN
         {
             try
             {
-                int horas = int.Parse(TbxDuracion.Text) / 60; //Obtenemos la cantidad de horas.
-                int minutos = int.Parse(TbxDuracion.Text) % 60; //El resto son los minutos restantes.
+                int horas = string.IsNullOrEmpty(TbxDuracion.Text) ? 0 : int.Parse(TbxDuracion.Text) / 60; //Obtenemos la cantidad de horas.
+                int minutos = string.IsNullOrEmpty(TbxDuracion.Text) ? 0 : int.Parse(TbxDuracion.Text) % 60; //El resto son los minutos restantes.
 
 
                 pelicula = new Peliculas
                 {
                     Nombre = TbxNombre.Text,
                     Descripcion = TbxDescripcion.Text,
-                    Estreno = DateTime.ParseExact(TbxEstreno.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture),
+                    Estreno = !DateTime.TryParseExact(TbxEstreno.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime estreno) ? new DateTime(1111, 11, 11) : DateTime.ParseExact(TbxEstreno.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture),
                     Duracion = new TimeSpan(horas, minutos, 0),
-                    Portada = Imagen_Convertidor.ImgAHexa(TbxRutaPortada.Text),
+                    Portada = string.IsNullOrEmpty(TbxRutaPortada.Text) ? "Fracaso." : Imagen_Convertidor.ImgAHexa(TbxRutaPortada.Text),
                     Trailer = TbxRutaTrailer.Text,
-                    IDRestriccion = int.Parse(CbxRestriccionEdad.SelectedValue.ToString())
+                    IDRestriccion = CbxRestriccionEdad.SelectedIndex == -1 ? 0 : int.Parse(CbxRestriccionEdad.SelectedValue.ToString())
                 };
+
+                Generic_Validator<Peliculas>.ValidarPropiedades(pelicula);
 
                 GenPeli_Transaction_BLL.AgregarEntidad(pelicula, generosAgregados);
 
@@ -318,11 +319,13 @@ namespace UI.FRM_ADMIN
 
                 horarioPelicula = new HorarioPeliculas
                 {
-                    IDSala = int.Parse(CbxSala.SelectedValue.ToString()),
-                    IDPelicula = int.Parse(CbxPelicula.SelectedValue.ToString()),
-                    Fecha = DateTime.ParseExact(TbxFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                    HoraInicio = TimeSpan.ParseExact(rdbHorarioSeleccionado.Text, "hh\\:mm", CultureInfo.InvariantCulture)
+                    IDSala = CbxSala.SelectedIndex == -1 ? 0 : int.Parse(CbxSala.SelectedValue.ToString()),
+                    IDPelicula = CbxPelicula.SelectedIndex == -1? 0 : int.Parse(CbxPelicula.SelectedValue.ToString()),
+                    Fecha = DateTime.TryParseExact(TbxFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime estreno) ? DateTime.ParseExact(TbxFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture) : new DateTime(1111, 11, 11),
+                    HoraInicio = rdbHorarioSeleccionado != null ? TimeSpan.ParseExact(rdbHorarioSeleccionado.Text, "hh\\:mm", CultureInfo.InvariantCulture) : new TimeSpan(0, 0, 0)
                 };
+
+                Generic_Validator<HorarioPeliculas>.ValidarPropiedades(horarioPelicula);
 
                 HorPelDispoAsi_Transaction_BLL.AgregarEntidad(horarioPelicula);
 
@@ -345,7 +348,5 @@ namespace UI.FRM_ADMIN
         {
             ReiniciarGenerosCBX();
         }
-
-        
     }
 }

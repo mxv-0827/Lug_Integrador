@@ -44,8 +44,18 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.CterProductos = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.TbxPrecioCombo = new Guna.UI2.WinForms.Guna2TextBox();
-            this.CbxMenbresias = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.CbxMembresias = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.BtnProdImg = new Guna.UI2.WinForms.Guna2Button();
+            this.TbxRutaProdImg = new Guna.UI2.WinForms.Guna2TextBox();
+            this.PctbxImgProd = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.OfdImgProd = new System.Windows.Forms.OpenFileDialog();
+            this.PctbxComboImg = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.TbxRutaComboImg = new Guna.UI2.WinForms.Guna2TextBox();
+            this.BtnComboImg = new Guna.UI2.WinForms.Guna2Button();
+            this.OfdImgCombo = new System.Windows.Forms.OpenFileDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.PctbxImgProd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PctbxComboImg)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2HtmlLabel1
@@ -140,7 +150,7 @@
             this.BtnCrearProducto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.BtnCrearProducto.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BtnCrearProducto.ForeColor = System.Drawing.Color.White;
-            this.BtnCrearProducto.Location = new System.Drawing.Point(99, 175);
+            this.BtnCrearProducto.Location = new System.Drawing.Point(61, 438);
             this.BtnCrearProducto.Name = "BtnCrearProducto";
             this.BtnCrearProducto.Size = new System.Drawing.Size(142, 45);
             this.BtnCrearProducto.TabIndex = 8;
@@ -155,7 +165,7 @@
             this.BtnCrearCombo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.BtnCrearCombo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BtnCrearCombo.ForeColor = System.Drawing.Color.White;
-            this.BtnCrearCombo.Location = new System.Drawing.Point(554, 499);
+            this.BtnCrearCombo.Location = new System.Drawing.Point(799, 438);
             this.BtnCrearCombo.Name = "BtnCrearCombo";
             this.BtnCrearCombo.Size = new System.Drawing.Size(142, 36);
             this.BtnCrearCombo.TabIndex = 15;
@@ -256,7 +266,7 @@
             // TbxPrecioCombo
             // 
             this.TbxPrecioCombo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TbxPrecioCombo.DefaultText = "0";
+            this.TbxPrecioCombo.DefaultText = "0,00";
             this.TbxPrecioCombo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.TbxPrecioCombo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.TbxPrecioCombo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -273,20 +283,20 @@
             this.TbxPrecioCombo.Size = new System.Drawing.Size(82, 36);
             this.TbxPrecioCombo.TabIndex = 22;
             // 
-            // CbxMenbresias
+            // CbxMembresias
             // 
-            this.CbxMenbresias.BackColor = System.Drawing.Color.Transparent;
-            this.CbxMenbresias.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.CbxMenbresias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbxMenbresias.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CbxMenbresias.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CbxMenbresias.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.CbxMenbresias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.CbxMenbresias.ItemHeight = 30;
-            this.CbxMenbresias.Location = new System.Drawing.Point(367, 499);
-            this.CbxMenbresias.Name = "CbxMenbresias";
-            this.CbxMenbresias.Size = new System.Drawing.Size(173, 36);
-            this.CbxMenbresias.TabIndex = 24;
+            this.CbxMembresias.BackColor = System.Drawing.Color.Transparent;
+            this.CbxMembresias.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbxMembresias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxMembresias.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CbxMembresias.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CbxMembresias.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.CbxMembresias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.CbxMembresias.ItemHeight = 30;
+            this.CbxMembresias.Location = new System.Drawing.Point(367, 499);
+            this.CbxMembresias.Name = "CbxMembresias";
+            this.CbxMembresias.Size = new System.Drawing.Size(173, 36);
+            this.CbxMembresias.TabIndex = 24;
             // 
             // guna2HtmlLabel8
             // 
@@ -297,12 +307,116 @@
             this.guna2HtmlLabel8.TabIndex = 23;
             this.guna2HtmlLabel8.Text = "Membresia disponible:";
             // 
+            // BtnProdImg
+            // 
+            this.BtnProdImg.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnProdImg.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnProdImg.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnProdImg.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnProdImg.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnProdImg.ForeColor = System.Drawing.Color.White;
+            this.BtnProdImg.Location = new System.Drawing.Point(119, 180);
+            this.BtnProdImg.Name = "BtnProdImg";
+            this.BtnProdImg.Size = new System.Drawing.Size(107, 45);
+            this.BtnProdImg.TabIndex = 25;
+            this.BtnProdImg.Text = "SELECCIONAR IMAGEN";
+            this.BtnProdImg.Click += new System.EventHandler(this.BtnProdImg_Click);
+            // 
+            // TbxRutaProdImg
+            // 
+            this.TbxRutaProdImg.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbxRutaProdImg.DefaultText = "";
+            this.TbxRutaProdImg.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TbxRutaProdImg.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TbxRutaProdImg.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxRutaProdImg.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxRutaProdImg.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxRutaProdImg.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TbxRutaProdImg.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxRutaProdImg.Location = new System.Drawing.Point(90, 231);
+            this.TbxRutaProdImg.Name = "TbxRutaProdImg";
+            this.TbxRutaProdImg.PasswordChar = '\0';
+            this.TbxRutaProdImg.PlaceholderText = "";
+            this.TbxRutaProdImg.ReadOnly = true;
+            this.TbxRutaProdImg.SelectedText = "";
+            this.TbxRutaProdImg.Size = new System.Drawing.Size(164, 36);
+            this.TbxRutaProdImg.TabIndex = 26;
+            // 
+            // PctbxImgProd
+            // 
+            this.PctbxImgProd.ImageRotate = 0F;
+            this.PctbxImgProd.Location = new System.Drawing.Point(61, 283);
+            this.PctbxImgProd.Name = "PctbxImgProd";
+            this.PctbxImgProd.Size = new System.Drawing.Size(225, 134);
+            this.PctbxImgProd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PctbxImgProd.TabIndex = 27;
+            this.PctbxImgProd.TabStop = false;
+            // 
+            // OfdImgProd
+            // 
+            this.OfdImgProd.FileName = "openFileDialog1";
+            // 
+            // PctbxComboImg
+            // 
+            this.PctbxComboImg.ImageRotate = 0F;
+            this.PctbxComboImg.Location = new System.Drawing.Point(756, 283);
+            this.PctbxComboImg.Name = "PctbxComboImg";
+            this.PctbxComboImg.Size = new System.Drawing.Size(225, 134);
+            this.PctbxComboImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PctbxComboImg.TabIndex = 30;
+            this.PctbxComboImg.TabStop = false;
+            // 
+            // TbxRutaComboImg
+            // 
+            this.TbxRutaComboImg.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbxRutaComboImg.DefaultText = "";
+            this.TbxRutaComboImg.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TbxRutaComboImg.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TbxRutaComboImg.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxRutaComboImg.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxRutaComboImg.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxRutaComboImg.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TbxRutaComboImg.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxRutaComboImg.Location = new System.Drawing.Point(785, 231);
+            this.TbxRutaComboImg.Name = "TbxRutaComboImg";
+            this.TbxRutaComboImg.PasswordChar = '\0';
+            this.TbxRutaComboImg.PlaceholderText = "";
+            this.TbxRutaComboImg.ReadOnly = true;
+            this.TbxRutaComboImg.SelectedText = "";
+            this.TbxRutaComboImg.Size = new System.Drawing.Size(164, 36);
+            this.TbxRutaComboImg.TabIndex = 29;
+            // 
+            // BtnComboImg
+            // 
+            this.BtnComboImg.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnComboImg.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnComboImg.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnComboImg.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnComboImg.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnComboImg.ForeColor = System.Drawing.Color.White;
+            this.BtnComboImg.Location = new System.Drawing.Point(814, 180);
+            this.BtnComboImg.Name = "BtnComboImg";
+            this.BtnComboImg.Size = new System.Drawing.Size(107, 45);
+            this.BtnComboImg.TabIndex = 28;
+            this.BtnComboImg.Text = "SELECCIONAR IMAGEN";
+            this.BtnComboImg.Click += new System.EventHandler(this.BtnComboImg_Click);
+            // 
+            // OfdImgCombo
+            // 
+            this.OfdImgCombo.FileName = "openFileDialog1";
+            // 
             // UC_Combos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.Controls.Add(this.CbxMenbresias);
+            this.Controls.Add(this.PctbxComboImg);
+            this.Controls.Add(this.TbxRutaComboImg);
+            this.Controls.Add(this.BtnComboImg);
+            this.Controls.Add(this.PctbxImgProd);
+            this.Controls.Add(this.TbxRutaProdImg);
+            this.Controls.Add(this.BtnProdImg);
+            this.Controls.Add(this.CbxMembresias);
             this.Controls.Add(this.guna2HtmlLabel8);
             this.Controls.Add(this.TbxPrecioCombo);
             this.Controls.Add(this.CterProductos);
@@ -325,6 +439,8 @@
             this.Load += new System.EventHandler(this.UC_Combos_Load);
             this.Enter += new System.EventHandler(this.UC_Combos_Enter);
             this.Leave += new System.EventHandler(this.UC_Combos_Leave);
+            ((System.ComponentModel.ISupportInitialize)(this.PctbxImgProd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PctbxComboImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,7 +464,15 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2ContainerControl CterProductos;
         private Guna.UI2.WinForms.Guna2TextBox TbxPrecioCombo;
-        private Guna.UI2.WinForms.Guna2ComboBox CbxMenbresias;
+        private Guna.UI2.WinForms.Guna2ComboBox CbxMembresias;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
+        private Guna.UI2.WinForms.Guna2Button BtnProdImg;
+        private Guna.UI2.WinForms.Guna2TextBox TbxRutaProdImg;
+        private Guna.UI2.WinForms.Guna2PictureBox PctbxImgProd;
+        private System.Windows.Forms.OpenFileDialog OfdImgProd;
+        private Guna.UI2.WinForms.Guna2PictureBox PctbxComboImg;
+        private Guna.UI2.WinForms.Guna2TextBox TbxRutaComboImg;
+        private Guna.UI2.WinForms.Guna2Button BtnComboImg;
+        private System.Windows.Forms.OpenFileDialog OfdImgCombo;
     }
 }
