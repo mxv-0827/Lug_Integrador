@@ -23,8 +23,6 @@ namespace UI
             InitializeComponent();
         }
 
-        
-
 
         //Usuarios
         Usuarios usuario;
