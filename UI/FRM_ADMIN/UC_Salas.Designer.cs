@@ -115,6 +115,7 @@
             // 
             // CterDisposicionAsientos
             // 
+            this.CterDisposicionAsientos.AutoScroll = true;
             this.CterDisposicionAsientos.Controls.Add(this.guna2HtmlLabel11);
             this.CterDisposicionAsientos.Controls.Add(this.guna2HtmlLabel10);
             this.CterDisposicionAsientos.Controls.Add(this.guna2TextBox33);

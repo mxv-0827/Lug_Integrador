@@ -28,18 +28,29 @@ namespace UI.FRM_ADMIN
         //Descuentos (BASE)
         Base_BLL<Descuentos> Base_BLL_Descuentos = new Base_BLL<Descuentos>();
 
-        
-        private void LlenarCodigosCBX() //LLena la CBX 'CbxCupones' con todos los IDs de cupones creados.
+
+        private void LlenarDGV() //LLena la datagridview con todos los cupones creados.
         {
-            CbxCupones.DataSource = null;
+            DgvCupones.Rows.Clear();
 
             DataTable tablaCupones = cupones_BLL.ObtenerTodasEntidades("Cupones");
 
-            CbxCupones.SelectedIndexChanged -= CbxCupones_SelectedIndexChanged;
-            CbxCupones.DataSource = tablaCupones;
-            CbxCupones.DisplayMember = "ID";
-            CbxCupones.SelectedIndex = -1;
-            CbxCupones.SelectedIndexChanged += CbxCupones_SelectedIndexChanged;
+            for(int i = 0; i < tablaCupones.Rows.Count; i++)
+            {
+                DataRow row = tablaCupones.Rows[i];
+                Cupones cupon = (Cupones)row;
+
+                int idDescuento = cupon.IDDescuento;
+                int porcDescuento = (int)Base_BLL_Descuentos.ObtenerEntidadPorId("Descuentos", cupon.IDDescuento).Rows[0]["Porcentaje"];
+
+                DgvCupones.Rows.Add();
+
+                DgvCupones.Rows[i].Cells[0].Tag = cupon; //Almacenamos el objeto completo.
+
+                DgvCupones.Rows[i].Cells[0].Value = cupon.ID;
+                DgvCupones.Rows[i].Cells[1].Value = $"{porcDescuento}%"; //Mostramos el porcentaje del descuento.
+                DgvCupones.Rows[i].Cells[2].Value = cupon.Estado;
+            }
         }
 
 
@@ -53,7 +64,7 @@ namespace UI.FRM_ADMIN
 
             CbxIDDesc.SelectedIndex = -1;
 
-            LlenarCodigosCBX();
+            LlenarDGV();
         }
 
         private void BtnCrearCodigo_Click(object sender, EventArgs e)
@@ -81,7 +92,7 @@ namespace UI.FRM_ADMIN
                 TbxCodigo.Clear();
                 CbxIDDesc.SelectedIndex = -1;
 
-                LlenarCodigosCBX();
+                LlenarDGV();
             }
 
             catch(Exception ex)
@@ -90,45 +101,24 @@ namespace UI.FRM_ADMIN
             }
         }
 
-
-        //------------------------------------------------------------------------------------------------------------------------------
-
-
-        private void CbxCupones_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string cuponID = CbxCupones.Text;
-
-            DataTable tablaCupones = (DataTable)CbxCupones.DataSource;
-            DataRow regitroCupon = tablaCupones.AsEnumerable().First(row => (string)row["ID"] == cuponID);
-
-            cupon = (Cupones)regitroCupon;
-
-            if (cupon.Estado) BtnModificarEstado.Text = "DESHABILITAR CUPON";
-
-            else 
-            {
-                BtnModificarEstado.Text = "HABILITAR CUPON";
-            }
-        }
-
-        private void BtnModificarEstado_Click(object sender, EventArgs e)
+        private void DgvCupones_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                //cupon.ID = CbxCupones.SelectedIndex == -1 ? "" : CbxCupones.Text;
+                if(e.RowIndex >= 0 && e.ColumnIndex == 2)
+                {
+                    cupon = (Cupones)DgvCupones.Rows[e.RowIndex].Cells[0].Tag;
+                    cupon.Estado = !cupon.Estado;
 
-                Generic_Validator<Cupones>.ValidarPropiedades(cupon);
+                    cupones_BLL.ModificarEntidad(cupon);
 
-                cupon.Estado = !cupon.Estado; //Osea, le asigna el valor opuesto al que tenia previamente.
+                    MessageBox.Show("Cupon modificado exitosamente.");
 
-                cupones_BLL.ModificarEntidad(cupon);
-
-                MessageBox.Show("Cupon modificado exitosamente.");
-
-                LlenarCodigosCBX();
+                    LlenarDGV();
+                }
             }
 
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
