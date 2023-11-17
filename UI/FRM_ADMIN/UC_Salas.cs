@@ -22,7 +22,7 @@ namespace UI.FRM_ADMIN
         }
 
 
-        int locationX = 22, locationY = 87;
+        int locationX = 187, locationY = 71;
         private void CrearGunaTBX(int nroAsiento)
         {
             Guna2TextBox tbx = new Guna2TextBox
@@ -34,34 +34,36 @@ namespace UI.FRM_ADMIN
                 TextAlign = HorizontalAlignment.Center,
                 Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold),
                 ForeColor = Color.Black,
-                FillColor = Color.DarkGray,
+                FillColor = Color.White,
+                MinimumSize = new Size(35, 35),
             };
 
             CterDisposicionAsientos.Controls.Add(tbx);
 
-            locationX += 45;
+            locationX += tbx.Size.Width + 10;
 
-            if (locationX > 202 && locationX < 351 && locationY <= 132) locationX = 351;
-
-            else if (locationX > 531 && locationY < 132)
+            if (locationX == 412 && (locationY == 71 || locationY == 161))
             {
-                locationX = 22;
-                locationY += 45;
+                locationX = 97;
+                locationY += tbx.Size.Height + 10;
             }
 
-            else if (locationX > 531 && locationY == 132)
+            else if (locationX == 502 && locationY == 116)
             {
-                locationX = 67;
-                locationY = 198;
+                locationX = 187;
+                locationY += tbx.Size.Height + 10;
             }
 
-            else if (locationX == 292 && locationY == 198) locationX = 306;
+            else if (locationX == 277 && locationY == 206) locationX += tbx.Size.Width + 10;
 
-            else if (locationX > 486 && locationY >= 198)
+
+            else if (locationX == 502 && locationY == 206)
             {
-                locationX = 67;
-                locationY += 45;
+                locationX = 97;
+                locationY += tbx.Size.Height + 10;
             }
+
+            else if (locationY == 251) locationX += tbx.Size.Width + 10;
         }
 
         private void EliminarAsientosTBX()
@@ -81,8 +83,8 @@ namespace UI.FRM_ADMIN
                 CterDisposicionAsientos.Controls.Remove(ctrlAEliminar);
             }
 
-            locationX = 22;
-            locationY = 87;
+            locationX = 187;
+            locationY = 71;
         }
 
 
@@ -92,17 +94,25 @@ namespace UI.FRM_ADMIN
         //Salas y Asientos
         SalaAsiento_Transaction_BLL SalaAsiento_Transaction_BLL = new SalaAsiento_Transaction_BLL();
 
-
-        private void BtnCrearSala_Click(object sender, EventArgs e)
+        
+        private void CbxCapacidad_SelectedIndexChanged(object sender, EventArgs e)
         {
             EliminarAsientosTBX();
 
+            for (int i = 0; i < int.Parse(CbxCapacidad.Text); i++)
+            {
+                CrearGunaTBX(i + 1);
+            }
+        }
+
+        private void BtnCrearSala_Click(object sender, EventArgs e)
+        {
             try
             {
                 sala = new Salas
                 {
                     Nombre = TbxNombre.Text,
-                    CapacidadTotal = string.IsNullOrEmpty(TbxCapacidad.Text) ? 0 : int.Parse(TbxCapacidad.Text)
+                    CapacidadTotal = string.IsNullOrEmpty(CbxCapacidad.Text) ? 0 : int.Parse(CbxCapacidad.Text)
                 };
 
                 Generic_Validator<Salas>.ValidarPropiedades(sala);
@@ -111,13 +121,14 @@ namespace UI.FRM_ADMIN
 
                 MessageBox.Show("Sala y asientos creados exitosamente.");
 
-                for (int i = 0; i < int.Parse(TbxCapacidad.Text); i++)
-                {
-                    CrearGunaTBX(i + 1);
-                }
+                EliminarAsientosTBX();
+
+                CbxCapacidad.SelectedIndexChanged -= CbxCapacidad_SelectedIndexChanged;
+                CbxCapacidad.SelectedIndex = -1;
+                CbxCapacidad.SelectedIndexChanged += CbxCapacidad_SelectedIndexChanged;
             }
-            
-            catch(Exception ex)
+
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
