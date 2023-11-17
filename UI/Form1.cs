@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using BE;
 using BLL;
 using BLL.Entity_BLLs;
+using Svg;
 using UI.Validators;
 
 namespace UI
@@ -28,6 +29,9 @@ namespace UI
 
         //Credenciales
         Credenciales credenciales;
+
+
+
         private void BtnLogeo_Click(object sender, EventArgs e)
         {
             try

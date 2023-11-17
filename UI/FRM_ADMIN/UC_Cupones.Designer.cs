@@ -44,10 +44,8 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PnlSombreado = new Guna.UI2.WinForms.Guna2Panel();
             this.TbxCodigo = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCupones)).BeginInit();
-            this.PnlSombreado.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnCrearCodigo
@@ -62,7 +60,7 @@
             this.BtnCrearCodigo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BtnCrearCodigo.ForeColor = System.Drawing.Color.White;
             this.BtnCrearCodigo.Image = ((System.Drawing.Image)(resources.GetObject("BtnCrearCodigo.Image")));
-            this.BtnCrearCodigo.Location = new System.Drawing.Point(211, 40);
+            this.BtnCrearCodigo.Location = new System.Drawing.Point(184, 47);
             this.BtnCrearCodigo.Name = "BtnCrearCodigo";
             this.BtnCrearCodigo.Size = new System.Drawing.Size(34, 36);
             this.BtnCrearCodigo.TabIndex = 0;
@@ -73,7 +71,7 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(90, 19);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(63, 26);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(97, 15);
             this.guna2HtmlLabel1.TabIndex = 1;
@@ -84,7 +82,7 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(274, 19);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(247, 26);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(86, 15);
             this.guna2HtmlLabel2.TabIndex = 3;
@@ -102,7 +100,7 @@
             this.BtnCrearCupon.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCrearCupon.ForeColor = System.Drawing.Color.White;
             this.BtnCrearCupon.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BtnCrearCupon.Location = new System.Drawing.Point(449, 40);
+            this.BtnCrearCupon.Location = new System.Drawing.Point(422, 47);
             this.BtnCrearCupon.Name = "BtnCrearCupon";
             this.BtnCrearCupon.Size = new System.Drawing.Size(104, 36);
             this.BtnCrearCupon.TabIndex = 5;
@@ -120,7 +118,7 @@
             this.CbxIDDesc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbxIDDesc.ForeColor = System.Drawing.Color.Black;
             this.CbxIDDesc.ItemHeight = 30;
-            this.CbxIDDesc.Location = new System.Drawing.Point(274, 40);
+            this.CbxIDDesc.Location = new System.Drawing.Point(247, 47);
             this.CbxIDDesc.Name = "CbxIDDesc";
             this.CbxIDDesc.Size = new System.Drawing.Size(115, 36);
             this.CbxIDDesc.TabIndex = 6;
@@ -160,7 +158,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DgvCupones.DefaultCellStyle = dataGridViewCellStyle5;
             this.DgvCupones.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DgvCupones.Location = new System.Drawing.Point(90, 108);
+            this.DgvCupones.Location = new System.Drawing.Point(39, 131);
             this.DgvCupones.Name = "DgvCupones";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
@@ -173,7 +171,7 @@
             this.DgvCupones.RowHeadersVisible = false;
             this.DgvCupones.RowTemplate.DividerHeight = 5;
             this.DgvCupones.RowTemplate.Height = 40;
-            this.DgvCupones.Size = new System.Drawing.Size(463, 325);
+            this.DgvCupones.Size = new System.Drawing.Size(535, 302);
             this.DgvCupones.TabIndex = 10;
             this.DgvCupones.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.DarkGray;
             this.DgvCupones.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -225,23 +223,6 @@
             this.Column3.HeaderText = "Habilitado";
             this.Column3.Name = "Column3";
             // 
-            // PnlSombreado
-            // 
-            this.PnlSombreado.BackColor = System.Drawing.Color.Transparent;
-            this.PnlSombreado.Controls.Add(this.TbxCodigo);
-            this.PnlSombreado.Controls.Add(this.DgvCupones);
-            this.PnlSombreado.Controls.Add(this.BtnCrearCodigo);
-            this.PnlSombreado.Controls.Add(this.CbxIDDesc);
-            this.PnlSombreado.Controls.Add(this.BtnCrearCupon);
-            this.PnlSombreado.Controls.Add(this.guna2HtmlLabel1);
-            this.PnlSombreado.Controls.Add(this.guna2HtmlLabel2);
-            this.PnlSombreado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlSombreado.FillColor = System.Drawing.Color.Transparent;
-            this.PnlSombreado.Location = new System.Drawing.Point(0, 0);
-            this.PnlSombreado.Name = "PnlSombreado";
-            this.PnlSombreado.Size = new System.Drawing.Size(629, 498);
-            this.PnlSombreado.TabIndex = 11;
-            // 
             // TbxCodigo
             // 
             this.TbxCodigo.BackColor = System.Drawing.Color.Transparent;
@@ -255,7 +236,7 @@
             this.TbxCodigo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbxCodigo.ForeColor = System.Drawing.Color.Black;
             this.TbxCodigo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TbxCodigo.Location = new System.Drawing.Point(90, 40);
+            this.TbxCodigo.Location = new System.Drawing.Point(63, 47);
             this.TbxCodigo.Name = "TbxCodigo";
             this.TbxCodigo.PasswordChar = '\0';
             this.TbxCodigo.PlaceholderText = "";
@@ -269,16 +250,21 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.PnlSombreado);
+            this.Controls.Add(this.DgvCupones);
+            this.Controls.Add(this.TbxCodigo);
+            this.Controls.Add(this.CbxIDDesc);
+            this.Controls.Add(this.BtnCrearCodigo);
+            this.Controls.Add(this.guna2HtmlLabel2);
+            this.Controls.Add(this.guna2HtmlLabel1);
+            this.Controls.Add(this.BtnCrearCupon);
             this.Name = "UC_Cupones";
             this.Size = new System.Drawing.Size(629, 498);
             this.Load += new System.EventHandler(this.UC_Cupones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvCupones)).EndInit();
-            this.PnlSombreado.ResumeLayout(false);
-            this.PnlSombreado.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -293,7 +279,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
-        private Guna.UI2.WinForms.Guna2Panel PnlSombreado;
         private Guna.UI2.WinForms.Guna2TextBox TbxCodigo;
     }
 }
