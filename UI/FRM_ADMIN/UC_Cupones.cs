@@ -26,7 +26,7 @@ namespace UI.FRM_ADMIN
         Cupones_BLL cupones_BLL = new Cupones_BLL();
 
         //Descuentos (BASE)
-        Base_BLL<Descuentos> Base_BLL_Descuentos = new Base_BLL<Descuentos>();
+        readonly Base_BLL<Descuentos> Base_BLL_Descuentos = new Base_BLL<Descuentos>();
 
 
         private void LlenarDGV() //LLena la datagridview con todos los cupones creados.
@@ -40,7 +40,6 @@ namespace UI.FRM_ADMIN
                 DataRow row = tablaCupones.Rows[i];
                 Cupones cupon = (Cupones)row;
 
-                int idDescuento = cupon.IDDescuento;
                 int porcDescuento = (int)Base_BLL_Descuentos.ObtenerEntidadPorId("Descuentos", cupon.IDDescuento).Rows[0]["Porcentaje"];
 
                 DgvCupones.Rows.Add();
@@ -51,11 +50,15 @@ namespace UI.FRM_ADMIN
                 DgvCupones.Rows[i].Cells[1].Value = $"{porcDescuento}%"; //Mostramos el porcentaje del descuento.
                 DgvCupones.Rows[i].Cells[2].Value = cupon.Estado;
             }
+
+            DgvCupones.ClearSelection();
         }
 
 
         private void UC_Cupones_Load(object sender, EventArgs e)
         {
+            PnlSombreado.BackColor = Color.FromArgb(128, 0, 0, 0);
+
             DataTable tablaDescuentos = Base_BLL_Descuentos.ObtenerTodasEntidades("Descuentos");
 
             CbxIDDesc.DataSource = tablaDescuentos;
@@ -99,6 +102,11 @@ namespace UI.FRM_ADMIN
             {
                 MessageBox.Show(ex.Message);
             }
+
+            finally
+            {
+                cupon = null;
+            }
         }
 
         private void DgvCupones_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -121,6 +129,11 @@ namespace UI.FRM_ADMIN
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+
+            finally
+            {
+                cupon = null;
             }
         }
     }
