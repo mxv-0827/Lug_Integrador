@@ -57,8 +57,6 @@ namespace UI.FRM_ADMIN
 
         private void UC_Cupones_Load(object sender, EventArgs e)
         {
-            PnlSombreado.BackColor = Color.FromArgb(128, 0, 0, 0);
-
             DataTable tablaDescuentos = Base_BLL_Descuentos.ObtenerTodasEntidades("Descuentos");
 
             CbxIDDesc.DataSource = tablaDescuentos;
