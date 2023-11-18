@@ -19,7 +19,7 @@ namespace UI.Validators.Entity_Validators
 
             RuleFor(x => x.Dimension).NotEmpty().WithMessage("debe de contener un valor.");
 
-            RuleFor(x => x.Imagen).NotEqual("Fracaso.").WithMessage("debe de contener una imagen a guardar.");
+            RuleFor(x => x.Imagen).NotEmpty().WithMessage("debe de contener una imagen a guardar.");
         }
     }
 }

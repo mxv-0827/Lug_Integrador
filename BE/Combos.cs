@@ -14,7 +14,7 @@ namespace BE
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
-        public string Imagen { get; set; }
+        public byte[] Imagen { get; set; }
         public int IDMembresia { get; set; }
 
         //Constructores
@@ -27,7 +27,7 @@ namespace BE
             Nombre = fila["Nombre"].ToString();
             Descripcion = fila["Descripcion"].ToString();
             Precio = Convert.ToDecimal(fila["Precio"]);
-            Imagen = fila["Imagen"].ToString();
+            Imagen = (byte[])fila["Imagen"];
             IDMembresia = Convert.ToInt32(fila["IDMembresia"]);
         }
 

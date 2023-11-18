@@ -16,9 +16,7 @@ namespace UI.Validators.Entity_Validators
 
             RuleFor(x => x.Descripcion).NotEmpty().WithMessage("no puede estar vacio.");
 
-            RuleFor(x => x.Precio).NotEqual(0).WithMessage("del combo no puede ser '0'.");
-
-            RuleFor(x => x.Imagen).NotEqual("Fracaso.").WithMessage("del producto debe de contener una imagen.");
+            RuleFor(x => x.Imagen).NotEmpty().WithMessage("del producto debe de contener una imagen.");
 
             RuleFor(x => x.IDMembresia).NotEqual(0).WithMessage("debe de tener una membresia de descuento.");
         }
