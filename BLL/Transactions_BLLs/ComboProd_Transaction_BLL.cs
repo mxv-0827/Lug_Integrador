@@ -24,10 +24,13 @@ namespace BLL.Transactions_BLLs
 
             try
             {
+                if (listaProductos.Count < 2) throw new FormatException();
+
                 foreach (Productos prod in listaProductos)
                 {
                     combo.Precio += Producto_Mapper.ObtenerPrecioProducto(prod.ID);
                 }
+                combo.Precio -= combo.Precio * 0.10m; //El precio total es 10% mas barato a comprar lo mismo por separado.
 
                 Base_BLL_Combos.AsignarID(combo);
 
@@ -46,6 +49,11 @@ namespace BLL.Transactions_BLLs
 
                 transacciones_Gestor.ConfirmarTransaccion();
                 return cantCombosAfectados + cantProdCombAfectados;
+            }
+
+            catch (FormatException)
+            {
+                throw new Exception("Es necesario agregar aunque sea 2 productos para crear un combo.");
             }
 
             catch (Exception)

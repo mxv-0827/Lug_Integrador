@@ -262,7 +262,7 @@ namespace UI.FRM_ADMIN
                     Descripcion = TbxDescripcion.Text,
                     Estreno = !DateTime.TryParseExact(TbxEstreno.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime estreno) ? new DateTime(1111, 11, 11) : DateTime.ParseExact(TbxEstreno.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture),
                     Duracion = new TimeSpan(horas, minutos, 0),
-                    Portada = string.IsNullOrEmpty(TbxRutaPortada.Text) ? "Fracaso." : Imagen_Convertidor.ImgAHexa(TbxRutaPortada.Text),
+                    //Portada = string.IsNullOrEmpty(TbxRutaPortada.Text) ? "Fracaso." : Imagen_Convertidor.ImgAHexa(TbxRutaPortada.Text),
                     Trailer = string.IsNullOrEmpty(TbxRutaTrailer.Text) ? "" : googleDrive_API.SubirVideo(TbxRutaTrailer.Text),
                     IDRestriccion = CbxRestriccionEdad.SelectedIndex == -1 ? 0 : int.Parse(CbxRestriccionEdad.SelectedValue.ToString())
                 };

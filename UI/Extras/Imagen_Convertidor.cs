@@ -1,6 +1,7 @@
 ﻿using Svg;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,36 +11,21 @@ namespace UI.Extras
 {
     public class Imagen_Convertidor
     {
-        public static string ImgAHexa(string rutaImagen)
+        public static byte[] ImgAHexa(Image imagen)
         {
-            try
+            using (MemoryStream stream = new MemoryStream())
             {
-                using (FileStream stream = new FileStream(rutaImagen, FileMode.Open, FileAccess.Read))
-                {
-                    byte[] buffer = new byte[stream.Length];
-                    stream.Read(buffer, 0, (int)stream.Length);
-                    return BitConverter.ToString(buffer).Replace("-", "");
-                }
-            }
-
-            catch (Exception)
-            {
-                return "Fallo.";
+                imagen.Save(stream, System.Drawing.Imaging.ImageFormat.Png); //Guarda las imagenes como PNG.
+                return stream.GetBuffer();
             }
         }
 
-
-        public static SvgDocument HexaASvg(string imgHexa)
+        public static Image HexaAImg(byte[] imagenHexa)
         {
-            byte[] bytes = Enumerable.Range(0, imgHexa.Length)
-                             .Where(x => x % 2 == 0)
-                             .Select(x => Convert.ToByte(imgHexa.Substring(x, 2), 16))
-                             .ToArray();
-
-            // Convierte los bytes a una cadena SVG.
-            string svgString = Encoding.UTF8.GetString(bytes);
-
-            return SvgDocument.FromSvg<SvgDocument>(svgString);
+            using (MemoryStream stream = new MemoryStream(imagenHexa))
+            {
+                return Image.FromStream(stream);
+            }
         }
     }
 }

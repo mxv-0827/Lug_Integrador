@@ -35,6 +35,9 @@ namespace UI.FRM_ADMIN
                 Size = new Size(130, 32),
                 UseTransparentBackground = true,
                 Text = nombreProducto,
+                FillColor = Color.DarkGreen,
+                BorderColor = Color.DarkGreen,
+                Font = new Font("Segoe UI", 9f, FontStyle.Regular)
             };
 
             chip.Click += ChipProd_Click;
@@ -51,6 +54,28 @@ namespace UI.FRM_ADMIN
         }
 
         
+        private void LlenarDGVProductos()
+        {
+            DgvProductos.Rows.Clear();
+
+            tablaProductos = Productos_BLL.ObtenerTodasEntidades("Productos");
+
+            for(int i = 0; i < tablaProductos.Rows.Count; i++)
+            {
+                DataRow row = tablaProductos.Rows[i];
+                producto = (Productos)row;
+
+                DgvProductos.Rows.Add();
+
+                DgvProductos.Rows[i].Cells[0].Value = producto.Nombre;
+                DgvProductos.Rows[i].Cells[1].Value = producto.Precio;
+                DgvProductos.Rows[i].Cells[2].Value = producto.Dimension;
+                DgvProductos.Rows[i].Cells[3].Value = Imagen_Convertidor.HexaAImg(producto.Imagen);
+            }
+
+            DgvProductos.ClearSelection();
+        }
+
         private void ObtenerProductosCBX()
         {
             tablaProductos = Productos_BLL.ObtenerTodasEntidades("Productos");
@@ -112,6 +137,7 @@ namespace UI.FRM_ADMIN
 
         private void UC_Combos_Enter(object sender, EventArgs e)
         {
+            LlenarDGVProductos();
             ObtenerProductosCBX();
         }
 
@@ -119,11 +145,11 @@ namespace UI.FRM_ADMIN
         {
             if (OfdImgProd.ShowDialog() == DialogResult.OK)
             {
-                string rutaSVG = OfdImgProd.FileName;
-                TbxRutaProdImg.Text = rutaSVG;
+                string rutaImagen = OfdImgProd.FileName;
+                TbxRutaProdImg.Text = rutaImagen;
 
-                SvgDocument imagen = SvgDocument.Open(rutaSVG);
-                PctbxImgProd.Image = imagen.Draw();
+                Bitmap bitmap = new Bitmap(rutaImagen);
+                PctbxProdImg.Image = bitmap;
             }
         }
 
@@ -137,7 +163,7 @@ namespace UI.FRM_ADMIN
                     Precio = string.IsNullOrEmpty(TbxPrecio.Text) ? 0 : decimal.Parse(TbxPrecio.Text),
                     Dimension = CbxDimension.Text,
                     Stock = 10, //Por defecto.
-                    Imagen = Imagen_Convertidor.ImgAHexa(TbxRutaProdImg.Text) != "Fallo." ? Imagen_Convertidor.ImgAHexa(TbxRutaProdImg.Text) : "Fracaso."
+                    Imagen = PctbxProdImg.Image != null ? Imagen_Convertidor.ImgAHexa(PctbxProdImg.Image) : new byte[0]
                 };
 
                 Generic_Validator<Productos>.ValidarPropiedades(producto);
@@ -147,6 +173,8 @@ namespace UI.FRM_ADMIN
                 MessageBox.Show("Producto creado exitosamente");
 
                 ReiniciarProductosCBX();
+
+                LlenarDGVProductos();
                 ObtenerProductosCBX();
             }
 
@@ -210,11 +238,11 @@ namespace UI.FRM_ADMIN
         {
             if (OfdImgCombo.ShowDialog() == DialogResult.OK)
             {
-                string rutaSVG = OfdImgCombo.FileName;
-                TbxRutaComboImg.Text = rutaSVG;
+                string rutaImagen = OfdImgCombo.FileName;
+                TbxRutaComboImg.Text = rutaImagen;
 
-                SvgDocument imagen = SvgDocument.Open(rutaSVG);
-                PctbxComboImg.Image = imagen.Draw();
+                Bitmap bitmap = new Bitmap(rutaImagen);
+                PctbxComboImg.Image = bitmap;
             }
         }
 
@@ -226,7 +254,7 @@ namespace UI.FRM_ADMIN
                 {
                     Nombre = TbxNombreCombo.Text,
                     Descripcion = TbxDescripcion.Text,
-                    Imagen = Imagen_Convertidor.ImgAHexa(TbxRutaComboImg.Text) != "Fallo." ? Imagen_Convertidor.ImgAHexa(TbxRutaComboImg.Text) : "Fracaso.",
+                    Imagen = PctbxComboImg.Image != null ? Imagen_Convertidor.ImgAHexa(PctbxComboImg.Image) : new byte[0],
                     IDMembresia = CbxMembresias.SelectedIndex == -1 ? 0 : (int)CbxMembresias.SelectedValue //Si no eligio valor, que ponga un '0'. Luego, el validador le mostrara el error.
                 };
 
@@ -247,7 +275,23 @@ namespace UI.FRM_ADMIN
             }
         }
 
-        
+        private void DgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 3)
+            {
+                Image imagen = (Image)DgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                Image imagenRedimensionada = new Bitmap(imagen, new Size(300, 300));
+
+                Form frmImagen = new Form
+                {
+                    BackgroundImage = imagenRedimensionada,
+                    BackgroundImageLayout = ImageLayout.Stretch,
+                    ClientSize = imagenRedimensionada.Size
+                };
+
+                frmImagen.ShowDialog();
+            }
+        }
 
         private void UC_Combos_Leave(object sender, EventArgs e)
         {
