@@ -25,7 +25,7 @@ namespace UI.Validators.Entity_Validators
             RuleFor(x => x.Sexo).NotEmpty().WithMessage("no puede estar vacio.");
 
             RuleFor(x => x.Fecha_Nacimiento).NotEqual(new DateTime(1111, 11, 11)).WithMessage("no puede estar vacio y ademas requiere de un formato valido.");
-            RuleFor(x => DateTime.Today.Year - x.Fecha_Nacimiento.Year).GreaterThan(18).WithMessage("debe ser una fecha de nacimiento de un mayor de edad.").OverridePropertyName("Fecha_Nacimiento");
+            RuleFor(x => DateTime.Today.Year - x.Fecha_Nacimiento.Year).GreaterThanOrEqualTo(18).WithMessage("debe ser una fecha de nacimiento de un mayor de edad.").OverridePropertyName("Fecha_Nacimiento");
 
             RuleFor(x => x.IDMembresia).NotEqual(0).WithMessage("no puede estar vacio.");
         }

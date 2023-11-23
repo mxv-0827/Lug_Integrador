@@ -52,6 +52,7 @@
             // 
             this.BtnCrearCodigo.BackColor = System.Drawing.Color.Transparent;
             this.BtnCrearCodigo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnCrearCodigo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnCrearCodigo.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.BtnCrearCodigo.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.BtnCrearCodigo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -59,6 +60,7 @@
             this.BtnCrearCodigo.FillColor = System.Drawing.Color.Red;
             this.BtnCrearCodigo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BtnCrearCodigo.ForeColor = System.Drawing.Color.White;
+            this.BtnCrearCodigo.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnCrearCodigo.Image = ((System.Drawing.Image)(resources.GetObject("BtnCrearCodigo.Image")));
             this.BtnCrearCodigo.Location = new System.Drawing.Point(184, 47);
             this.BtnCrearCodigo.Name = "BtnCrearCodigo";
