@@ -140,9 +140,6 @@ namespace UI.FRM_ADMIN
         //Peliculas y Generos.
         GenPeli_Transaction_BLL GenPeli_Transaction_BLL = new GenPeli_Transaction_BLL();
 
-        //Google Drive API
-        GoogleDrive_API googleDrive_API = new GoogleDrive_API();
-
         DataTable generosObtenidos; //Generos obtenidos desde la BD.
         List<Generos> generosAgregados = new List<Generos>(); //Generos que tendra la pelicula creada.
 
@@ -172,7 +169,6 @@ namespace UI.FRM_ADMIN
             ObtenerPeliculasCBX();
 
             //--------------------------------------------------------------------------------------------------------------
-            OfdImagenPeli.Filter = "Archivos SVG|*.svg";
             OfdTrailer.Filter = "Archivos MP4|*.mp4";
         }
 
@@ -228,11 +224,11 @@ namespace UI.FRM_ADMIN
         {
             if(OfdImagenPeli.ShowDialog() == DialogResult.OK)
             {
-                string rutaSVG = OfdImagenPeli.FileName;
-                TbxRutaPortada.Text = rutaSVG;
+                string rutaImagen = OfdImagenPeli.FileName;
+                TbxRutaPortada.Text = rutaImagen;
 
-                SvgDocument imagen = SvgDocument.Open(rutaSVG);
-                PctbxImagen.Image = imagen.Draw();
+                Bitmap bitmap = new Bitmap(rutaImagen);
+                PctbxImagen.Image = bitmap;
             }
         }
 
@@ -262,8 +258,8 @@ namespace UI.FRM_ADMIN
                     Descripcion = TbxDescripcion.Text,
                     Estreno = !DateTime.TryParseExact(TbxEstreno.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime estreno) ? new DateTime(1111, 11, 11) : DateTime.ParseExact(TbxEstreno.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture),
                     Duracion = new TimeSpan(horas, minutos, 0),
-                    //Portada = string.IsNullOrEmpty(TbxRutaPortada.Text) ? "Fracaso." : Imagen_Convertidor.ImgAHexa(TbxRutaPortada.Text),
-                    Trailer = string.IsNullOrEmpty(TbxRutaTrailer.Text) ? "" : googleDrive_API.SubirVideo(TbxRutaTrailer.Text),
+                    Portada = PctbxImagen.Image != null ? Imagen_Convertidor.ImgAHexa(PctbxImagen.Image) : new byte[0],
+                    Trailer = TbxRutaTrailer.Text,
                     IDRestriccion = CbxRestriccionEdad.SelectedIndex == -1 ? 0 : int.Parse(CbxRestriccionEdad.SelectedValue.ToString())
                 };
 

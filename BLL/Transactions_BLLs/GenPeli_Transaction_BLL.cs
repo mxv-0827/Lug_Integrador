@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BSL.Google_Drive;
 
 namespace BLL.Transactions_BLLs
 {
@@ -16,6 +17,8 @@ namespace BLL.Transactions_BLLs
         Base_BLL<Peliculas> Base_BLL_Peliculas = new Base_BLL<Peliculas>();
 
         Base_Mapper<GenerosEnPeliculas> Base_Mapper = new Base_Mapper<GenerosEnPeliculas>();
+
+        GoogleDrive_API GoogleDrive_API = new GoogleDrive_API();
 
         public int AgregarEntidad(Peliculas pelicula, List<Generos> listaGeneros)
         {
@@ -27,6 +30,7 @@ namespace BLL.Transactions_BLLs
 
                 transacciones_Gestor.IniciarTransaccion();
 
+                pelicula.Trailer = GoogleDrive_API.SubirVideo(pelicula.Trailer); //Previamente, la prop contiene la ruta del archivo. Luego, se actualiza por el link de Drive.
                 int cantPeliculasAfectadas = Base_BLL_Peliculas.AgregarEntidad(pelicula);
                 int cantGenPeliAfectadas = 0;
 

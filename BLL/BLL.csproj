@@ -80,6 +80,10 @@
       <Project>{79fbfdda-da9e-4ff0-8324-f119dca8ae0b}</Project>
       <Name>BE</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BSL\BSL.csproj">
+      <Project>{7dd645cb-b2e2-4dc3-a282-01a9204d3ff4}</Project>
+      <Name>BSL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{60db2601-dd1f-46f2-a1e5-10484c2d3f66}</Project>
       <Name>DAL</Name>
