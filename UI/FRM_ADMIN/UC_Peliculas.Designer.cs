@@ -359,7 +359,7 @@
             this.TbxFecha.Location = new System.Drawing.Point(787, 140);
             this.TbxFecha.Name = "TbxFecha";
             this.TbxFecha.PasswordChar = '\0';
-            this.TbxFecha.PlaceholderText = "";
+            this.TbxFecha.PlaceholderText = "dd/mm/YYYY";
             this.TbxFecha.SelectedText = "";
             this.TbxFecha.Size = new System.Drawing.Size(200, 36);
             this.TbxFecha.TabIndex = 27;

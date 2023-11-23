@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="uC_DatosPersonales1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAACHEAAAhxCAIAAADkMHSlAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
-        MAAA6mAAADqYAAAXcJy6UTwAAAAJcEhZcwAACxAAAAsQAa0jvXUAAP+WSURBVHhe7P2JetvIoS5q5/4v
+        MAAA6mAAADqYAAAXcJy6UTwAAAAJcEhZcwAACxEAAAsRAX9kX5EAAP+WSURBVHhe7P2JetvIoS5q5/4v
         6v/32WfvrE7Sk+d5bs+zJhLzqUKBJahAG7Tb7nQ67/t8C6EoAKTUEulVnwr1twEAAAAAAIA1OhUAAAAA
         AIB1OhUAAAAAAIB1OhUAAAAAAIB1OhUAAAAAAIB1OhUAAAAAAIB1OhUAAAAAAIB1OhUAAAAAAIB1OhUA
         AAAAAIB1OhUAAAAAAIB1OhUAAAAAAIB1OhUAAAAAAIB1OhUAAAAAAIB1OhUAAAAAAIB1OhUAAAAAAIB1

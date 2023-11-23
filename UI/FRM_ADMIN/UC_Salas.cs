@@ -126,6 +126,8 @@ namespace UI.FRM_ADMIN
                 CbxCapacidad.SelectedIndexChanged -= CbxCapacidad_SelectedIndexChanged;
                 CbxCapacidad.SelectedIndex = -1;
                 CbxCapacidad.SelectedIndexChanged += CbxCapacidad_SelectedIndexChanged;
+
+                TbxNombre.Clear();
             }
 
             catch (Exception ex)
