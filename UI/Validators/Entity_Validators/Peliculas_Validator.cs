@@ -22,7 +22,7 @@ namespace UI.Validators.Entity_Validators
             RuleFor(x => x.Duracion).NotEqual(new TimeSpan(0, 0, 0)).WithMessage("no puede estar vacio."); // 0 segundos = tiempo por default en caso de estar vacia.
             RuleFor(x => x.Duracion).LessThan(new TimeSpan(4, 0, 0)).WithMessage("no puede ser superior a 4 horas.");
 
-            RuleFor(x => x.Portada).NotEqual("Fracaso.").WithMessage("requiere de insertar una imagen.");
+            RuleFor(x => x.Portada).NotEmpty().WithMessage("de la pelicula debe de contener una imagen.");
 
             RuleFor(x => x.Trailer).NotEmpty().WithMessage("requiere de un link para visualizarlo.");
 

@@ -16,7 +16,7 @@ namespace BE
         public string Descripcion { get; set; }
         public DateTime Estreno { get; set; }
         public TimeSpan Duracion { get; set; } //HH:mm
-        public string Portada { get; set; }
+        public byte[] Portada { get; set; }
         public string Trailer { get; set; }
         public int IDRestriccion { get; set; }
 
@@ -31,7 +31,7 @@ namespace BE
             Descripcion = fila["Descripcion"].ToString();
             Estreno = DateTime.ParseExact(fila["Estreno"].ToString(), "dd/MM/yyyy H:mm:ss", CultureInfo.InvariantCulture);
             Duracion = TimeSpan.ParseExact(fila["Duracion"].ToString(), "hh\\:mm\\:ss", CultureInfo.InvariantCulture);
-            Portada = fila["Portada"].ToString();
+            Portada = (byte[])fila["Portada"];
             Trailer = fila["Trailer"].ToString();
             IDRestriccion = Convert.ToInt32(fila["IDRestriccion"]);
         }

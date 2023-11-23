@@ -36,10 +36,10 @@
             this.lblBienvenida = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.PnlMainContainer = new Guna.UI2.WinForms.Guna2Panel();
+            this.uC_Peliculas1 = new UI.FRM_ADMIN.UC_Peliculas();
             this.uC_Combos1 = new UI.FRM_ADMIN.UC_Combos();
             this.uC_Salas1 = new UI.FRM_ADMIN.UC_Salas();
             this.uC_Cupones1 = new UI.FRM_ADMIN.UC_Cupones();
-            this.uC_Peliculas1 = new UI.FRM_ADMIN.UC_Peliculas();
             this.guna2Panel1.SuspendLayout();
             this.PnlMainContainer.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +47,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.guna2Panel1.Controls.Add(this.BtnPeliculas);
             this.guna2Panel1.Controls.Add(this.BtnCombos);
             this.guna2Panel1.Controls.Add(this.BtnSalas);
@@ -55,7 +56,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(200, 488);
+            this.guna2Panel1.Size = new System.Drawing.Size(194, 488);
             this.guna2Panel1.TabIndex = 0;
             // 
             // BtnPeliculas
@@ -130,9 +131,9 @@
             // guna2Panel2
             // 
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel2.Location = new System.Drawing.Point(200, 0);
+            this.guna2Panel2.Location = new System.Drawing.Point(194, 0);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(629, 41);
+            this.guna2Panel2.Size = new System.Drawing.Size(635, 41);
             this.guna2Panel2.TabIndex = 1;
             // 
             // PnlMainContainer
@@ -142,42 +143,48 @@
             this.PnlMainContainer.Controls.Add(this.uC_Salas1);
             this.PnlMainContainer.Controls.Add(this.uC_Cupones1);
             this.PnlMainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlMainContainer.Location = new System.Drawing.Point(200, 41);
+            this.PnlMainContainer.Location = new System.Drawing.Point(194, 41);
             this.PnlMainContainer.Name = "PnlMainContainer";
-            this.PnlMainContainer.Size = new System.Drawing.Size(629, 447);
+            this.PnlMainContainer.Size = new System.Drawing.Size(635, 447);
             this.PnlMainContainer.TabIndex = 2;
+            // 
+            // uC_Peliculas1
+            // 
+            this.uC_Peliculas1.AutoScroll = true;
+            this.uC_Peliculas1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_Peliculas1.Location = new System.Drawing.Point(0, 0);
+            this.uC_Peliculas1.Name = "uC_Peliculas1";
+            this.uC_Peliculas1.Size = new System.Drawing.Size(635, 447);
+            this.uC_Peliculas1.TabIndex = 3;
             // 
             // uC_Combos1
             // 
+            this.uC_Combos1.AutoScroll = true;
+            this.uC_Combos1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.uC_Combos1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_Combos1.Location = new System.Drawing.Point(0, 0);
             this.uC_Combos1.Name = "uC_Combos1";
-            this.uC_Combos1.Size = new System.Drawing.Size(629, 447);
+            this.uC_Combos1.Size = new System.Drawing.Size(635, 447);
             this.uC_Combos1.TabIndex = 2;
             // 
             // uC_Salas1
             // 
+            this.uC_Salas1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.uC_Salas1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_Salas1.Location = new System.Drawing.Point(0, 0);
             this.uC_Salas1.Name = "uC_Salas1";
-            this.uC_Salas1.Size = new System.Drawing.Size(629, 447);
+            this.uC_Salas1.Size = new System.Drawing.Size(635, 447);
             this.uC_Salas1.TabIndex = 1;
             // 
             // uC_Cupones1
             // 
+            this.uC_Cupones1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.uC_Cupones1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.uC_Cupones1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_Cupones1.Location = new System.Drawing.Point(0, 0);
             this.uC_Cupones1.Name = "uC_Cupones1";
-            this.uC_Cupones1.Size = new System.Drawing.Size(629, 447);
+            this.uC_Cupones1.Size = new System.Drawing.Size(635, 447);
             this.uC_Cupones1.TabIndex = 0;
-            // 
-            // uC_Peliculas1
-            // 
-            this.uC_Peliculas1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_Peliculas1.Location = new System.Drawing.Point(0, 0);
-            this.uC_Peliculas1.Name = "uC_Peliculas1";
-            this.uC_Peliculas1.Size = new System.Drawing.Size(629, 447);
-            this.uC_Peliculas1.TabIndex = 3;
             // 
             // Frm_AdminDashboard
             // 
