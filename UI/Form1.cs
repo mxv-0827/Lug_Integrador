@@ -46,14 +46,17 @@ namespace UI
                 Generic_Validator<Credenciales>.ValidarPropiedades(credenciales); //Validacion de propiedades.
 
                 DataTable tabla = credenciales_BLL.IniciarSesion(credenciales);
-                DataRow usuarioLogueado = tabla.Rows[0];
-
-                usuario = (Usuarios)usuarioLogueado;
+                usuario = (Usuarios)tabla.Rows[0];
 
                 MessageBox.Show("Logueo exitoso");
 
                 if(usuario.IDRol == 1) //Formularios para clientes.
                 {
+                    Frm_Consumidor frm_Cliente = new Frm_Consumidor();
+                    frm_Cliente.Cliente = usuario;
+
+                    this.Hide();
+                    frm_Cliente.Show();
                 }
 
                 else //Formulario para admins.
