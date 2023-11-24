@@ -18,6 +18,14 @@ namespace UI
             InitializeComponent();
         }
 
+
         public Usuarios Cliente { get; set; }
+
+
+        private void BtnHome_Click(object sender, EventArgs e)
+        {
+            uC_Home1.BringToFront();
+            uC_Home1.Focus();
+        }
     }
 }
