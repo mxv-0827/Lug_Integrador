@@ -63,6 +63,12 @@ namespace UI.FRM_CLIENTE
                 Base_Transaction_BLL.CrearEntidades(usuario, credenciales);
 
                 MessageBox.Show("Registro exitoso");
+
+                Frm_Consumidor frm = new Frm_Consumidor();
+                frm.Cliente = usuario;
+
+                this.ParentForm.Hide();
+                frm.Show();
             }
 
             catch (Exception ex)

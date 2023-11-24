@@ -80,12 +80,13 @@
             this.TbxContra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TbxContra.Location = new System.Drawing.Point(334, 310);
             this.TbxContra.Name = "TbxContra";
-            this.TbxContra.PasswordChar = '\0';
+            this.TbxContra.PasswordChar = '●';
             this.TbxContra.PlaceholderText = "";
             this.TbxContra.SelectedText = "";
             this.TbxContra.Size = new System.Drawing.Size(200, 36);
             this.TbxContra.TabIndex = 36;
             this.TbxContra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TbxContra.UseSystemPasswordChar = true;
             // 
             // guna2HtmlLabel7
             // 
