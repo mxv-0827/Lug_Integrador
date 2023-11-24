@@ -152,6 +152,12 @@
     <Compile Include="FRM_CLIENTE\UC_DatosPersonales.Designer.cs">
       <DependentUpon>UC_DatosPersonales.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRM_CLIENTE\UC_Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FRM_CLIENTE\UC_Home.Designer.cs">
+      <DependentUpon>UC_Home.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_CLIENTE\UC_Membresias.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -202,8 +208,14 @@
     <EmbeddedResource Include="FRM_CLIENTE\UC_DatosPersonales.resx">
       <DependentUpon>UC_DatosPersonales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FRM_CLIENTE\UC_Home.resx">
+      <DependentUpon>UC_Home.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRM_CLIENTE\UC_Membresias.resx">
       <DependentUpon>UC_Membresias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Consumidor.resx">
+      <DependentUpon>Frm_Consumidor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Registro.resx">
       <DependentUpon>Frm_Registro.cs</DependentUpon>
