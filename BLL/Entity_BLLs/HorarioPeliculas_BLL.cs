@@ -17,5 +17,10 @@ namespace BLL.Entity_BLLs
         {
             return HorarioPeliculas_Mapper.ObtenerHorariosCoincidentes(fecha, IDSala);
         }
+
+        public DataTable ObtenerHorariosPorFechaYPelicula(int idPelicula)
+        {
+            return HorarioPeliculas_Mapper.ObtenerHorariosPorFechaYPelicula(idPelicula);
+        }
     }
 }
