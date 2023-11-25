@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="Extras\GestionHorarios.cs" />
     <Compile Include="Extras\Imagen_Convertidor.cs" />
+    <Compile Include="Extras\Oscurecimiento_Imagen.cs" />
     <Compile Include="Frm_AdminDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +146,12 @@
     </Compile>
     <Compile Include="FRM_ADMIN\UC_Salas.Designer.cs">
       <DependentUpon>UC_Salas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_CLIENTE\UC_Catalogo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FRM_CLIENTE\UC_Catalogo.Designer.cs">
+      <DependentUpon>UC_Catalogo.cs</DependentUpon>
     </Compile>
     <Compile Include="FRM_CLIENTE\UC_DatosPersonales.cs">
       <SubType>UserControl</SubType>
@@ -204,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_ADMIN\UC_Salas.resx">
       <DependentUpon>UC_Salas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_CLIENTE\UC_Catalogo.resx">
+      <DependentUpon>UC_Catalogo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_CLIENTE\UC_DatosPersonales.resx">
       <DependentUpon>UC_DatosPersonales.cs</DependentUpon>

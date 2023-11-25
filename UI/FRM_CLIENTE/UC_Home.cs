@@ -12,9 +12,18 @@ namespace UI.FRM_CLIENTE
 {
     public partial class UC_Home : UserControl
     {
+        public Timer timer;
+
         public UC_Home()
         {
             InitializeComponent();
+
+            timer = new Timer()
+            {
+                Interval = 6000
+            };
+
+            timer.Tick += TmrCambioImg_Tick;
         }
 
         int i = 1;
@@ -29,7 +38,7 @@ namespace UI.FRM_CLIENTE
 
         private void UC_Home_Enter(object sender, EventArgs e)
         {
-            TmrCambioImg.Start();
+            timer.Start();
         }
 
         private void TmrCambioImg_Tick(object sender, EventArgs e)
@@ -40,11 +49,6 @@ namespace UI.FRM_CLIENTE
             PctbxImgRotativas.Image = bitmap;
 
             i++;
-        }
-
-        private void UC_Home_Leave(object sender, EventArgs e)
-        {
-            TmrCambioImg.Stop();
         }
     }
 }
