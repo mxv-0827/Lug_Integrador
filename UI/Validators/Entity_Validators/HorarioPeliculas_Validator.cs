@@ -21,6 +21,8 @@ namespace UI.Validators.Entity_Validators
             RuleFor(x => x.Fecha).GreaterThan(DateTime.Today).WithMessage("requiere de una fecha superior a la actual.");
 
             RuleFor(x => x.HoraInicio).NotEqual(new TimeSpan(0, 0, 0)).WithMessage("requiere de tener un horario asignado.");
+
+            RuleFor(x => x.PrecioEntrada).NotEqual(0).WithMessage("no puede ser 0");
         }
     }
 }

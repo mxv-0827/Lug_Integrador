@@ -320,7 +320,8 @@ namespace UI.FRM_ADMIN
                     IDSala = CbxSala.SelectedIndex == -1 ? 0 : int.Parse(CbxSala.SelectedValue.ToString()),
                     IDPelicula = CbxPelicula.SelectedIndex == -1? 0 : int.Parse(CbxPelicula.SelectedValue.ToString()),
                     Fecha = DateTime.TryParseExact(TbxFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime estreno) ? DateTime.ParseExact(TbxFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture) : new DateTime(1111, 11, 11),
-                    HoraInicio = rdbHorarioSeleccionado != null ? TimeSpan.ParseExact(rdbHorarioSeleccionado.Text, "hh\\:mm", CultureInfo.InvariantCulture) : new TimeSpan(0, 0, 0)
+                    HoraInicio = rdbHorarioSeleccionado != null ? TimeSpan.ParseExact(rdbHorarioSeleccionado.Text, "hh\\:mm", CultureInfo.InvariantCulture) : new TimeSpan(0, 0, 0),
+                    PrecioEntrada = string.IsNullOrEmpty(TbxPrecioEntrada.Text) ? 0.00m : decimal.Parse(TbxPrecioEntrada.Text)
                 };
 
                 Generic_Validator<HorarioPeliculas>.ValidarPropiedades(horarioPelicula);
