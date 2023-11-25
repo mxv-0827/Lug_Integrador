@@ -36,6 +36,7 @@ namespace UI.FRM_CLIENTE
                 Tag = pelicula
             };
             pctbx.MouseEnter += PctbxPelicula_MouseEnter;
+            pctbx.MouseClick += PctbxPelicula_MouseClick;
             pctbx.MouseLeave += PctbxPelicula_MouseLeave;
 
             locationY += pctbx.Height + 6;
@@ -67,6 +68,7 @@ namespace UI.FRM_CLIENTE
             else locationY = 136;
         }
 
+        
 
         Peliculas pelicula;
 
@@ -117,6 +119,16 @@ namespace UI.FRM_CLIENTE
             pctbx.Controls.Add(lbl1);
             pctbx.Controls.Add(lbl2);
         }
+
+        private void PctbxPelicula_MouseClick(object sender, MouseEventArgs e)
+        {
+            Guna2PictureBox pctbx = (Guna2PictureBox)sender;
+            Frm_Compra frm = new Frm_Compra();
+            frm.Pelicula = (Peliculas)pctbx.Tag;
+
+            frm.ShowDialog();
+        }
+
 
         private void PctbxPelicula_MouseLeave(object sender, EventArgs e)
         {

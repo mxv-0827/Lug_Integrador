@@ -22,5 +22,16 @@ namespace DAL.Entity_Mappers
 
             return acceso.Leer("ObtenerHorariosCoincidentes", sqlProps.ToArray());
         }
+
+        public DataTable ObtenerHorariosPorFechaYPelicula(int idPelicula)
+        {
+            SqlParameter[] sqlProps = new SqlParameter[]
+            {
+                new SqlParameter("@Fecha", DateTime.Now),
+                new SqlParameter("@IDPelicula", idPelicula)
+            };
+
+            return acceso.Leer("ObtenerHorariosPorFechaYPelicula", sqlProps);
+        }
     }
 }

@@ -66,6 +66,7 @@
     <Compile Include="Base_BLL.cs" />
     <Compile Include="Entity_BLLs\Credenciales_BLL.cs" />
     <Compile Include="Entity_BLLs\Cupones_BLL.cs" />
+    <Compile Include="Entity_BLLs\Generos_BLL.cs" />
     <Compile Include="Entity_BLLs\HorarioPeliculas_BLL.cs" />
     <Compile Include="Entity_BLLs\Productos_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -34,12 +34,18 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.uC_Catalogo1 = new UI.FRM_CLIENTE.UC_Catalogo();
             this.uC_Home1 = new UI.FRM_CLIENTE.UC_Home();
+            this.BtnCompras = new Guna.UI2.WinForms.Guna2Button();
+            this.BtnConfig = new Guna.UI2.WinForms.Guna2Button();
+            this.BtnLogOut = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.BtnLogOut);
+            this.guna2Panel1.Controls.Add(this.BtnConfig);
+            this.guna2Panel1.Controls.Add(this.BtnCompras);
             this.guna2Panel1.Controls.Add(this.BtnCatalogo);
             this.guna2Panel1.Controls.Add(this.BtnHome);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -110,6 +116,48 @@
             this.uC_Home1.Size = new System.Drawing.Size(572, 450);
             this.uC_Home1.TabIndex = 0;
             // 
+            // BtnCompras
+            // 
+            this.BtnCompras.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnCompras.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnCompras.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnCompras.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnCompras.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnCompras.ForeColor = System.Drawing.Color.White;
+            this.BtnCompras.Location = new System.Drawing.Point(0, 188);
+            this.BtnCompras.Name = "BtnCompras";
+            this.BtnCompras.Size = new System.Drawing.Size(154, 40);
+            this.BtnCompras.TabIndex = 3;
+            this.BtnCompras.Text = "Mis compras";
+            // 
+            // BtnConfig
+            // 
+            this.BtnConfig.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnConfig.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnConfig.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnConfig.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnConfig.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnConfig.ForeColor = System.Drawing.Color.White;
+            this.BtnConfig.Location = new System.Drawing.Point(0, 234);
+            this.BtnConfig.Name = "BtnConfig";
+            this.BtnConfig.Size = new System.Drawing.Size(154, 40);
+            this.BtnConfig.TabIndex = 4;
+            this.BtnConfig.Text = "Configuracion";
+            // 
+            // BtnLogOut
+            // 
+            this.BtnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnLogOut.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnLogOut.ForeColor = System.Drawing.Color.White;
+            this.BtnLogOut.Location = new System.Drawing.Point(0, 407);
+            this.BtnLogOut.Name = "BtnLogOut";
+            this.BtnLogOut.Size = new System.Drawing.Size(154, 40);
+            this.BtnLogOut.TabIndex = 5;
+            this.BtnLogOut.Text = "Cerrar Sesion";
+            // 
             // Frm_Consumidor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,5 +182,8 @@
         private Guna.UI2.WinForms.Guna2Button BtnCatalogo;
         private FRM_CLIENTE.UC_Home uC_Home1;
         private FRM_CLIENTE.UC_Catalogo uC_Catalogo1;
+        private Guna.UI2.WinForms.Guna2Button BtnLogOut;
+        private Guna.UI2.WinForms.Guna2Button BtnConfig;
+        private Guna.UI2.WinForms.Guna2Button BtnCompras;
     }
 }
