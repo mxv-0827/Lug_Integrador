@@ -17,6 +17,7 @@ namespace BE
         public DateTime Fecha { get; set; }
         public TimeSpan HoraInicio { get; set; }
         public TimeSpan HoraFin { get; set; }
+        public decimal PrecioEntrada { get; set; }
 
 
         //Constructores
@@ -30,6 +31,7 @@ namespace BE
             Fecha = DateTime.ParseExact(fila["Fecha"].ToString(), "dd/MM/yyyy H:mm:ss", CultureInfo.InvariantCulture);
             HoraInicio = TimeSpan.ParseExact(fila["HoraInicio"].ToString(), "hh\\:mm\\:ss", CultureInfo.InvariantCulture);
             HoraFin = TimeSpan.ParseExact(fila["HoraFin"].ToString(), "hh\\:mm\\:ss", CultureInfo.InvariantCulture);
+            PrecioEntrada = Convert.ToDecimal(fila["PrecioEntrada"].ToString());
         }
 
 

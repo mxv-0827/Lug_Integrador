@@ -62,6 +62,8 @@
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2VSeparator1 = new Guna.UI2.WinForms.Guna2VSeparator();
+            this.TbxPrecioEntrada = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)(this.PctbxImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WmpTrailer)).BeginInit();
             this.SuspendLayout();
@@ -298,7 +300,7 @@
             this.CbxPelicula.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.CbxPelicula.Location = new System.Drawing.Point(1004, 56);
+            this.CbxPelicula.Location = new System.Drawing.Point(985, 56);
             this.CbxPelicula.Name = "CbxPelicula";
             this.CbxPelicula.Size = new System.Drawing.Size(200, 36);
             this.CbxPelicula.TabIndex = 39;
@@ -309,7 +311,7 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(1004, 37);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(985, 37);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(55, 17);
             this.guna2HtmlLabel2.TabIndex = 38;
@@ -328,7 +330,7 @@
             this.CbxSala.ItemHeight = 30;
             this.CbxSala.Items.AddRange(new object[] {
             "1"});
-            this.CbxSala.Location = new System.Drawing.Point(787, 56);
+            this.CbxSala.Location = new System.Drawing.Point(768, 56);
             this.CbxSala.Name = "CbxSala";
             this.CbxSala.Size = new System.Drawing.Size(200, 36);
             this.CbxSala.TabIndex = 37;
@@ -356,7 +358,7 @@
             this.TbxFecha.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TbxFecha.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.TbxFecha.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TbxFecha.Location = new System.Drawing.Point(787, 140);
+            this.TbxFecha.Location = new System.Drawing.Point(768, 140);
             this.TbxFecha.Name = "TbxFecha";
             this.TbxFecha.PasswordChar = '\0';
             this.TbxFecha.PlaceholderText = "dd/mm/YYYY";
@@ -388,7 +390,7 @@
             this.BtnAsignar.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAsignar.ForeColor = System.Drawing.Color.White;
             this.BtnAsignar.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BtnAsignar.Location = new System.Drawing.Point(1004, 140);
+            this.BtnAsignar.Location = new System.Drawing.Point(1202, 140);
             this.BtnAsignar.Name = "BtnAsignar";
             this.BtnAsignar.Size = new System.Drawing.Size(114, 36);
             this.BtnAsignar.TabIndex = 21;
@@ -529,12 +531,44 @@
             this.guna2VSeparator1.Size = new System.Drawing.Size(11, 570);
             this.guna2VSeparator1.TabIndex = 51;
             // 
+            // TbxPrecioEntrada
+            // 
+            this.TbxPrecioEntrada.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbxPrecioEntrada.DefaultText = "";
+            this.TbxPrecioEntrada.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TbxPrecioEntrada.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TbxPrecioEntrada.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxPrecioEntrada.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxPrecioEntrada.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxPrecioEntrada.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TbxPrecioEntrada.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TbxPrecioEntrada.Location = new System.Drawing.Point(985, 140);
+            this.TbxPrecioEntrada.Name = "TbxPrecioEntrada";
+            this.TbxPrecioEntrada.PasswordChar = '\0';
+            this.TbxPrecioEntrada.PlaceholderText = "";
+            this.TbxPrecioEntrada.SelectedText = "";
+            this.TbxPrecioEntrada.Size = new System.Drawing.Size(200, 36);
+            this.TbxPrecioEntrada.TabIndex = 53;
+            // 
+            // guna2HtmlLabel10
+            // 
+            this.guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel10.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel10.ForeColor = System.Drawing.Color.White;
+            this.guna2HtmlLabel10.Location = new System.Drawing.Point(985, 119);
+            this.guna2HtmlLabel10.Name = "guna2HtmlLabel10";
+            this.guna2HtmlLabel10.Size = new System.Drawing.Size(113, 17);
+            this.guna2HtmlLabel10.TabIndex = 52;
+            this.guna2HtmlLabel10.Text = "Precio de entrada:";
+            // 
             // UC_Peliculas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Controls.Add(this.TbxPrecioEntrada);
+            this.Controls.Add(this.guna2HtmlLabel10);
             this.Controls.Add(this.guna2VSeparator1);
             this.Controls.Add(this.guna2HtmlLabel7);
             this.Controls.Add(this.guna2HtmlLabel6);
@@ -613,5 +647,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2VSeparator guna2VSeparator1;
+        private Guna.UI2.WinForms.Guna2TextBox TbxPrecioEntrada;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
     }
 }
