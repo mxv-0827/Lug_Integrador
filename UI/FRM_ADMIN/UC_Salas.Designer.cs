@@ -162,6 +162,7 @@
             this.TbxPantalla.Name = "TbxPantalla";
             this.TbxPantalla.PasswordChar = '\0';
             this.TbxPantalla.PlaceholderText = "";
+            this.TbxPantalla.ReadOnly = true;
             this.TbxPantalla.SelectedText = "";
             this.TbxPantalla.Size = new System.Drawing.Size(301, 39);
             this.TbxPantalla.TabIndex = 6;

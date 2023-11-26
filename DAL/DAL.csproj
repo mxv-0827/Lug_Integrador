@@ -66,8 +66,11 @@
     <Compile Include="BD_Conexion.cs" />
     <Compile Include="Base_Mapper.cs" />
     <Compile Include="Entity_Mappers\Asientos_Mapper.cs" />
+    <Compile Include="Entity_Mappers\Boletos_Mapper.cs" />
+    <Compile Include="Entity_Mappers\Carrito_Mapper.cs" />
     <Compile Include="Entity_Mappers\Credenciales_Mapper.cs" />
     <Compile Include="Entity_Mappers\Cupones_Mapper.cs" />
+    <Compile Include="Entity_Mappers\DisponibilidadAsientos_Mapper.cs" />
     <Compile Include="Entity_Mappers\Generos_Mapper.cs" />
     <Compile Include="Entity_Mappers\HorarioPeliculas_Mapper.cs" />
     <Compile Include="Entity_Mappers\Peliculas_Mapper.cs" />

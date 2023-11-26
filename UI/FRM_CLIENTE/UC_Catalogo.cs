@@ -22,6 +22,10 @@ namespace UI.FRM_CLIENTE
             InitializeComponent();
         }
 
+
+        public Usuarios Cliente { get; set; }
+
+
         int locationX = 24, locationY = 136;
         private void CrearControles(Peliculas pelicula)
         {
@@ -123,8 +127,12 @@ namespace UI.FRM_CLIENTE
         private void PctbxPelicula_MouseClick(object sender, MouseEventArgs e)
         {
             Guna2PictureBox pctbx = (Guna2PictureBox)sender;
-            Frm_Compra frm = new Frm_Compra();
-            frm.Pelicula = (Peliculas)pctbx.Tag;
+
+            Frm_Compra frm = new Frm_Compra
+            {
+                Pelicula = (Peliculas)pctbx.Tag,
+                Usuario = Cliente
+            };
 
             frm.ShowDialog();
         }

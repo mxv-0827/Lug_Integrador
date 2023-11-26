@@ -20,13 +20,15 @@ namespace UI
 
 
         public Peliculas Pelicula { get; set; }
-
+        public Usuarios Usuario { get; set; }
 
         private void Frm_Compra_Load(object sender, EventArgs e)
         {
             uC_Pelicula1.Pelicula = Pelicula;
             uC_Pelicula1.BringToFront();
             uC_Pelicula1.Focus();
+
+            uC_HorarioPelicula1.Usuario = Usuario;
         }
     }
 }
