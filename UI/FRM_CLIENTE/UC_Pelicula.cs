@@ -153,8 +153,7 @@ namespace UI.FRM_CLIENTE
         {
             if(e.RowIndex >= 0)
             {
-                Guna2DataGridView dgv = (Guna2DataGridView)sender;
-                DataGridViewRow row = dgv.Rows[e.RowIndex];
+                DataGridViewRow row = DgvHorariosPelicula.Rows[e.RowIndex];
 
                 Frm_Compra frm = (Frm_Compra)this.Parent;
 

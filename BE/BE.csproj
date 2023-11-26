@@ -64,7 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asientos.cs" />
+    <Compile Include="Boletos.cs" />
+    <Compile Include="Carrito.cs" />
     <Compile Include="Combos.cs" />
+    <Compile Include="Compras.cs" />
     <Compile Include="Credenciales.cs" />
     <Compile Include="Cupones.cs" />
     <Compile Include="Descuentos.cs" />

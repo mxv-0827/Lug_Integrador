@@ -35,6 +35,7 @@ namespace UI.FRM_ADMIN
                 Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold),
                 ForeColor = Color.Black,
                 FillColor = Color.White,
+                ReadOnly = true,
                 MinimumSize = new Size(35, 35),
             };
 

@@ -27,6 +27,8 @@ namespace UI
         {
             uC_Home1.BringToFront();
             uC_Home1.Focus();
+
+            uC_Catalogo1.Cliente = Cliente;
         }
 
         private void BtnHome_Click(object sender, EventArgs e)
