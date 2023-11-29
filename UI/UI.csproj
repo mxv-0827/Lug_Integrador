@@ -153,6 +153,12 @@
     <Compile Include="FRM_CLIENTE\UC_Catalogo.Designer.cs">
       <DependentUpon>UC_Catalogo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRM_CLIENTE\UC_ComprasCliente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FRM_CLIENTE\UC_ComprasCliente.Designer.cs">
+      <DependentUpon>UC_ComprasCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_CLIENTE\UC_DatosPersonales.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -238,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_CLIENTE\UC_Catalogo.resx">
       <DependentUpon>UC_Catalogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_CLIENTE\UC_ComprasCliente.resx">
+      <DependentUpon>UC_ComprasCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_CLIENTE\UC_DatosPersonales.resx">
       <DependentUpon>UC_DatosPersonales.cs</DependentUpon>

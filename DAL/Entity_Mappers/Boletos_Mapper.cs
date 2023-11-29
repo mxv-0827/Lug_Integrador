@@ -16,5 +16,15 @@ namespace DAL.Entity_Mappers
             List<SqlParameter> sqlProp = new List<SqlParameter> { new SqlParameter("@Tabla", "Boletos") };
             return (int)acceso.ObtenerDato("ObtenerCantidadRegistros", sqlProp.ToArray());
         }
+
+        public int ObtenerCantBoletosPorIDCompra(int idCompra)
+        {
+            SqlParameter[] sqlProp = new SqlParameter[]
+            {
+                new SqlParameter("@IDCompra", idCompra)
+            };
+
+            return (int)acceso.ObtenerDato("ObtenerCantidadBoletosPorIDCompra", sqlProp);
+        }
     }
 }

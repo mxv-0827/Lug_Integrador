@@ -28,27 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.CbxPeliculas = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.BtnReestablecer = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
-            // guna2ComboBox1
+            // CbxPeliculas
             // 
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Items.AddRange(new object[] {
+            this.CbxPeliculas.BackColor = System.Drawing.Color.Transparent;
+            this.CbxPeliculas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CbxPeliculas.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbxPeliculas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxPeliculas.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CbxPeliculas.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CbxPeliculas.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.CbxPeliculas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.CbxPeliculas.ItemHeight = 30;
+            this.CbxPeliculas.Items.AddRange(new object[] {
             "  "});
-            this.guna2ComboBox1.Location = new System.Drawing.Point(143, 66);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(276, 36);
-            this.guna2ComboBox1.TabIndex = 0;
+            this.CbxPeliculas.Location = new System.Drawing.Point(143, 66);
+            this.CbxPeliculas.Name = "CbxPeliculas";
+            this.CbxPeliculas.Size = new System.Drawing.Size(276, 36);
+            this.CbxPeliculas.TabIndex = 0;
+            this.CbxPeliculas.SelectedIndexChanged += new System.EventHandler(this.CbxPeliculas_SelectedIndexChanged);
             // 
             // guna2HtmlLabel1
             // 
@@ -60,17 +62,38 @@
             this.guna2HtmlLabel1.TabIndex = 1;
             this.guna2HtmlLabel1.Text = "Busca una pelicula!";
             // 
+            // BtnReestablecer
+            // 
+            this.BtnReestablecer.BorderRadius = 3;
+            this.BtnReestablecer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnReestablecer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnReestablecer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnReestablecer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnReestablecer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnReestablecer.FillColor = System.Drawing.Color.BlueViolet;
+            this.BtnReestablecer.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnReestablecer.ForeColor = System.Drawing.Color.White;
+            this.BtnReestablecer.HoverState.FillColor = System.Drawing.Color.Indigo;
+            this.BtnReestablecer.Location = new System.Drawing.Point(441, 66);
+            this.BtnReestablecer.Name = "BtnReestablecer";
+            this.BtnReestablecer.Size = new System.Drawing.Size(105, 36);
+            this.BtnReestablecer.TabIndex = 2;
+            this.BtnReestablecer.Text = "Reestablecer";
+            this.BtnReestablecer.Click += new System.EventHandler(this.BtnReestablecer_Click);
+            // 
             // UC_Catalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.BtnReestablecer);
             this.Controls.Add(this.guna2HtmlLabel1);
-            this.Controls.Add(this.guna2ComboBox1);
+            this.Controls.Add(this.CbxPeliculas);
             this.Name = "UC_Catalogo";
             this.Size = new System.Drawing.Size(566, 450);
             this.Enter += new System.EventHandler(this.UC_Catalogo_Enter);
+            this.Leave += new System.EventHandler(this.UC_Catalogo_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,7 +101,8 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
+        private Guna.UI2.WinForms.Guna2ComboBox CbxPeliculas;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2Button BtnReestablecer;
     }
 }

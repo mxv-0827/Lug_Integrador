@@ -62,6 +62,8 @@
             this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.LblPelicula = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.TbxCupon = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.CterDisposicionAsientos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctbxSalida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
@@ -146,7 +148,6 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.DgvBoletos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvBoletos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DgvBoletos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -166,7 +167,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DgvBoletos.DefaultCellStyle = dataGridViewCellStyle3;
             this.DgvBoletos.GridColor = System.Drawing.Color.White;
-            this.DgvBoletos.Location = new System.Drawing.Point(20, 253);
+            this.DgvBoletos.Location = new System.Drawing.Point(20, 235);
             this.DgvBoletos.Name = "DgvBoletos";
             this.DgvBoletos.ReadOnly = true;
             this.DgvBoletos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -217,7 +218,6 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.DgvAlimentos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.DgvAlimentos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DgvAlimentos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -280,7 +280,7 @@
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(72, 71);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(72, 60);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(32, 17);
             this.guna2HtmlLabel1.TabIndex = 9;
@@ -298,7 +298,7 @@
             this.TbxSala.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.TbxSala.ForeColor = System.Drawing.Color.Black;
             this.TbxSala.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.TbxSala.Location = new System.Drawing.Point(72, 92);
+            this.TbxSala.Location = new System.Drawing.Point(72, 81);
             this.TbxSala.Name = "TbxSala";
             this.TbxSala.PasswordChar = '\0';
             this.TbxSala.PlaceholderText = "";
@@ -320,7 +320,7 @@
             this.TbxFecha.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.TbxFecha.ForeColor = System.Drawing.Color.Black;
             this.TbxFecha.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.TbxFecha.Location = new System.Drawing.Point(214, 92);
+            this.TbxFecha.Location = new System.Drawing.Point(214, 81);
             this.TbxFecha.Name = "TbxFecha";
             this.TbxFecha.PasswordChar = '\0';
             this.TbxFecha.PlaceholderText = "";
@@ -334,7 +334,7 @@
             // 
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(214, 71);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(214, 60);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(40, 17);
             this.guna2HtmlLabel2.TabIndex = 11;
@@ -352,7 +352,7 @@
             this.TbxHoraInicio.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.TbxHoraInicio.ForeColor = System.Drawing.Color.Black;
             this.TbxHoraInicio.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.TbxHoraInicio.Location = new System.Drawing.Point(72, 162);
+            this.TbxHoraInicio.Location = new System.Drawing.Point(72, 151);
             this.TbxHoraInicio.Name = "TbxHoraInicio";
             this.TbxHoraInicio.PasswordChar = '\0';
             this.TbxHoraInicio.PlaceholderText = "";
@@ -366,7 +366,7 @@
             // 
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(72, 141);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(72, 130);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(92, 17);
             this.guna2HtmlLabel3.TabIndex = 13;
@@ -386,7 +386,7 @@
             this.TbxHoraCierre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             this.TbxHoraCierre.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
             this.TbxHoraCierre.IconRightCursor = System.Windows.Forms.Cursors.Hand;
-            this.TbxHoraCierre.Location = new System.Drawing.Point(214, 162);
+            this.TbxHoraCierre.Location = new System.Drawing.Point(214, 151);
             this.TbxHoraCierre.Name = "TbxHoraCierre";
             this.TbxHoraCierre.PasswordChar = '\0';
             this.TbxHoraCierre.PlaceholderText = "";
@@ -400,7 +400,7 @@
             // 
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(214, 141);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(214, 130);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             this.guna2HtmlLabel4.Size = new System.Drawing.Size(92, 17);
             this.guna2HtmlLabel4.TabIndex = 15;
@@ -513,9 +513,9 @@
             this.BtnCompra.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCompra.ForeColor = System.Drawing.Color.White;
             this.BtnCompra.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.BtnCompra.Location = new System.Drawing.Point(18, 460);
+            this.BtnCompra.Location = new System.Drawing.Point(188, 469);
             this.BtnCompra.Name = "BtnCompra";
-            this.BtnCompra.Size = new System.Drawing.Size(105, 45);
+            this.BtnCompra.Size = new System.Drawing.Size(105, 36);
             this.BtnCompra.TabIndex = 23;
             this.BtnCompra.Text = "Realizar compra";
             this.BtnCompra.Click += new System.EventHandler(this.BtnCompra_Click);
@@ -532,9 +532,9 @@
             this.BtnProductos.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnProductos.ForeColor = System.Drawing.Color.White;
             this.BtnProductos.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.BtnProductos.Location = new System.Drawing.Point(299, 460);
+            this.BtnProductos.Location = new System.Drawing.Point(299, 469);
             this.BtnProductos.Name = "BtnProductos";
-            this.BtnProductos.Size = new System.Drawing.Size(105, 45);
+            this.BtnProductos.Size = new System.Drawing.Size(105, 36);
             this.BtnProductos.TabIndex = 24;
             this.BtnProductos.Text = "Añadir comida";
             this.BtnProductos.Click += new System.EventHandler(this.BtnProductos_Click);
@@ -543,7 +543,7 @@
             // 
             this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel8.Location = new System.Drawing.Point(18, 220);
+            this.guna2HtmlLabel8.Location = new System.Drawing.Point(18, 202);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
             this.guna2HtmlLabel8.Size = new System.Drawing.Size(130, 27);
             this.guna2HtmlLabel8.TabIndex = 25;
@@ -569,11 +569,45 @@
             this.LblPelicula.TabIndex = 27;
             this.LblPelicula.Text = "guna2HtmlLabel1";
             // 
+            // TbxCupon
+            // 
+            this.TbxCupon.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TbxCupon.DefaultText = "";
+            this.TbxCupon.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TbxCupon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TbxCupon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxCupon.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TbxCupon.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.TbxCupon.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TbxCupon.ForeColor = System.Drawing.Color.Black;
+            this.TbxCupon.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.TbxCupon.Location = new System.Drawing.Point(20, 469);
+            this.TbxCupon.Name = "TbxCupon";
+            this.TbxCupon.PasswordChar = '\0';
+            this.TbxCupon.PlaceholderText = "Opcional";
+            this.TbxCupon.ReadOnly = true;
+            this.TbxCupon.SelectedText = "";
+            this.TbxCupon.Size = new System.Drawing.Size(136, 36);
+            this.TbxCupon.TabIndex = 29;
+            this.TbxCupon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // guna2HtmlLabel10
+            // 
+            this.guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel10.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel10.Location = new System.Drawing.Point(20, 448);
+            this.guna2HtmlLabel10.Name = "guna2HtmlLabel10";
+            this.guna2HtmlLabel10.Size = new System.Drawing.Size(47, 17);
+            this.guna2HtmlLabel10.TabIndex = 28;
+            this.guna2HtmlLabel10.Text = "Cupon:";
+            // 
             // UC_HorarioPelicula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.TbxCupon);
+            this.Controls.Add(this.guna2HtmlLabel10);
             this.Controls.Add(this.LblPelicula);
             this.Controls.Add(this.guna2HtmlLabel9);
             this.Controls.Add(this.guna2HtmlLabel8);
@@ -636,6 +670,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
         private Guna.UI2.WinForms.Guna2HtmlLabel LblPelicula;
-        private Guna.UI2.WinForms.Guna2DataGridViewStyler guna2DataGridViewStyler1;
+        private Guna.UI2.WinForms.Guna2TextBox TbxCupon;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
     }
 }

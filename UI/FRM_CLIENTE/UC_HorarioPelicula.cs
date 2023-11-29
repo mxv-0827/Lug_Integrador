@@ -36,8 +36,10 @@ namespace UI.FRM_CLIENTE
         Base_BLL<Peliculas> Base_BLL_Peliculas = new Base_BLL<Peliculas>();
         Base_BLL<Productos> Base_BLL_Productos = new Base_BLL<Productos>();
         Base_BLL<Combos> Base_BLL_Combos = new Base_BLL<Combos>();
+        Base_BLL<Descuentos> Base_BLL_Descuentos = new Base_BLL<Descuentos>();
 
 
+        Cupones_BLL Cupones_BLL = new Cupones_BLL();
         DisponibilidadAsientos_BLL DisponibilidadAsientos_BLL = new DisponibilidadAsientos_BLL();
 
 
@@ -167,11 +169,28 @@ namespace UI.FRM_CLIENTE
         {
             try
             {
+                if (!string.IsNullOrEmpty(TbxCupon.Text))
+                {
+                    DataTable tableCupon = Cupones_BLL.ObtenerCuponPorID(TbxCupon.Text);
+                    if (tableCupon.Rows.Count == 0) throw new Exception("No existe el cupon introducido.");
+
+                    else
+                    {
+                        Cupones cupon = (Cupones)tableCupon.Rows[0];
+                        int descuento = int.Parse(Base_BLL_Descuentos.ObtenerEntidadPorId("Descuentos", cupon.IDDescuento).Rows[0]["Porcentaje"].ToString());
+
+                        //A cada boleto y producto adquirido se le implementa el descuento del cupon, si es que existe.
+                        lstBoletos.ForEach(boleto => boleto.Precio -= boleto.Precio * (descuento / 100));
+                        LstCarrito.ForEach(carrito => carrito.Subtotal -= carrito.Subtotal * (descuento / 100));
+                    }
+                }
+
                 compra = new Compras
                 {
                     Usuario_DNI = Usuario.DNI,
                     Fecha_Compra = DateTime.Now,
-                    IDHoraPelicula = HorarioPelicula.ID
+                    IDHoraPelicula = HorarioPelicula.ID,
+                    IDCupon = !string.IsNullOrEmpty(TbxCupon.Text) ? TbxCupon.Text : null
                 };
 
                 if (lstBoletos.Count == 0) throw new Exception("Debe de al menos tener cargado un boleto.");
@@ -187,7 +206,6 @@ namespace UI.FRM_CLIENTE
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                this.SendToBack();
             }
         }
 
