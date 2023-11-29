@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Entity_Mappers;
+using System.Data;
+using BLL.Entity_BLLs;
 
 namespace BLL.Transactions_BLLs
 {
@@ -20,6 +22,7 @@ namespace BLL.Transactions_BLLs
         Base_BLL<DisponibilidadAsientos> Base_BLL_DisponibilidadAsientos = new Base_BLL<DisponibilidadAsientos>();
         Base_BLL<Productos> Base_BLL_Productos = new Base_BLL<Productos>();
 
+        ProductosEnCombo_BLL ProductosEnCombo_BLL = new ProductosEnCombo_BLL();
 
         Boletos_Mapper Boletos_Mapper = new Boletos_Mapper();
         Carrito_Mapper Carrito_Mapper = new Carrito_Mapper();
@@ -29,6 +32,7 @@ namespace BLL.Transactions_BLLs
         {
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
 
+            //Los descuentos de la entrada, productos y combos ya fueron aplicados previamente.
             try
             {
                 Base_BLL_Compras.AsignarID(compra);
@@ -41,10 +45,12 @@ namespace BLL.Transactions_BLLs
 
                 transacciones_Gestor.IniciarTransaccion();
  
+                //Agregamos entidad compra.
                 int cantComprasAfectadas = Base_BLL_Compras.AgregarEntidad(compra);
                 int cantBoletosAfectados = 0;
                 int cantCarritoAfectados = 0;
 
+                //Agregamos los boletos.
                 for(int i = 0; i < lstBoletos.Count; i++)
                 {
                     Boletos boleto = lstBoletos[i];
@@ -55,6 +61,7 @@ namespace BLL.Transactions_BLLs
                     totalidadBoletos++;
                 }
 
+                //Agregamos los productos y combos comprados.
                 for (int i = 0; i < lstCarrito.Count; i++)
                 {
                     Carrito carrito = lstCarrito[i];
@@ -87,19 +94,43 @@ namespace BLL.Transactions_BLLs
                 if (disponibilidadAsientosAfectados < lstBoletos.Count) throw new Exception();
 
 
-                //Actualizamos el stock de los productos adquiridos en el carrito.
+                //Actualizamos el stock de los productos y combos adquiridos en el carrito.
                 int productosAfectados = 0;
+                int prodEnComb = 0;
 
                 foreach (Carrito carrito in lstCarrito)
                 {
-                    Productos producto = (Productos)Base_BLL_Productos.ObtenerEntidadPorId("Productos", carrito.IDProducto).Rows[0];
-                    producto.Stock -= carrito.Cantidad;
+                    if(carrito.IDProducto != null)
+                    {
+                        Productos producto = (Productos)Base_BLL_Productos.ObtenerEntidadPorId("Productos", (int)carrito.IDProducto).Rows[0];
+                        producto.Stock -= carrito.Cantidad;
 
-                    Base_BLL_Productos.ModificarEntidad(producto);
-                    productosAfectados++;
+                        Base_BLL_Productos.ModificarEntidad(producto);
+
+                        productosAfectados++;
+                    }
+
+                    else
+                    {
+                        DataTable tableProdEnComb = ProductosEnCombo_BLL.ObteneRegistrosPorIDCombo((int)carrito.IDCombo);
+                        prodEnComb += tableProdEnComb.Rows.Count;
+
+                        int i = 0;
+                        foreach(DataRow row in tableProdEnComb.Rows) //Obtenemos todos los productos que conforman al combo y modificamos su stock..
+                        {
+                            Productos producto = (Productos)Base_BLL_Productos.ObtenerEntidadPorId("Productos", int.Parse(tableProdEnComb.Rows[i]["IDProducto"].ToString())).Rows[0];
+                            producto.Stock -= carrito.Cantidad;
+
+                            Base_BLL_Productos.ModificarEntidad(producto);
+
+                            productosAfectados++;
+                            i++;
+                        }
+                    }
+
                 }
 
-                if (productosAfectados < lstCarrito.Count) throw new Exception();
+                if (productosAfectados < lstCarrito.Count + prodEnComb) throw new Exception();
 
 
                 transacciones_Gestor.ConfirmarTransaccion();
@@ -109,7 +140,7 @@ namespace BLL.Transactions_BLLs
             catch (Exception)
             {
                 transacciones_Gestor.RevertirTransaccion();
-                throw new Exception("No puedo agregarse la pelicula correctamente.");
+                throw new Exception("No pudo registrarse la compra correctamente.");
             }
         }
     }

@@ -28,9 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.uC_Pelicula1 = new UI.FRM_CLIENTE.UC_Pelicula();
             this.uC_HorarioPelicula1 = new UI.FRM_CLIENTE.UC_HorarioPelicula();
+            this.uC_Pelicula1 = new UI.FRM_CLIENTE.UC_Pelicula();
             this.SuspendLayout();
+            // 
+            // uC_HorarioPelicula1
+            // 
+            this.uC_HorarioPelicula1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.uC_HorarioPelicula1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_HorarioPelicula1.HorarioPelicula = null;
+            this.uC_HorarioPelicula1.Location = new System.Drawing.Point(0, 0);
+            this.uC_HorarioPelicula1.Name = "uC_HorarioPelicula1";
+            this.uC_HorarioPelicula1.Size = new System.Drawing.Size(1030, 525);
+            this.uC_HorarioPelicula1.TabIndex = 1;
+            this.uC_HorarioPelicula1.Usuario = null;
+            this.uC_HorarioPelicula1.Enter += new System.EventHandler(this.uC_HorarioPelicula1_Enter);
             // 
             // uC_Pelicula1
             // 
@@ -41,14 +53,6 @@
             this.uC_Pelicula1.Pelicula = null;
             this.uC_Pelicula1.Size = new System.Drawing.Size(1030, 525);
             this.uC_Pelicula1.TabIndex = 0;
-            // 
-            // uC_HorarioPelicula1
-            // 
-            this.uC_HorarioPelicula1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_HorarioPelicula1.Location = new System.Drawing.Point(0, 0);
-            this.uC_HorarioPelicula1.Name = "uC_HorarioPelicula1";
-            this.uC_HorarioPelicula1.Size = new System.Drawing.Size(1030, 525);
-            this.uC_HorarioPelicula1.TabIndex = 1;
             // 
             // Frm_Compra
             // 
