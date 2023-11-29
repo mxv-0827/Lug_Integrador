@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace DAL.Entity_Mappers
 {
@@ -30,6 +31,17 @@ namespace DAL.Entity_Mappers
             }
 
             return codigoCupon;
+        }
+
+
+        public DataTable ObtenerCuponPorID(string id)
+        {
+            SqlParameter[] sqlProp = new SqlParameter[]
+            {
+                new SqlParameter("@ID", id)
+            };
+
+            return acceso.Leer("ObtenerCuponPorID", sqlProp);
         }
     }
 }

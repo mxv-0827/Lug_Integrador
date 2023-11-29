@@ -83,6 +83,8 @@ namespace UI.FRM_CLIENTE
             LblFecha.Text = $"{Pelicula.Estreno.Day}/{Pelicula.Estreno.Month}/{Pelicula.Estreno.Year}";
             LblDuracion.Text = $"{Pelicula.Duracion.TotalMinutes} minutos";
             TbxDescripcion.Text = Pelicula.Descripcion;
+            WmpTrailer.URL = Pelicula.Trailer;
+            WmpTrailer.close();
 
             DataTable tableGeneros = Generos_BLL.ObtenerGenerosPorIdPelicula(Pelicula.ID);
             tableGeneros.Columns.Add("NombreGenero", typeof(string));
@@ -127,6 +129,7 @@ namespace UI.FRM_CLIENTE
 
                 DgvHorariosPelicula.DataSource = null;
                 DgvHorariosPelicula.DataSource = lstHorariosModificado;
+                DgvHorariosPelicula.Columns["Precio"].Visible = false;
                 DgvHorariosPelicula.ClearSelection();
 
                 int counter = 0;
@@ -160,9 +163,16 @@ namespace UI.FRM_CLIENTE
                 UC_HorarioPelicula uc_horarioPelicula =  (UC_HorarioPelicula)frm.Controls.Find("uC_HorarioPelicula1", true).First();
                 uc_horarioPelicula.HorarioPelicula = (HorarioPeliculas)row.Tag;
 
+                WmpTrailer.close();
+
                 uc_horarioPelicula.BringToFront();
                 uc_horarioPelicula.Focus();
             }
+        }
+
+        private void UC_Pelicula_Leave(object sender, EventArgs e)
+        {
+            WmpTrailer.close();
         }
     }
 }

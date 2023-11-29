@@ -68,6 +68,7 @@
     <Compile Include="Entity_Mappers\Asientos_Mapper.cs" />
     <Compile Include="Entity_Mappers\Boletos_Mapper.cs" />
     <Compile Include="Entity_Mappers\Carrito_Mapper.cs" />
+    <Compile Include="Entity_Mappers\Compras_Mapper.cs" />
     <Compile Include="Entity_Mappers\Credenciales_Mapper.cs" />
     <Compile Include="Entity_Mappers\Cupones_Mapper.cs" />
     <Compile Include="Entity_Mappers\DisponibilidadAsientos_Mapper.cs" />

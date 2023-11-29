@@ -29,9 +29,16 @@ namespace UI.FRM_CLIENTE
         int locationX = 24, locationY = 136;
         private void CrearControles(Peliculas pelicula)
         {
-            Guna2PictureBox pctbx = new Guna2PictureBox
+            Guna2Panel pnl = new Guna2Panel
             {
                 Location = new Point(locationX, locationY),
+                Size = new Size(198, 319),
+                UseTransparentBackground = true
+            };
+
+            Guna2PictureBox pctbx = new Guna2PictureBox
+            {
+                Location = new Point(0, 0),
                 Size = new Size(198, 255),
                 Image = Imagen_Convertidor.HexaAImg(pelicula.Portada),
                 InitialImage = Imagen_Convertidor.HexaAImg(pelicula.Portada),
@@ -43,13 +50,11 @@ namespace UI.FRM_CLIENTE
             pctbx.MouseClick += PctbxPelicula_MouseClick;
             pctbx.MouseLeave += PctbxPelicula_MouseLeave;
 
-            locationY += pctbx.Height + 6;
-
             Guna2TextBox tbx = new Guna2TextBox
             {
                 Font = new Font("Segoe UI Black", 9f, FontStyle.Bold),
                 BorderThickness = 0,
-                Location = new Point(locationX, locationY),
+                Location = new Point(0, pctbx.Height + 6),
                 Size = new Size(198, 58),
                 Multiline = true,
                 ReadOnly = true,
@@ -58,18 +63,20 @@ namespace UI.FRM_CLIENTE
                 ForeColor = Color.Black
             };
 
-            this.Controls.Add(pctbx);
-            this.Controls.Add(tbx);
+            pnl.Controls.Add(pctbx);
+            pnl.Controls.Add(tbx);
 
-            locationX += pctbx.Width + 120;
+            this.Controls.Add(pnl);
+
+            locationX += pnl.Width + 120;
 
             if (locationX > 342)
             {
                 locationX = 24;
-                locationY += tbx.Height + 35;
+                locationY += pnl.Height + 35;
             }
 
-            else locationY = 136;
+            //else locationY = 136;
         }
 
         
@@ -90,6 +97,26 @@ namespace UI.FRM_CLIENTE
                 pelicula = (Peliculas)row;
                 CrearControles(pelicula);
             }
+
+            CbxPeliculas.SelectedIndexChanged -= CbxPeliculas_SelectedIndexChanged;
+            CbxPeliculas.DataSource = null;
+            CbxPeliculas.DataSource = tablePeliculas;
+            CbxPeliculas.DisplayMember = "Nombre";
+            CbxPeliculas.ValueMember = "ID";
+            CbxPeliculas.SelectedIndex = -1;
+            CbxPeliculas.SelectedIndexChanged += CbxPeliculas_SelectedIndexChanged;
+        }
+
+        private void CbxPeliculas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            locationX = 25;
+            locationY = 136;
+
+            List<Guna2Panel> lstPnlPeli = this.Controls.OfType<Guna2Panel>().ToList();
+            lstPnlPeli.ForEach(x => this.Controls.Remove(x));
+
+            Peliculas pelicula = (Peliculas)tablePeliculas.AsEnumerable().First(row => row["ID"].ToString() == CbxPeliculas.SelectedValue.ToString());
+            CrearControles(pelicula);
         }
 
         private void PctbxPelicula_MouseEnter(object sender, EventArgs e)
@@ -145,6 +172,36 @@ namespace UI.FRM_CLIENTE
             Oscurecimiento_Imagen.RestaurarImagen(pctbx);
 
             pctbx.Controls.OfType<Guna2HtmlLabel>().ToList().ForEach(x => pctbx.Controls.Remove(x));
+        }
+
+        
+        private void BtnReestablecer_Click(object sender, EventArgs e)
+        {
+            List<Guna2Panel> lstPnlPeli = this.Controls.OfType<Guna2Panel>().ToList();
+            lstPnlPeli.ForEach(x => this.Controls.Remove(x));
+
+            CbxPeliculas.SelectedIndexChanged -= CbxPeliculas_SelectedIndexChanged;
+            CbxPeliculas.SelectedIndex = -1;
+            CbxPeliculas.SelectedIndexChanged += CbxPeliculas_SelectedIndexChanged;
+
+            locationX = 24;
+            locationY = 136;
+
+            foreach (DataRow row in tablePeliculas.Rows)
+            {
+                pelicula = (Peliculas)row;
+                CrearControles(pelicula);
+            }
+        }
+
+
+        private void UC_Catalogo_Leave(object sender, EventArgs e)
+        {
+            locationX = 24;
+            locationY = 136;
+
+            List<Guna2Panel> lstPnlPeli = this.Controls.OfType<Guna2Panel>().ToList();
+            lstPnlPeli.ForEach(x => this.Controls.Remove(x));
         }
     }
 }

@@ -4,6 +4,7 @@ using DAL.Entity_Mappers;
 using DAL.Mappers;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +64,11 @@ namespace BLL.Entity_BLLs
                 transacciones_Gestor.RevertirTransaccion();
                 throw new Exception("No pudo modificarse el cupon en la BD");
             }
+        }
+
+        public DataTable ObtenerCuponPorID(string id)
+        {
+            return cupones_Mapper.ObtenerCuponPorID(id);
         }
     }
 }

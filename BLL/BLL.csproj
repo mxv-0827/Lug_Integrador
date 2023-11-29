@@ -64,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base_BLL.cs" />
+    <Compile Include="Entity_BLLs\Boletos_BLL.cs" />
+    <Compile Include="Entity_BLLs\Compras_BLL.cs" />
     <Compile Include="Entity_BLLs\Credenciales_BLL.cs" />
     <Compile Include="Entity_BLLs\Cupones_BLL.cs" />
     <Compile Include="Entity_BLLs\DisponibilidadAsientos_BLL.cs" />

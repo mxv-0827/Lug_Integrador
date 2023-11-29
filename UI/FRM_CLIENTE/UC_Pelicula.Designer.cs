@@ -31,23 +31,26 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Pelicula));
             this.PctbxPelicula = new Guna.UI2.WinForms.Guna2PictureBox();
             this.LblNombre = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.TbxDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
             this.DgvHorariosPelicula = new Guna.UI2.WinForms.Guna2DataGridView();
             this.LblDuracion = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.LblFecha = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.WmpTrailer = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.PctbxPelicula)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvHorariosPelicula)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WmpTrailer)).BeginInit();
             this.SuspendLayout();
             // 
             // PctbxPelicula
             // 
             this.PctbxPelicula.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.PctbxPelicula.ImageRotate = 0F;
-            this.PctbxPelicula.Location = new System.Drawing.Point(23, 67);
+            this.PctbxPelicula.Location = new System.Drawing.Point(12, 39);
             this.PctbxPelicula.Name = "PctbxPelicula";
-            this.PctbxPelicula.Size = new System.Drawing.Size(248, 439);
+            this.PctbxPelicula.Size = new System.Drawing.Size(248, 464);
             this.PctbxPelicula.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PctbxPelicula.TabIndex = 0;
             this.PctbxPelicula.TabStop = false;
@@ -56,14 +59,16 @@
             // 
             this.LblNombre.BackColor = System.Drawing.Color.Transparent;
             this.LblNombre.Font = new System.Drawing.Font("Segoe UI Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNombre.Location = new System.Drawing.Point(309, 22);
+            this.LblNombre.Location = new System.Drawing.Point(276, 22);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(267, 39);
+            this.LblNombre.Size = new System.Drawing.Size(222, 39);
             this.LblNombre.TabIndex = 1;
-            this.LblNombre.Text = "Avengers: Endgame";
+            this.LblNombre.Text = "guna2HtmlLabel";
             // 
             // TbxDescripcion
             // 
+            this.TbxDescripcion.AutoScroll = true;
+            this.TbxDescripcion.AutoSize = true;
             this.TbxDescripcion.BorderThickness = 0;
             this.TbxDescripcion.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TbxDescripcion.DefaultText = "";
@@ -73,17 +78,17 @@
             this.TbxDescripcion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.TbxDescripcion.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.TbxDescripcion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TbxDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbxDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.TbxDescripcion.ForeColor = System.Drawing.Color.Black;
             this.TbxDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TbxDescripcion.Location = new System.Drawing.Point(309, 67);
+            this.TbxDescripcion.Location = new System.Drawing.Point(276, 67);
             this.TbxDescripcion.Multiline = true;
             this.TbxDescripcion.Name = "TbxDescripcion";
             this.TbxDescripcion.PasswordChar = '\0';
             this.TbxDescripcion.PlaceholderText = "";
             this.TbxDescripcion.ReadOnly = true;
             this.TbxDescripcion.SelectedText = "";
-            this.TbxDescripcion.Size = new System.Drawing.Size(565, 154);
+            this.TbxDescripcion.Size = new System.Drawing.Size(349, 154);
             this.TbxDescripcion.TabIndex = 2;
             // 
             // DgvHorariosPelicula
@@ -114,7 +119,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DgvHorariosPelicula.DefaultCellStyle = dataGridViewCellStyle3;
             this.DgvHorariosPelicula.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DgvHorariosPelicula.Location = new System.Drawing.Point(378, 264);
+            this.DgvHorariosPelicula.Location = new System.Drawing.Point(365, 261);
             this.DgvHorariosPelicula.Name = "DgvHorariosPelicula";
             this.DgvHorariosPelicula.ReadOnly = true;
             this.DgvHorariosPelicula.RowHeadersVisible = false;
@@ -167,11 +172,21 @@
             this.LblFecha.TabIndex = 10;
             this.LblFecha.Text = "Fecha";
             // 
+            // WmpTrailer
+            // 
+            this.WmpTrailer.Enabled = true;
+            this.WmpTrailer.Location = new System.Drawing.Point(631, 67);
+            this.WmpTrailer.Name = "WmpTrailer";
+            this.WmpTrailer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("WmpTrailer.OcxState")));
+            this.WmpTrailer.Size = new System.Drawing.Size(230, 154);
+            this.WmpTrailer.TabIndex = 11;
+            // 
             // UC_Pelicula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.WmpTrailer);
             this.Controls.Add(this.LblFecha);
             this.Controls.Add(this.LblDuracion);
             this.Controls.Add(this.DgvHorariosPelicula);
@@ -179,10 +194,12 @@
             this.Controls.Add(this.LblNombre);
             this.Controls.Add(this.PctbxPelicula);
             this.Name = "UC_Pelicula";
-            this.Size = new System.Drawing.Size(1046, 540);
+            this.Size = new System.Drawing.Size(956, 540);
             this.Enter += new System.EventHandler(this.UC_Pelicula_Enter);
+            this.Leave += new System.EventHandler(this.UC_Pelicula_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.PctbxPelicula)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvHorariosPelicula)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WmpTrailer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,5 +213,6 @@
         private Guna.UI2.WinForms.Guna2DataGridView DgvHorariosPelicula;
         private Guna.UI2.WinForms.Guna2HtmlLabel LblDuracion;
         private Guna.UI2.WinForms.Guna2HtmlLabel LblFecha;
+        private AxWMPLib.AxWindowsMediaPlayer WmpTrailer;
     }
 }

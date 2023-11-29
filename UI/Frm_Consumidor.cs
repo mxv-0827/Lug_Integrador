@@ -45,5 +45,13 @@ namespace UI
             uC_Catalogo1.BringToFront();
             uC_Catalogo1.Focus();
         }
+
+        private void BtnCompras_Click(object sender, EventArgs e)
+        {
+            uC_ComprasCliente1.Usuario = Cliente;
+
+            uC_ComprasCliente1.BringToFront();
+            uC_ComprasCliente1.Focus();
+        }
     }
 }

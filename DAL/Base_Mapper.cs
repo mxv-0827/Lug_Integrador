@@ -56,7 +56,7 @@ namespace DAL.Mappers
         }
 
         //Metodo que devuelve un registro en base a su ID.
-        public DataTable ObtenerUnoPorId(int id, string storedProc, string nombreEntidad)
+        public DataTable ObtenerUnoPorId(dynamic id, string storedProc, string nombreEntidad)
         {
             List<SqlParameter> sqlProp = new List<SqlParameter> 
             { 
