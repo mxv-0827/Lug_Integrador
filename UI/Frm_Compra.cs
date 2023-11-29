@@ -30,5 +30,10 @@ namespace UI
 
             uC_HorarioPelicula1.Usuario = Usuario;
         }
+
+        private void uC_HorarioPelicula1_Enter(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

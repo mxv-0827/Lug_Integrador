@@ -12,6 +12,7 @@ namespace BE
         public int Usuario_DNI { get; set; }
         public DateTime Fecha_Compra { get; set; }
         public int IDHoraPelicula { get; set; }
+        public string IDCupon { get; set; }
         public decimal PrecioFinal { get; set; }
     }
 }

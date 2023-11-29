@@ -68,6 +68,7 @@ namespace DAL
             adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             
             if(props != null) adapter.SelectCommand.Parameters.AddRange(props);
+            if (Transacciones_Gestor.ObtenerInstancia().GetTransaction() != null) adapter.SelectCommand.Transaction = Transacciones_Gestor.ObtenerInstancia().GetTransaction();
 
             adapter.Fill(tabla);
 

@@ -17,9 +17,13 @@ namespace UI.FRM_CLIENTE
 {
     public partial class UC_HorarioPelicula : UserControl
     {
+        public List<Carrito> LstCarrito { get; set; }
+
         public UC_HorarioPelicula()
         {
             InitializeComponent();
+
+            LstCarrito = new List<Carrito>();
         }
 
 
@@ -30,6 +34,9 @@ namespace UI.FRM_CLIENTE
         Base_BLL<Salas> Base_BLL_Salas = new Base_BLL<Salas>();
         Base_BLL<Membresias> Base_BLL_Membresias = new Base_BLL<Membresias>();
         Base_BLL<Peliculas> Base_BLL_Peliculas = new Base_BLL<Peliculas>();
+        Base_BLL<Productos> Base_BLL_Productos = new Base_BLL<Productos>();
+        Base_BLL<Combos> Base_BLL_Combos = new Base_BLL<Combos>();
+
 
         DisponibilidadAsientos_BLL DisponibilidadAsientos_BLL = new DisponibilidadAsientos_BLL();
 
@@ -131,7 +138,7 @@ namespace UI.FRM_CLIENTE
                 boleto = new Boletos
                 {
                     IDAsiento = int.Parse(tbx.Text),
-                    Precio = HorarioPelicula.PrecioEntrada - (porcMembresia / 100)
+                    Precio = Math.Round(HorarioPelicula.PrecioEntrada * ((100 - (decimal)porcMembresia) / 100), 2)
                 };
 
                 lstBoletos.Add(boleto);
@@ -167,22 +174,64 @@ namespace UI.FRM_CLIENTE
                     IDHoraPelicula = HorarioPelicula.ID
                 };
 
-                CompraBoletoCarrito_Transaction_BLL.AgregarEntidades(compra, lstBoletos, lstCarritos);
+                if (lstBoletos.Count == 0) throw new Exception("Debe de al menos tener cargado un boleto.");
+
+                CompraBoletoCarrito_Transaction_BLL.AgregarEntidades(compra, lstBoletos, LstCarrito);
 
                 MessageBox.Show("Compra registrada exitosamente");
+
+                Frm_Compra frm = Application.OpenForms.OfType<Frm_Compra>().First();
+                frm.Close();
             }
 
-            catch(Exception)
+            catch(Exception ex)
             {
-                MessageBox.Show("No se pudo registrar la compra");
+                MessageBox.Show(ex.Message);
                 this.SendToBack();
             }
         }
 
-        List<Carrito> lstCarritos = new List<Carrito>();
         private void BtnProductos_Click(object sender, EventArgs e)
         {
+            Frm_Productos frm = new Frm_Productos();
+            frm.Usuario = Usuario;
+            frm.ShowDialog();
 
+            List<object> lstAMostrar = new List<object>();
+            object row;
+
+            foreach(Carrito carrito in LstCarrito)
+            {
+                if(carrito.IDProducto != null)
+                {
+                    string nombre = Base_BLL_Productos.ObtenerEntidadPorId("Productos", (int)carrito.IDProducto).Rows[0]["Nombre"].ToString();
+
+                    row = new
+                    {
+                        Nombre = nombre,
+                        Cantidad = carrito.Cantidad,
+                        SubTotal = carrito.Subtotal
+                    };
+                }
+
+                else
+                {
+                    string nombre = Base_BLL_Combos.ObtenerEntidadPorId("Combos", (int)carrito.IDCombo).Rows[0]["Nombre"].ToString();
+
+                    row = new
+                    {
+                        Nombre = nombre,
+                        Cantidad = carrito.Cantidad,
+                        SubTotal = carrito.Subtotal
+                    };
+                }
+
+                lstAMostrar.Add(row);
+            }
+
+            DgvAlimentos.DataSource = null;
+            DgvAlimentos.DataSource = lstAMostrar;
+            DgvAlimentos.ClearSelection();
         }
     }
 }
