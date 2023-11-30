@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Entity_BLLs
 {
-    public class DisponibilidadAsientos_BLL : Base_BLL<DisponibilidadAsientos>
+    public class DisponibilidadAsientos_BLL : Base_BLL
     {
         DisponibilidadAsientos_Mapper DisponibilidadAsientos_Mapper = new DisponibilidadAsientos_Mapper();
 

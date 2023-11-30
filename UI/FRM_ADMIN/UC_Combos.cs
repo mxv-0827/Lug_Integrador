@@ -116,7 +116,7 @@ namespace UI.FRM_ADMIN
         ComboProd_Transaction_BLL ComboProd_Transaction_BLL = new ComboProd_Transaction_BLL();
 
         //Membresias (BASE)
-        Base_BLL<Membresias> Base_BLL_Membresias = new Base_BLL<Membresias>();
+        Base_BLL Base_BLL= new Base_BLL();
 
 
         DataTable tablaProductos; //DataTable donde se almacenan todos los productos encontrados en la BD.
@@ -125,7 +125,7 @@ namespace UI.FRM_ADMIN
         
         private void UC_Combos_Load(object sender, EventArgs e)
         {
-            DataTable tablaMembresias = Base_BLL_Membresias.ObtenerTodasEntidades("Membresias");
+            DataTable tablaMembresias = Base_BLL.ObtenerTodasEntidades("Membresias");
 
             CbxMembresias.DataSource = tablaMembresias;
             CbxMembresias.DisplayMember = "Nombre";

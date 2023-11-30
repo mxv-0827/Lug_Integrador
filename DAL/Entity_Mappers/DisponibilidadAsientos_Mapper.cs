@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entity_Mappers
 {
-    public class DisponibilidadAsientos_Mapper : Base_Mapper<DisponibilidadAsientos>
+    public class DisponibilidadAsientos_Mapper : Base_Mapper
     {
         public DataTable ObtenerRegistrosPorIDHorarioPelicula(int idHorarioPelicula)
         {

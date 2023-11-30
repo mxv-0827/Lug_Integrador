@@ -11,7 +11,7 @@ using System.Data;
 
 namespace DAL.Entity_Mappers
 {
-    public class Cupones_Mapper : Base_Mapper<Cupones>
+    public class Cupones_Mapper : Base_Mapper
     {
         public string ValidarCodigo()
         {

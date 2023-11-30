@@ -12,8 +12,7 @@ namespace BLL.Transactions_BLLs
 {
     public class SalaAsiento_Transaction_BLL
     {
-        private readonly Base_BLL<Salas> salas_BLL = new Base_BLL<Salas>();
-        private readonly Base_BLL<Asientos> asientos_BLL = new Base_BLL<Asientos>();
+        private readonly Base_BLL Base_BLL= new Base_BLL();
 
         private readonly Asientos_Mapper asientos_Mapper = new Asientos_Mapper();
 
@@ -23,12 +22,12 @@ namespace BLL.Transactions_BLLs
 
             try
             {
-                salas_BLL.AsignarID(sala);
+                Base_BLL.AsignarID(sala);
                 int cantidadAsientos = asientos_Mapper.ObtenerTotalidadAsientos();
 
                 transacciones_Gestor.IniciarTransaccion();
 
-                int cantSalasAfectadas = salas_BLL.AgregarEntidad(sala);
+                int cantSalasAfectadas = Base_BLL.AgregarEntidad(sala);
                 int cantAsientosAfectados = 0;
 
                 for (int i = 0; i < sala.CapacidadTotal; i++)
@@ -40,7 +39,7 @@ namespace BLL.Transactions_BLLs
                         NroAsiento = i + 1,
                     };
 
-                    cantAsientosAfectados += asientos_BLL.AgregarEntidad(asiento);
+                    cantAsientosAfectados += Base_BLL.AgregarEntidad(asiento);
                 }
 
                 if (cantSalasAfectadas + cantAsientosAfectados < sala.CapacidadTotal + 1) throw new Exception();

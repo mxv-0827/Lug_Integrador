@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace BLL.Entity_BLLs
 {
-    public class Productos_BLL : Base_BLL<Productos>
+    public class Productos_BLL : Base_BLL
     {
-        public new int AgregarEntidad(Productos producto) //NO es un override ya que la creacion de entidades requiere de transacccion. Base_BLL contiene el metodo de creacion. Esta BLL, la transaccion a usar.
+        public override int AgregarEntidad(object entidad) 
         {
+            Productos producto = (Productos)entidad;
+
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
 
             try

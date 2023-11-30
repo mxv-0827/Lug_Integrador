@@ -26,7 +26,7 @@ namespace UI.FRM_CLIENTE
         public Peliculas Pelicula { get; set; } //pelicula a mostrar en todo el UC.
 
 
-        Base_BLL<Salas> Base_BLL_Salas = new Base_BLL<Salas>();
+        Base_BLL Base_BLL = new Base_BLL();
 
         Generos_BLL Generos_BLL = new Generos_BLL();
 
@@ -117,7 +117,7 @@ namespace UI.FRM_CLIENTE
                 {
                     object horario = new
                     {
-                        Sala = Base_BLL_Salas.ObtenerEntidadPorId("Salas", (int)row["IDSala"]).Rows[0]["Nombre"],
+                        Sala = Base_BLL.ObtenerEntidadPorId("Salas", (int)row["IDSala"]).Rows[0]["Nombre"],
                         Fecha = row["Fecha"].ToString().Substring(0, 10),
                         HoraInicio = row["HoraInicio"].ToString(),
                         HoraFin = row["HoraFin"].ToString(),

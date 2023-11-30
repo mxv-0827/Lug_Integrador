@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entity_Mappers
 {
-    public class Compras_Mapper : Base_Mapper<Compras>
+    public class Compras_Mapper : Base_Mapper
     {
         public DataTable ObtenerComprasPorDNI(int dni)
         {

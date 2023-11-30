@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entity_Mappers
 {
-    public class Carrito_Mapper : Base_Mapper<Carrito>
+    public class Carrito_Mapper : Base_Mapper
     {
         public int ObtenerTotalidadCarritos()
         {

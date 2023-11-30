@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entity_Mappers
 {
-    public class Asientos_Mapper : Base_Mapper<Asientos>
+    public class Asientos_Mapper : Base_Mapper
     {
         public DataTable ObtenerAsientosPorSala(int salaID) //Devuelve todos los asientos de una misma sala.
         {

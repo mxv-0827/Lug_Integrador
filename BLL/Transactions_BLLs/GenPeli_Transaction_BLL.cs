@@ -14,9 +14,8 @@ namespace BLL.Transactions_BLLs
 {
     public class GenPeli_Transaction_BLL
     {
-        Base_BLL<Peliculas> Base_BLL_Peliculas = new Base_BLL<Peliculas>();
-
-        Base_Mapper<GenerosEnPeliculas> Base_Mapper = new Base_Mapper<GenerosEnPeliculas>();
+        Base_BLL Base_BLL = new Base_BLL();
+        Base_Mapper Base_Mapper = new Base_Mapper();
 
         GoogleDrive_API GoogleDrive_API = new GoogleDrive_API();
 
@@ -26,12 +25,12 @@ namespace BLL.Transactions_BLLs
 
             try
             {
-                Base_BLL_Peliculas.AsignarID(pelicula);
+                Base_BLL.AsignarID(pelicula);
 
                 transacciones_Gestor.IniciarTransaccion();
 
                 pelicula.Trailer = GoogleDrive_API.SubirVideo(pelicula.Trailer); //Previamente, la prop contiene la ruta del archivo. Luego, se actualiza por el link de Drive.
-                int cantPeliculasAfectadas = Base_BLL_Peliculas.AgregarEntidad(pelicula);
+                int cantPeliculasAfectadas = Base_BLL.AgregarEntidad(pelicula);
                 int cantGenPeliAfectadas = 0;
 
                 foreach (Generos genero in listaGeneros)

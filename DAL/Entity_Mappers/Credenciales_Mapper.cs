@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entity_Mappers
 {
-    public class Credenciales_Mapper : Base_Mapper<Credenciales>
+    public class Credenciales_Mapper : Base_Mapper
     {
         public DataTable IniciarSesion(Credenciales usuarioALogear)
         {
@@ -36,9 +36,11 @@ namespace DAL.Entity_Mappers
         }
 
 
-        public override int Agregar(Credenciales entity, string storedProc)
+        public override int Agregar(object entity, string storedProc)
         {
-            entity.Password = Password_Encriptador.EncriptarContraseña(entity.Password, entity.Email);
+            Credenciales credenciales = (Credenciales)entity;
+
+            credenciales.Password = Password_Encriptador.EncriptarContraseña(credenciales.Password, credenciales.Email);
             return base.Agregar(entity, storedProc);
         }
     }
