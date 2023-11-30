@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entity_Mappers
 {
-    public class Peliculas_Mapper : Base_Mapper<Peliculas>
+    public class Peliculas_Mapper : Base_Mapper
     {
         public TimeSpan ObtenerDuracion(int peliculaID)
         {

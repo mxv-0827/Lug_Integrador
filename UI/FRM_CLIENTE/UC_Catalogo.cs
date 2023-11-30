@@ -83,14 +83,14 @@ namespace UI.FRM_CLIENTE
 
         Peliculas pelicula;
 
-        Base_BLL<Peliculas> Base_BLL_Peliculas = new Base_BLL<Peliculas>();
+        Base_BLL Base_BLL = new Base_BLL();
 
         DataTable tablePeliculas;
 
 
         private void UC_Catalogo_Enter(object sender, EventArgs e)
         {
-            tablePeliculas = Base_BLL_Peliculas.ObtenerTodasEntidades("Peliculas");
+            tablePeliculas = Base_BLL.ObtenerTodasEntidades("Peliculas");
 
             foreach(DataRow row in tablePeliculas.Rows)
             {

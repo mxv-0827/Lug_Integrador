@@ -13,7 +13,8 @@ namespace BLL.Transactions_BLLs
 {
     public class UsuCred_Transaction_BLL
     {
-        private readonly Base_BLL<Usuarios> base_BLL_Usuarios = new Base_BLL<Usuarios>();
+        private readonly Base_BLL Base_BLL = new Base_BLL();
+
         private readonly Credenciales_Mapper Credenciales_Mapper = new Credenciales_Mapper();
 
         public int CrearEntidades(Usuarios usuario, Credenciales credenciales)
@@ -24,7 +25,7 @@ namespace BLL.Transactions_BLLs
             {
                 transacciones_Gestor.IniciarTransaccion();
 
-                int cantUsuariosAfectados = base_BLL_Usuarios.AgregarEntidad(usuario);
+                int cantUsuariosAfectados = Base_BLL.AgregarEntidad(usuario);
                 int cantCredencialesAfectadas = Credenciales_Mapper.Agregar(credenciales, "AgregarCredenciales"); //No hace el de Base_BLL xq requiere encriptar la password.
 
                 if (cantCredencialesAfectadas + cantUsuariosAfectados < 2) throw new Exception();

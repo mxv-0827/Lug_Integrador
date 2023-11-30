@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Entity_BLLs
 {
-    public class HorarioPeliculas_BLL : Base_BLL<HorarioPeliculas>
+    public class HorarioPeliculas_BLL : Base_BLL
     {
         HorarioPeliculas_Mapper HorarioPeliculas_Mapper = new HorarioPeliculas_Mapper();
 

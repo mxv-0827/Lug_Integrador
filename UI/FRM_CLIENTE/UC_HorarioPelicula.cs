@@ -31,12 +31,7 @@ namespace UI.FRM_CLIENTE
         public Usuarios Usuario { get; set; }
 
 
-        Base_BLL<Salas> Base_BLL_Salas = new Base_BLL<Salas>();
-        Base_BLL<Membresias> Base_BLL_Membresias = new Base_BLL<Membresias>();
-        Base_BLL<Peliculas> Base_BLL_Peliculas = new Base_BLL<Peliculas>();
-        Base_BLL<Productos> Base_BLL_Productos = new Base_BLL<Productos>();
-        Base_BLL<Combos> Base_BLL_Combos = new Base_BLL<Combos>();
-        Base_BLL<Descuentos> Base_BLL_Descuentos = new Base_BLL<Descuentos>();
+        Base_BLL Base_BLL = new Base_BLL();
 
 
         Cupones_BLL Cupones_BLL = new Cupones_BLL();
@@ -98,11 +93,11 @@ namespace UI.FRM_CLIENTE
         int porcMembresia = 0; //Porcentaje de descuento de la membresia.
         private void UC_HorarioPelicula_Enter(object sender, EventArgs e)
         {
-            porcMembresia = (int)Base_BLL_Membresias.ObtenerEntidadPorId("Membresias", Usuario.IDMembresia).Rows[0]["Descuento"];
+            porcMembresia = (int)Base_BLL.ObtenerEntidadPorId("Membresias", Usuario.IDMembresia).Rows[0]["Descuento"];
 
-            LblPelicula.Text = Base_BLL_Peliculas.ObtenerEntidadPorId("Peliculas", HorarioPelicula.IDPelicula).Rows[0]["Nombre"].ToString();
+            LblPelicula.Text = Base_BLL.ObtenerEntidadPorId("Peliculas", HorarioPelicula.IDPelicula).Rows[0]["Nombre"].ToString();
 
-            TbxSala.Text = Base_BLL_Salas.ObtenerEntidadPorId("Salas", HorarioPelicula.IDSala).Rows[0]["Nombre"].ToString();
+            TbxSala.Text = Base_BLL.ObtenerEntidadPorId("Salas", HorarioPelicula.IDSala).Rows[0]["Nombre"].ToString();
             TbxFecha.Text = HorarioPelicula.Fecha.ToString().Substring(0, 10);
             TbxHoraInicio.Text = HorarioPelicula.HoraInicio.ToString();
             TbxHoraCierre.Text = HorarioPelicula.HoraFin.ToString();
@@ -177,7 +172,7 @@ namespace UI.FRM_CLIENTE
                     else
                     {
                         Cupones cupon = (Cupones)tableCupon.Rows[0];
-                        int descuento = int.Parse(Base_BLL_Descuentos.ObtenerEntidadPorId("Descuentos", cupon.IDDescuento).Rows[0]["Porcentaje"].ToString());
+                        int descuento = int.Parse(Base_BLL.ObtenerEntidadPorId("Descuentos", cupon.IDDescuento).Rows[0]["Porcentaje"].ToString());
 
                         //A cada boleto y producto adquirido se le implementa el descuento del cupon, si es que existe.
                         lstBoletos.ForEach(boleto => boleto.Precio -= boleto.Precio * (descuento / 100));
@@ -222,7 +217,7 @@ namespace UI.FRM_CLIENTE
             {
                 if(carrito.IDProducto != null)
                 {
-                    string nombre = Base_BLL_Productos.ObtenerEntidadPorId("Productos", (int)carrito.IDProducto).Rows[0]["Nombre"].ToString();
+                    string nombre = Base_BLL.ObtenerEntidadPorId("Productos", (int)carrito.IDProducto).Rows[0]["Nombre"].ToString();
 
                     row = new
                     {
@@ -234,7 +229,7 @@ namespace UI.FRM_CLIENTE
 
                 else
                 {
-                    string nombre = Base_BLL_Combos.ObtenerEntidadPorId("Combos", (int)carrito.IDCombo).Rows[0]["Nombre"].ToString();
+                    string nombre = Base_BLL.ObtenerEntidadPorId("Combos", (int)carrito.IDCombo).Rows[0]["Nombre"].ToString();
 
                     row = new
                     {

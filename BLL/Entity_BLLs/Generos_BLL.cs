@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Entity_BLLs
 {
-    public class Generos_BLL : Base_BLL<Generos>
+    public class Generos_BLL : Base_BLL
     {
         Generos_Mapper Generos_Mapper = new Generos_Mapper();
 

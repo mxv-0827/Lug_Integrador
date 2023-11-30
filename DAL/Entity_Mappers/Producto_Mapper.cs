@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entity_Mappers
 {
-    public class Producto_Mapper : Base_Mapper<Productos>
+    public class Producto_Mapper : Base_Mapper
     {
         public decimal ObtenerPrecioProducto(int idProducto)
         {

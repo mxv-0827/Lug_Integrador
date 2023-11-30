@@ -16,11 +16,7 @@ namespace BLL.Transactions_BLLs
 {
     public class CompraBoletoCarrito_Transaction_BLL
     {
-        Base_BLL<Compras> Base_BLL_Compras = new Base_BLL<Compras>();
-        Base_BLL<Boletos> Base_BLL_Boletos = new Base_BLL<Boletos>();
-        Base_BLL<Carrito> Base_BLL_Carritos = new Base_BLL<Carrito>();
-        Base_BLL<DisponibilidadAsientos> Base_BLL_DisponibilidadAsientos = new Base_BLL<DisponibilidadAsientos>();
-        Base_BLL<Productos> Base_BLL_Productos = new Base_BLL<Productos>();
+        Base_BLL Base_BLL = new Base_BLL();
 
         ProductosEnCombo_BLL ProductosEnCombo_BLL = new ProductosEnCombo_BLL();
 
@@ -35,7 +31,7 @@ namespace BLL.Transactions_BLLs
             //Los descuentos de la entrada, productos y combos ya fueron aplicados previamente.
             try
             {
-                Base_BLL_Compras.AsignarID(compra);
+                Base_BLL.AsignarID(compra);
                 lstBoletos.ForEach(x => compra.PrecioFinal += x.Precio); //Le sumamos el precio de todos los boletos.
                 lstCarrito.ForEach(x => compra.PrecioFinal += x.Subtotal); //Le sumamos el precio de todos los productos.
 
@@ -46,7 +42,7 @@ namespace BLL.Transactions_BLLs
                 transacciones_Gestor.IniciarTransaccion();
  
                 //Agregamos entidad compra.
-                int cantComprasAfectadas = Base_BLL_Compras.AgregarEntidad(compra);
+                int cantComprasAfectadas = Base_BLL.AgregarEntidad(compra);
                 int cantBoletosAfectados = 0;
                 int cantCarritoAfectados = 0;
 
@@ -57,7 +53,7 @@ namespace BLL.Transactions_BLLs
                     boleto.ID = totalidadBoletos + 1;
                     boleto.IDCompra = compra.ID;
 
-                    cantBoletosAfectados += Base_BLL_Boletos.AgregarEntidad(boleto);
+                    cantBoletosAfectados += Base_BLL.AgregarEntidad(boleto);
                     totalidadBoletos++;
                 }
 
@@ -68,7 +64,7 @@ namespace BLL.Transactions_BLLs
                     carrito.ID = totalidadCarritos + 1;
                     carrito.IDCompra = compra.ID;
 
-                    cantCarritoAfectados += Base_BLL_Carritos.AgregarEntidad(carrito);
+                    cantCarritoAfectados += Base_BLL.AgregarEntidad(carrito);
                     totalidadCarritos++;
                 }
 
@@ -87,7 +83,7 @@ namespace BLL.Transactions_BLLs
                         Estado = false //Decimos asi que esta ocupado.
                     };
 
-                    Base_BLL_DisponibilidadAsientos.ModificarEntidad(disponibilidadAsientos);
+                    Base_BLL.ModificarEntidad(disponibilidadAsientos);
                     disponibilidadAsientosAfectados++;
                 }
 
@@ -102,10 +98,10 @@ namespace BLL.Transactions_BLLs
                 {
                     if(carrito.IDProducto != null)
                     {
-                        Productos producto = (Productos)Base_BLL_Productos.ObtenerEntidadPorId("Productos", (int)carrito.IDProducto).Rows[0];
+                        Productos producto = (Productos)Base_BLL.ObtenerEntidadPorId("Productos", (int)carrito.IDProducto).Rows[0];
                         producto.Stock -= carrito.Cantidad;
 
-                        Base_BLL_Productos.ModificarEntidad(producto);
+                        Base_BLL.ModificarEntidad(producto);
 
                         productosAfectados++;
                     }
@@ -118,10 +114,10 @@ namespace BLL.Transactions_BLLs
                         int i = 0;
                         foreach(DataRow row in tableProdEnComb.Rows) //Obtenemos todos los productos que conforman al combo y modificamos su stock..
                         {
-                            Productos producto = (Productos)Base_BLL_Productos.ObtenerEntidadPorId("Productos", int.Parse(tableProdEnComb.Rows[i]["IDProducto"].ToString())).Rows[0];
+                            Productos producto = (Productos)Base_BLL.ObtenerEntidadPorId("Productos", int.Parse(tableProdEnComb.Rows[i]["IDProducto"].ToString())).Rows[0];
                             producto.Stock -= carrito.Cantidad;
 
-                            Base_BLL_Productos.ModificarEntidad(producto);
+                            Base_BLL.ModificarEntidad(producto);
 
                             productosAfectados++;
                             i++;

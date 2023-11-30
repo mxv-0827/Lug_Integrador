@@ -11,15 +11,17 @@ using System.Threading.Tasks;
 
 namespace BLL.Entity_BLLs
 {
-    public class Cupones_BLL : Base_BLL<Cupones>
+    public class Cupones_BLL : Base_BLL
     {
         Cupones_Mapper cupones_Mapper = new Cupones_Mapper();
 
         public string ObtenerCodigo() => cupones_Mapper.ValidarCodigo();
         
 
-        public override int AgregarEntidad(Cupones cupon)
+        public override int AgregarEntidad(object entidad)
         {
+            Cupones cupon = (Cupones)entidad;
+
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
             transacciones_Gestor.IniciarTransaccion();
 
@@ -42,8 +44,10 @@ namespace BLL.Entity_BLLs
             }
         }
 
-        public override int ModificarEntidad(Cupones cupon)
+        public override int ModificarEntidad(object entidad)
         {
+            Cupones cupon = (Cupones)entidad;
+
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
             transacciones_Gestor.IniciarTransaccion();
 

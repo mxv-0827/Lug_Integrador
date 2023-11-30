@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Entity_BLLs
 {
-    public class Credenciales_BLL : Base_BLL<Credenciales>
+    public class Credenciales_BLL : Base_BLL
     {
         private readonly Credenciales_Mapper credenciales_Mapper = new Credenciales_Mapper();
 

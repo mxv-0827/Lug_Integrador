@@ -50,7 +50,7 @@ namespace UI.FRM_ADMIN
         
         private void ObtenerGenerosCBX()
         {
-            generosObtenidos = Base_BLL_Generos.ObtenerTodasEntidades("Generos");
+            generosObtenidos = Base_BLL.ObtenerTodasEntidades("Generos");
 
             CbxGeneros.SelectedIndexChanged -= CbxGeneros_SelectedIndexChanged;
 
@@ -80,7 +80,7 @@ namespace UI.FRM_ADMIN
         {
             CbxPelicula.SelectedIndexChanged -= CbxPelicula_SelectedIndexChanged;
 
-            CbxPelicula.DataSource = Base_BLL_Peliculas.ObtenerTodasEntidades("Peliculas");
+            CbxPelicula.DataSource = Base_BLL.ObtenerTodasEntidades("Peliculas");
             CbxPelicula.DisplayMember = "Nombre";
             CbxPelicula.ValueMember = "ID";
             CbxPelicula.SelectedIndex = -1;
@@ -104,7 +104,7 @@ namespace UI.FRM_ADMIN
                 CterHorariosPelicula.Controls.Clear();
 
                 pelicula = new Peliculas();
-                pelicula = (Peliculas)Base_BLL_Peliculas.ObtenerEntidadPorId(pelicula.GetType().Name, int.Parse(CbxPelicula.SelectedValue.ToString())).Rows[0];
+                pelicula = (Peliculas)Base_BLL.ObtenerEntidadPorId(pelicula.GetType().Name, int.Parse(CbxPelicula.SelectedValue.ToString())).Rows[0];
 
                 //Obtenemos todos los horarios que abarquen a esa fecha y sala escogidos.
 
@@ -124,18 +124,13 @@ namespace UI.FRM_ADMIN
 
         //Peliculas
         Peliculas pelicula;
-        Base_BLL<Peliculas> Base_BLL_Peliculas = new Base_BLL<Peliculas>();
+        Base_BLL Base_BLL = new Base_BLL();
 
         //Generos
         Generos genero;
-        Base_BLL<Generos> Base_BLL_Generos = new Base_BLL<Generos>();
 
         //RestriccionesEdad
         RestriccionesEdad restriccionEdad;
-        Base_BLL<RestriccionesEdad> Base_BLL_Restricciones = new Base_BLL<RestriccionesEdad>();
-
-        //Salas
-        Base_BLL<Salas> Base_BLL_Salas = new Base_BLL<Salas>();
 
         //Peliculas y Generos.
         GenPeli_Transaction_BLL GenPeli_Transaction_BLL = new GenPeli_Transaction_BLL();
@@ -149,7 +144,7 @@ namespace UI.FRM_ADMIN
 
             //--------------------------------------------------------------------------------------------------------------
 
-            DataTable restriccionesEdadObtenidas = Base_BLL_Restricciones.ObtenerTodasEntidades("RestriccionesEdad");
+            DataTable restriccionesEdadObtenidas = Base_BLL.ObtenerTodasEntidades("RestriccionesEdad");
             restriccionesEdadObtenidas.Columns.Add("EdadAMostrar", typeof(string));
 
             foreach (DataRow row in restriccionesEdadObtenidas.Rows)
@@ -178,7 +173,7 @@ namespace UI.FRM_ADMIN
             CbxSala.DataSource = null;
 
             CbxSala.SelectedIndexChanged -= CbxSala_SelectedIndexChanged;
-            CbxSala.DataSource = Base_BLL_Salas.ObtenerTodasEntidades("Salas");
+            CbxSala.DataSource = Base_BLL.ObtenerTodasEntidades("Salas");
             CbxSala.SelectedIndex = -1;
             CbxSala.SelectedIndexChanged += CbxSala_SelectedIndexChanged;
 

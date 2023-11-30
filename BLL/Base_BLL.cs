@@ -9,22 +9,22 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class Base_BLL<T> where T : class //Metodos que usan todas las entidades.
+    public class Base_BLL
     {
-        protected readonly Base_Mapper<T> mapper = new Base_Mapper<T>();
+        protected readonly Base_Mapper mapper = new Base_Mapper();
         
-        public virtual void AsignarID(T entity) => mapper.AsignarID(entity);
+        public virtual void AsignarID(object entidad) => mapper.AsignarID(entidad);
 
-        public virtual int AgregarEntidad(T entity)
+        public virtual int AgregarEntidad(object entidad)
         {
-            string spNombre = ObtenerNombreSP("Agregar", entity.GetType().Name); //Devuelve 'AgregarUsuario', 'AgregarProducto', ...
-            return mapper.Agregar(entity, spNombre);
+            string spNombre = ObtenerNombreSP("Agregar", entidad.GetType().Name); //Devuelve 'AgregarUsuario', 'AgregarProducto', ...
+            return mapper.Agregar(entidad, spNombre);
         }
 
-        public virtual int ModificarEntidad(T entity)
+        public virtual int ModificarEntidad(object entidad)
         {
-            string spNombre = ObtenerNombreSP("Modificar", entity.GetType().Name); //Devuelve 'ModificarUsuario', 'ModificarProducto', ...
-            return mapper.Modificar(entity, spNombre);
+            string spNombre = ObtenerNombreSP("Modificar", entidad.GetType().Name); //Devuelve 'ModificarUsuario', 'ModificarProducto', ...
+            return mapper.Modificar(entidad, spNombre);
         }
 
         public virtual int EliminarEntidad(string nombreEntidad, int id)

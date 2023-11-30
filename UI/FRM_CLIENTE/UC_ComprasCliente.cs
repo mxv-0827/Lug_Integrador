@@ -65,7 +65,7 @@ namespace UI.FRM_CLIENTE
             };
 
 
-            HorarioPeliculas horPeli = (HorarioPeliculas)Base_BLL_HorarioPeliculas.ObtenerEntidadPorId("HorarioPeliculas", compra.IDHoraPelicula).Rows[0];
+            HorarioPeliculas horPeli = (HorarioPeliculas)Base_BLL.ObtenerEntidadPorId("HorarioPeliculas", compra.IDHoraPelicula).Rows[0];
 
 
             Guna2HtmlLabel lbl5 = new Guna2HtmlLabel
@@ -114,7 +114,7 @@ namespace UI.FRM_CLIENTE
 
 
 
-        Base_BLL<HorarioPeliculas> Base_BLL_HorarioPeliculas = new Base_BLL<HorarioPeliculas>();
+        Base_BLL Base_BLL = new Base_BLL();
 
         Compras_BLL Compras_BLL = new Compras_BLL();
         Boletos_BLL Boletos_BLL = new Boletos_BLL();
@@ -128,6 +128,14 @@ namespace UI.FRM_CLIENTE
                 Compras compra = (Compras)row;
                 CrearControles(compra);
             }
+        }
+
+        private void UC_ComprasCliente_Leave(object sender, EventArgs e)
+        {
+            List<Guna2Panel> lstPnls = this.Controls.OfType<Guna2Panel>().ToList();
+            lstPnls.ForEach(x => this.Controls.Remove(x));
+
+            locationY = 80;
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entity_Mappers
 {
-    public class HorarioPeliculas_Mapper : Base_Mapper<HorarioPeliculas>
+    public class HorarioPeliculas_Mapper : Base_Mapper
     {
         public DataTable ObtenerHorariosCoincidentes(DateTime fecha, int idSala)
         {

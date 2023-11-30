@@ -168,7 +168,7 @@ namespace UI
 
             foreach(DataRow row in tableProdEnComb.Rows)
             {
-                Productos prod = (Productos)Base_BLL_Productos.ObtenerEntidadPorId("Productos", int.Parse(row["IDProducto"].ToString())).Rows[0];
+                Productos prod = (Productos)Base_BLL.ObtenerEntidadPorId("Productos", int.Parse(row["IDProducto"].ToString())).Rows[0];
                 lstProds.Add(prod);
             }
 
@@ -257,16 +257,14 @@ namespace UI
         DataTable tableProductos = new DataTable();
         DataTable tableCombos = new DataTable();
 
-        Base_BLL<Productos> Base_BLL_Productos = new Base_BLL<Productos>();
-        Base_BLL<Combos> Base_BLL_Combos = new Base_BLL<Combos>();
-        Base_BLL<Membresias> Base_BLL_Membresias = new Base_BLL<Membresias>();
+        Base_BLL Base_BLL = new Base_BLL();
 
         ProductosEnCombo_BLL ProductosEnCombo_BLL = new ProductosEnCombo_BLL();
 
 
         private void Frm_Productos_Load(object sender, EventArgs e)
         {
-            DataTable tableMembresias = Base_BLL_Membresias.ObtenerTodasEntidades("Membresias");
+            DataTable tableMembresias = Base_BLL.ObtenerTodasEntidades("Membresias");
 
             DataRow rowTodos = tableMembresias.NewRow();
             rowTodos["ID"] = 0;
@@ -287,8 +285,8 @@ namespace UI
 
             //-----------------------------------------------------------------------------------------------
 
-            tableProductos = Base_BLL_Productos.ObtenerTodasEntidades("Productos");
-            tableCombos = Base_BLL_Combos.ObtenerTodasEntidades("Combos");
+            tableProductos = Base_BLL.ObtenerTodasEntidades("Productos");
+            tableCombos = Base_BLL.ObtenerTodasEntidades("Combos");
 
             foreach (DataRow row in tableProductos.Rows)
             {
@@ -387,7 +385,7 @@ namespace UI
             foreach(Guna2Panel pnl in lstPaneles)
             {
                 Guna2NumericUpDown nup = pnl.Controls.OfType<Guna2NumericUpDown>().First();
-                int descuentoUsuario = int.Parse(Base_BLL_Membresias.ObtenerEntidadPorId("Membresias", Usuario.IDMembresia).Rows[0]["Descuento"].ToString());
+                int descuentoUsuario = int.Parse(Base_BLL.ObtenerEntidadPorId("Membresias", Usuario.IDMembresia).Rows[0]["Descuento"].ToString());
 
                 if(nup.Value > 0) //Osea, si el cliente decidio comprar aunque sea un producto o combo.
                 {

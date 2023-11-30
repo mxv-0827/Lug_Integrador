@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entity_Mappers
 {
-    public class Generos_Mapper : Base_Mapper<Generos>
+    public class Generos_Mapper : Base_Mapper
     {
         public DataTable ObtenerGenerosPorIDPelicula(int idPelicula)
         {

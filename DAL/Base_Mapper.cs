@@ -9,31 +9,31 @@ using System.Threading.Tasks;
 
 namespace DAL.Mappers
 {
-    public class Base_Mapper<T> where T : class
+    public class Base_Mapper
     {
         internal BD_Conexion acceso = BD_Conexion.ObtenerInstancia();
 
-        public void AsignarID(T entity)
+        public void AsignarID(object entidad)
         {
             SqlParameter[] sqlProp = new SqlParameter[]
             {
-                new SqlParameter("@Tabla", entity.GetType().Name)
+                new SqlParameter("@Tabla", entidad.GetType().Name)
             };
 
             int assignedID = (int)acceso.ObtenerDato("AsignarIDGeneral", sqlProp);
 
-            entity.GetType().GetProperty("ID").SetValue(entity, assignedID);
+            entidad.GetType().GetProperty("ID").SetValue(entidad, assignedID);
         }
 
-        public virtual int Agregar(T entity, string storedProc)
+        public virtual int Agregar(object entidad, string storedProc)
         {
-            PropertyInfo[] entityProps = entity.GetType().GetProperties();
+            PropertyInfo[] entityProps = entidad.GetType().GetProperties();
             List<SqlParameter> sqlProps = new List<SqlParameter>();
 
             foreach(PropertyInfo prop in entityProps)
             {
                 string nombre = prop.Name;
-                object valor = prop.GetValue(entity);
+                object valor = prop.GetValue(entidad);
 
                 SqlParameter sqlProp = new SqlParameter($"{nombre}", valor);
                 sqlProps.Add(sqlProp);
@@ -42,10 +42,10 @@ namespace DAL.Mappers
             return acceso.Escribir(storedProc, sqlProps.ToArray());
         }
 
-        public virtual int Modificar(T entity, string storedProc)
+        public virtual int Modificar(object entidad, string storedProc)
         {
             //Ambos metodos hacen lo mismo, simplemente cambia el storedProc a ejecutar.
-            return Agregar(entity, storedProc); 
+            return Agregar(entidad, storedProc); 
         }
 
         public int Eliminar(int id, string storedProc)

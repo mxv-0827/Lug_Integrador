@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entity_Mappers
 {
-    public class Boletos_Mapper : Base_Mapper<Boletos>
+    public class Boletos_Mapper : Base_Mapper
     {
         public int ObtenerTotalidadBoletos()
         {

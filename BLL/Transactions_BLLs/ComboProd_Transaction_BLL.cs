@@ -13,9 +13,9 @@ namespace BLL.Transactions_BLLs
 {
     public class ComboProd_Transaction_BLL
     {
-        Base_BLL<Combos> Base_BLL_Combos = new Base_BLL<Combos>();
+        Base_BLL Base_BLL = new Base_BLL();
+        Base_Mapper Base_Mapper = new Base_Mapper();
 
-        Base_Mapper<ProductosEnCombos> Base_Mapper = new Base_Mapper<ProductosEnCombos>();
         Producto_Mapper Producto_Mapper = new Producto_Mapper();
 
         public int AgregarEntidad(Combos combo, List<Productos> listaProductos)
@@ -32,11 +32,11 @@ namespace BLL.Transactions_BLLs
                 }
                 combo.Precio -= combo.Precio * 0.10m; //El precio total es 10% mas barato a comprar lo mismo por separado.
 
-                Base_BLL_Combos.AsignarID(combo);
+                Base_BLL.AsignarID(combo);
 
                 transacciones_Gestor.IniciarTransaccion();
 
-                int cantCombosAfectados = Base_BLL_Combos.AgregarEntidad(combo);
+                int cantCombosAfectados = Base_BLL.AgregarEntidad(combo);
                 int cantProdCombAfectados = 0;
 
                 foreach (Productos prod in listaProductos)

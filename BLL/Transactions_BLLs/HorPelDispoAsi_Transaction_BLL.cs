@@ -14,9 +14,8 @@ namespace BLL.Transactions_BLLs
 {
     public class HorPelDispoAsi_Transaction_BLL //HORarioPELicula - DISPOnibilidadASIentos
     {
-        Base_BLL<HorarioPeliculas> Base_BLL_HorPeli = new Base_BLL<HorarioPeliculas>();
-
-        Base_Mapper<DisponibilidadAsientos> Base_Mapper = new Base_Mapper<DisponibilidadAsientos>();
+        Base_BLL Base_BLL= new Base_BLL();
+        Base_Mapper Base_Mapper = new Base_Mapper();
 
         Peliculas_Mapper Peliculas_Mapper = new Peliculas_Mapper();
         Asientos_Mapper Asientos_Mapper = new Asientos_Mapper();
@@ -31,11 +30,11 @@ namespace BLL.Transactions_BLLs
                 horarioPelicula.HoraFin = horarioPelicula.HoraInicio + Peliculas_Mapper.ObtenerDuracion(horarioPelicula.IDPelicula);
                 DataTable registroAsientos = Asientos_Mapper.ObtenerAsientosPorSala(horarioPelicula.IDSala);
 
-                Base_BLL_HorPeli.AsignarID(horarioPelicula);
+                Base_BLL.AsignarID(horarioPelicula);
 
                 transacciones_Gestor.IniciarTransaccion();
 
-                int cantHorPeliAfectadas = Base_BLL_HorPeli.AgregarEntidad(horarioPelicula);
+                int cantHorPeliAfectadas = Base_BLL.AgregarEntidad(horarioPelicula);
                 int cantDispoAsiAfectadas = 0;
 
 
