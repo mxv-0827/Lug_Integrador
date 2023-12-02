@@ -14,13 +14,13 @@ namespace DAL.Entity_Mappers
     {
         public DataTable ObtenerHorariosCoincidentes(DateTime fecha, int idSala)
         {
-            List<SqlParameter> sqlProps = new List<SqlParameter>
+            SqlParameter[] sqlProps = new SqlParameter[]
             {
                 new SqlParameter("@Fecha", fecha),
                 new SqlParameter("@IDSala", idSala)
             };
 
-            return acceso.Leer("ObtenerHorariosCoincidentes", sqlProps.ToArray());
+            return acceso.Leer("ObtenerHorariosCoincidentes", sqlProps);
         }
 
         public DataTable ObtenerHorariosPorFechaYPelicula(int idPelicula)

@@ -2,6 +2,7 @@
 using BLL.Entity_BLLs;
 using DAL;
 using DAL.Entity_Mappers;
+using SEC;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,22 +12,20 @@ using System.Threading.Tasks;
 
 namespace BLL.Transactions_BLLs
 {
-    public class UsuCred_Transaction_BLL
+    public class UsuCred_Transaction_BLL : Base_BLL
     {
-        private readonly Base_BLL Base_BLL = new Base_BLL();
-
-        private readonly Credenciales_Mapper Credenciales_Mapper = new Credenciales_Mapper();
-
-        public int CrearEntidades(Usuarios usuario, Credenciales credenciales)
+        public int AgregarEntidades(Usuarios usuario, Credenciales credenciales)
         {
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
 
             try
             {
+                credenciales.Password = credenciales.Password = Password_Encriptador.EncriptarContraseña(credenciales.Password, credenciales.Email);
+
                 transacciones_Gestor.IniciarTransaccion();
 
-                int cantUsuariosAfectados = Base_BLL.AgregarEntidad(usuario);
-                int cantCredencialesAfectadas = Credenciales_Mapper.Agregar(credenciales, "AgregarCredenciales"); //No hace el de Base_BLL xq requiere encriptar la password.
+                int cantUsuariosAfectados = base.AgregarEntidad(usuario);
+                int cantCredencialesAfectadas = base.AgregarEntidad(credenciales); 
 
                 if (cantCredencialesAfectadas + cantUsuariosAfectados < 2) throw new Exception();
 

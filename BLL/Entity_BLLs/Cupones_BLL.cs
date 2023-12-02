@@ -27,8 +27,7 @@ namespace BLL.Entity_BLLs
 
             try
             {
-                string spNombre = ObtenerNombreSP("Agregar", cupon.GetType().Name);
-                int linesAffected = mapper.Agregar(cupon, spNombre);
+                int linesAffected = base.AgregarEntidad(cupon);
 
                 if (linesAffected < 1) throw new Exception();
 
@@ -44,6 +43,7 @@ namespace BLL.Entity_BLLs
             }
         }
 
+
         public override int ModificarEntidad(object entidad)
         {
             Cupones cupon = (Cupones)entidad;
@@ -53,8 +53,7 @@ namespace BLL.Entity_BLLs
 
             try
             {
-                string spNombre = ObtenerNombreSP("Modificar", cupon.GetType().Name);
-                int linesAffected = mapper.Modificar(cupon, spNombre);
+                int linesAffected = base.ModificarEntidad(cupon);
 
                 if (linesAffected < 1) throw new Exception();
 
@@ -68,11 +67,6 @@ namespace BLL.Entity_BLLs
                 transacciones_Gestor.RevertirTransaccion();
                 throw new Exception("No pudo modificarse el cupon en la BD");
             }
-        }
-
-        public DataTable ObtenerCuponPorID(string id)
-        {
-            return cupones_Mapper.ObtenerCuponPorID(id);
         }
     }
 }

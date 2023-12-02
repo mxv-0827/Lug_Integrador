@@ -12,9 +12,8 @@ namespace BLL.Transactions_BLLs
 {
     public class SalaAsiento_Transaction_BLL
     {
-        private readonly Base_BLL Base_BLL= new Base_BLL();
+        private readonly Base_BLL Base_BLL = new Base_BLL();
 
-        private readonly Asientos_Mapper asientos_Mapper = new Asientos_Mapper();
 
         public int CrearEntidades(Salas sala)
         {
@@ -22,10 +21,9 @@ namespace BLL.Transactions_BLLs
 
             try
             {
-                Base_BLL.AsignarID(sala);
-                int cantidadAsientos = asientos_Mapper.ObtenerTotalidadAsientos();
-
                 transacciones_Gestor.IniciarTransaccion();
+
+                Base_BLL.AsignarID(sala);
 
                 int cantSalasAfectadas = Base_BLL.AgregarEntidad(sala);
                 int cantAsientosAfectados = 0;
@@ -34,10 +32,10 @@ namespace BLL.Transactions_BLLs
                 {
                     Asientos asiento = new Asientos
                     {
-                        ID = cantidadAsientos + (i + 1), 
                         IDSala = sala.ID,
                         NroAsiento = i + 1,
                     };
+                    Base_BLL.AsignarID(asiento);
 
                     cantAsientosAfectados += Base_BLL.AgregarEntidad(asiento);
                 }

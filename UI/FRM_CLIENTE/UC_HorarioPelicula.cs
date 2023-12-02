@@ -34,7 +34,7 @@ namespace UI.FRM_CLIENTE
         Base_BLL Base_BLL = new Base_BLL();
 
 
-        Cupones_BLL Cupones_BLL = new Cupones_BLL();
+        //Cupones_BLL Cupones_BLL = new Cupones_BLL();
         DisponibilidadAsientos_BLL DisponibilidadAsientos_BLL = new DisponibilidadAsientos_BLL();
 
 
@@ -166,7 +166,7 @@ namespace UI.FRM_CLIENTE
             {
                 if (!string.IsNullOrEmpty(TbxCupon.Text))
                 {
-                    DataTable tableCupon = Cupones_BLL.ObtenerCuponPorID(TbxCupon.Text);
+                    DataTable tableCupon = Base_BLL.ObtenerEntidadPorId("Cupones", TbxCupon.Text);
                     if (tableCupon.Rows.Count == 0) throw new Exception("No existe el cupon introducido.");
 
                     else

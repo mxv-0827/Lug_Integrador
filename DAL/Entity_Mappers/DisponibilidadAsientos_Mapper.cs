@@ -12,14 +12,6 @@ namespace DAL.Entity_Mappers
 {
     public class DisponibilidadAsientos_Mapper : Base_Mapper
     {
-        public DataTable ObtenerRegistrosPorIDHorarioPelicula(int idHorarioPelicula)
-        {
-            SqlParameter[] sqlProp = new SqlParameter[]
-            {
-                new SqlParameter("@IDHorarioPelicula", idHorarioPelicula)
-            };
-
-            return acceso.Leer("ObtenerRegistrosPorIDHorarioPelicula", sqlProp);
-        }
+        public DataTable ObtenerRegistrosPorIDHorarioPelicula(int idHorarioPelicula) => acceso.Leer("ObtenerRegistrosPorIDHorarioPelicula", new SqlParameter[] { new SqlParameter("@IDHorarioPelicula", idHorarioPelicula) });
     }
 }

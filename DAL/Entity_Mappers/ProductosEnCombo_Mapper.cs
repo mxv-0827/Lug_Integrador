@@ -12,14 +12,6 @@ namespace DAL.Entity_Mappers
 {
     public class ProductosEnCombo_Mapper : Base_Mapper
     {
-        public DataTable ObtenerRegistrosPorIDCombo(int idCombo)
-        {
-            SqlParameter[] sqlProp = new SqlParameter[]
-            {
-                new SqlParameter("@IDCombo", idCombo)
-            };
-
-            return acceso.Leer("ObtenerRegistrosPorIDCombo", sqlProp);
-        }
+        public DataTable ObtenerRegistrosPorIDCombo(int idCombo) => acceso.Leer("ObtenerRegistrosPorIDCombo", new SqlParameter[] { new SqlParameter("@IDCombo", idCombo) });
     }
 }

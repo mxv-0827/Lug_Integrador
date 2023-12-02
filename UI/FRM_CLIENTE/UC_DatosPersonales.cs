@@ -60,7 +60,7 @@ namespace UI.FRM_CLIENTE
                 };
 
                 Generic_Validator<Credenciales>.ValidarPropiedades(credenciales);
-                Base_Transaction_BLL.CrearEntidades(usuario, credenciales);
+                Base_Transaction_BLL.AgregarEntidades(usuario, credenciales);
 
                 MessageBox.Show("Registro exitoso");
 

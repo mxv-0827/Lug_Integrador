@@ -12,31 +12,29 @@ using BSL.Google_Drive;
 
 namespace BLL.Transactions_BLLs
 {
-    public class GenPeli_Transaction_BLL
+    public class GenPeli_Transaction_BLL : Base_BLL
     {
-        Base_BLL Base_BLL = new Base_BLL();
-        Base_Mapper Base_Mapper = new Base_Mapper();
-
         GoogleDrive_API GoogleDrive_API = new GoogleDrive_API();
 
-        public int AgregarEntidad(Peliculas pelicula, List<Generos> listaGeneros)
+
+        public int AgregarEntidades(Peliculas pelicula, List<Generos> listaGeneros)
         {
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
 
             try
             {
-                Base_BLL.AsignarID(pelicula);
-
                 transacciones_Gestor.IniciarTransaccion();
 
+                base.AsignarID(pelicula);
                 pelicula.Trailer = GoogleDrive_API.SubirVideo(pelicula.Trailer); //Previamente, la prop contiene la ruta del archivo. Luego, se actualiza por el link de Drive.
-                int cantPeliculasAfectadas = Base_BLL.AgregarEntidad(pelicula);
+                int cantPeliculasAfectadas = base.AgregarEntidad(pelicula);
+
                 int cantGenPeliAfectadas = 0;
 
                 foreach (Generos genero in listaGeneros)
                 {
                     var genEnPeli = new GenerosEnPeliculas { IDPelicula = pelicula.ID, IDGenero = genero.ID };
-                    cantGenPeliAfectadas += Base_Mapper.Agregar(genEnPeli, "AgregarGenerosEnPeliculas");
+                    cantGenPeliAfectadas += base.AgregarEntidad(genEnPeli);
                 }
 
                 if (cantPeliculasAfectadas + cantGenPeliAfectadas < listaGeneros.Count + 1) throw new Exception();

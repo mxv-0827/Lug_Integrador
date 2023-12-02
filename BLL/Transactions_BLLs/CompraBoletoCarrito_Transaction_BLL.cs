@@ -14,67 +14,56 @@ using BLL.Entity_BLLs;
 
 namespace BLL.Transactions_BLLs
 {
-    public class CompraBoletoCarrito_Transaction_BLL
+    public class CompraBoletoCarrito_Transaction_BLL : Base_BLL
     {
-        Base_BLL Base_BLL = new Base_BLL();
-
-        ProductosEnCombo_BLL ProductosEnCombo_BLL = new ProductosEnCombo_BLL();
-
-        Boletos_Mapper Boletos_Mapper = new Boletos_Mapper();
-        Carrito_Mapper Carrito_Mapper = new Carrito_Mapper();
+        private readonly ProductosEnCombo_BLL ProductosEnCombo_BLL = new ProductosEnCombo_BLL();
 
 
+        //Los descuentos de la entrada, productos y combos ya fueron aplicados previamente.
         public int AgregarEntidades(Compras compra, List<Boletos> lstBoletos, List<Carrito> lstCarrito)
         {
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
 
-            //Los descuentos de la entrada, productos y combos ya fueron aplicados previamente.
             try
             {
-                Base_BLL.AsignarID(compra);
+                transacciones_Gestor.IniciarTransaccion();
+
+                base.AsignarID(compra);
+
                 lstBoletos.ForEach(x => compra.PrecioFinal += x.Precio); //Le sumamos el precio de todos los boletos.
                 lstCarrito.ForEach(x => compra.PrecioFinal += x.Subtotal); //Le sumamos el precio de todos los productos.
 
-                int totalidadBoletos = Boletos_Mapper.ObtenerTotalidadBoletos(); //Usado como base para asignar IDs.
-                int totalidadCarritos = Carrito_Mapper.ObtenerTotalidadCarritos(); //Usado como base para asignar IDs.
 
-
-                transacciones_Gestor.IniciarTransaccion();
- 
                 //Agregamos entidad compra.
-                int cantComprasAfectadas = Base_BLL.AgregarEntidad(compra);
+                int cantComprasAfectadas = base.AgregarEntidad(compra);
                 int cantBoletosAfectados = 0;
                 int cantCarritoAfectados = 0;
 
-                //Agregamos los boletos.
-                for(int i = 0; i < lstBoletos.Count; i++)
+
+                foreach (Boletos boleto in lstBoletos) //Asignamos IDs a los boletos y los agregamos.
                 {
-                    Boletos boleto = lstBoletos[i];
-                    boleto.ID = totalidadBoletos + 1;
+                    base.AsignarID(boleto);
                     boleto.IDCompra = compra.ID;
 
-                    cantBoletosAfectados += Base_BLL.AgregarEntidad(boleto);
-                    totalidadBoletos++;
+                    cantBoletosAfectados += base.AgregarEntidad(boleto);
                 }
 
-                //Agregamos los productos y combos comprados.
-                for (int i = 0; i < lstCarrito.Count; i++)
+
+                foreach(Carrito carrito in lstCarrito) //Registramos todos los productos y combos comprados.
                 {
-                    Carrito carrito = lstCarrito[i];
-                    carrito.ID = totalidadCarritos + 1;
+                    base.AsignarID(carrito);
                     carrito.IDCompra = compra.ID;
 
-                    cantCarritoAfectados += Base_BLL.AgregarEntidad(carrito);
-                    totalidadCarritos++;
+                    cantCarritoAfectados += base.AgregarEntidad(carrito);
                 }
 
                 if (cantComprasAfectadas + cantBoletosAfectados + cantCarritoAfectados < lstBoletos.Count + lstCarrito.Count + 1) throw new Exception();
 
 
-                //Actualizamos el estado de los asientos escogidos por boletos.
+                
                 int disponibilidadAsientosAfectados = 0;
 
-                foreach(Boletos boleto in lstBoletos)
+                foreach(Boletos boleto in lstBoletos) //Actualizamos el estado de los asientos escogidos por boletos.
                 {
                     DisponibilidadAsientos disponibilidadAsientos = new DisponibilidadAsientos
                     {
@@ -83,27 +72,23 @@ namespace BLL.Transactions_BLLs
                         Estado = false //Decimos asi que esta ocupado.
                     };
 
-                    Base_BLL.ModificarEntidad(disponibilidadAsientos);
-                    disponibilidadAsientosAfectados++;
+                    disponibilidadAsientosAfectados += base.ModificarEntidad(disponibilidadAsientos);
                 }
 
                 if (disponibilidadAsientosAfectados < lstBoletos.Count) throw new Exception();
 
-
-                //Actualizamos el stock de los productos y combos adquiridos en el carrito.
+                
                 int productosAfectados = 0;
                 int prodEnComb = 0;
 
-                foreach (Carrito carrito in lstCarrito)
+                foreach (Carrito carrito in lstCarrito) //Actualizamos el stock de los productos y combos adquiridos en el carrito.
                 {
-                    if(carrito.IDProducto != null)
+                    if (carrito.IDProducto != null)
                     {
-                        Productos producto = (Productos)Base_BLL.ObtenerEntidadPorId("Productos", (int)carrito.IDProducto).Rows[0];
+                        Productos producto = (Productos)base.ObtenerEntidadPorId("Productos", (int)carrito.IDProducto).Rows[0];
                         producto.Stock -= carrito.Cantidad;
 
-                        Base_BLL.ModificarEntidad(producto);
-
-                        productosAfectados++;
+                        productosAfectados += base.ModificarEntidad(producto);
                     }
 
                     else
@@ -112,18 +97,15 @@ namespace BLL.Transactions_BLLs
                         prodEnComb += tableProdEnComb.Rows.Count;
 
                         int i = 0;
-                        foreach(DataRow row in tableProdEnComb.Rows) //Obtenemos todos los productos que conforman al combo y modificamos su stock..
+                        foreach (DataRow row in tableProdEnComb.Rows) //Obtenemos todos los productos que conforman al combo y modificamos su stock..
                         {
-                            Productos producto = (Productos)Base_BLL.ObtenerEntidadPorId("Productos", int.Parse(tableProdEnComb.Rows[i]["IDProducto"].ToString())).Rows[0];
+                            Productos producto = (Productos)base.ObtenerEntidadPorId("Productos", int.Parse(tableProdEnComb.Rows[i]["IDProducto"].ToString())).Rows[0];
                             producto.Stock -= carrito.Cantidad;
 
-                            Base_BLL.ModificarEntidad(producto);
-
-                            productosAfectados++;
+                            productosAfectados += base.ModificarEntidad(producto);
                             i++;
                         }
                     }
-
                 }
 
                 if (productosAfectados < lstCarrito.Count + prodEnComb) throw new Exception();

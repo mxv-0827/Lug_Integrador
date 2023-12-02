@@ -11,10 +11,6 @@ namespace DAL.Entity_Mappers
 {
     public class Peliculas_Mapper : Base_Mapper
     {
-        public TimeSpan ObtenerDuracion(int peliculaID)
-        {
-            List<SqlParameter> sqlprop = new List<SqlParameter> { new SqlParameter("@IDPelicula", peliculaID)};
-            return (TimeSpan)acceso.ObtenerDato("ObtenerDuracionPelicula", sqlprop.ToArray());
-        }
+        public TimeSpan ObtenerDuracion(int peliculaID) => (TimeSpan)acceso.ObtenerDato("ObtenerDuracionPelicula", new SqlParameter[] { new SqlParameter("@IDPelicula", peliculaID) });
     }
 }

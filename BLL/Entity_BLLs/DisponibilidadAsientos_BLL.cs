@@ -11,12 +11,9 @@ namespace BLL.Entity_BLLs
 {
     public class DisponibilidadAsientos_BLL : Base_BLL
     {
-        DisponibilidadAsientos_Mapper DisponibilidadAsientos_Mapper = new DisponibilidadAsientos_Mapper();
+        private readonly DisponibilidadAsientos_Mapper DisponibilidadAsientos_Mapper = new DisponibilidadAsientos_Mapper();
 
 
-        public DataTable ObtenerRegistrosPorIDHorarioPelicula(int idHorarioPelicula)
-        {
-            return DisponibilidadAsientos_Mapper.ObtenerRegistrosPorIDHorarioPelicula(idHorarioPelicula);
-        }
+        public DataTable ObtenerRegistrosPorIDHorarioPelicula(int idHorarioPelicula) => DisponibilidadAsientos_Mapper.ObtenerRegistrosPorIDHorarioPelicula(idHorarioPelicula);
     }
 }

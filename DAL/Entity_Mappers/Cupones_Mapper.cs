@@ -32,16 +32,5 @@ namespace DAL.Entity_Mappers
 
             return codigoCupon;
         }
-
-
-        public DataTable ObtenerCuponPorID(string id)
-        {
-            SqlParameter[] sqlProp = new SqlParameter[]
-            {
-                new SqlParameter("@ID", id)
-            };
-
-            return acceso.Leer("ObtenerCuponPorID", sqlProp);
-        }
     }
 }

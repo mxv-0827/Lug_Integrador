@@ -12,23 +12,17 @@ namespace DAL
     public class Transacciones_Gestor
     {
         private static Transacciones_Gestor instancia;
+        private readonly BD_Conexion conexion;
         private SqlTransaction transaction;
-        private BD_Conexion conexion;
+
 
         private Transacciones_Gestor()
         {
             conexion = BD_Conexion.ObtenerInstancia();
         }
 
-        public static Transacciones_Gestor ObtenerInstancia()
-        {
-            if (instancia == null)
-            {
-                instancia = new Transacciones_Gestor();
-            }
 
-            return instancia;
-        }
+        public static Transacciones_Gestor ObtenerInstancia() => instancia ?? (instancia = new Transacciones_Gestor());
 
         public void IniciarTransaccion()
         {
@@ -50,9 +44,6 @@ namespace DAL
             instancia = null; // Marcar como revertida y liberar la transacción.
         }
 
-        public SqlTransaction GetTransaction()
-        {
-            return transaction;
-        }
+        public SqlTransaction GetTransaction() => transaction;
     }
 }
