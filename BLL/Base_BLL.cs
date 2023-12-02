@@ -11,8 +11,9 @@ namespace BLL
 {
     public class Base_BLL
     {
-        protected readonly Base_Mapper mapper = new Base_Mapper();
+        private readonly Base_Mapper mapper = new Base_Mapper();
         
+
         public virtual void AsignarID(object entidad) => mapper.AsignarID(entidad);
 
         public virtual int AgregarEntidad(object entidad)
@@ -33,7 +34,7 @@ namespace BLL
             return mapper.Eliminar(id, spNombre);
         }
 
-        public DataTable ObtenerEntidadPorId(string nombreEntidad, int id)
+        public DataTable ObtenerEntidadPorId(string nombreEntidad, dynamic id)
         {
             return mapper.ObtenerUnoPorId(id, "ObtenerRegistroPorId", nombreEntidad);
         }
@@ -46,6 +47,6 @@ namespace BLL
 
         //Metodo que devuelve el nombre del SP segun lo que hace y su entidad.
         //Esto requiere nombrar correctamente a los SP en la BD y mantener una misma estructura para todos los nombre de esas operaciones.
-        protected string ObtenerNombreSP(string operacion, string entidad) => $"{operacion}{entidad}";
+        private string ObtenerNombreSP(string operacion, string entidad) => $"{operacion}{entidad}";
     }
 }

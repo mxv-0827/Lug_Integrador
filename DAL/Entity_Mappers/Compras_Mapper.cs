@@ -12,14 +12,6 @@ namespace DAL.Entity_Mappers
 {
     public class Compras_Mapper : Base_Mapper
     {
-        public DataTable ObtenerComprasPorDNI(int dni)
-        {
-            SqlParameter[] sqlProp = new SqlParameter[]
-            {
-                new SqlParameter("@Usuario_DNI", dni)
-            };
-
-            return acceso.Leer("ObtenerComprasPorDNI", sqlProp);
-        }
+        public DataTable ObtenerComprasPorDNI(int dni) => acceso.Leer("ObtenerComprasPorDNI", new SqlParameter[] { new SqlParameter("@Usuario_DNI", dni) });
     }
 }

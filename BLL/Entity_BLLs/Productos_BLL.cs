@@ -18,10 +18,9 @@ namespace BLL.Entity_BLLs
 
             try
             {
-                base.AsignarID(producto);
-
                 transacciones_Gestor.IniciarTransaccion();
 
+                base.AsignarID(producto);
                 int cantProductosAfectados = base.AgregarEntidad(producto);
 
                 if (cantProductosAfectados < 1) throw new Exception();

@@ -32,16 +32,7 @@ namespace DAL.Entity_Mappers
             }
             sqlProps.RemoveAt(0); //Quitamos el ID xq no lo necesitamos. Ademas, tira error si se lo deja.
 
-            return base.acceso.Leer("Iniciar_Sesion", sqlProps.ToArray());
-        }
-
-
-        public override int Agregar(object entity, string storedProc)
-        {
-            Credenciales credenciales = (Credenciales)entity;
-
-            credenciales.Password = Password_Encriptador.EncriptarContraseña(credenciales.Password, credenciales.Email);
-            return base.Agregar(entity, storedProc);
+            return acceso.Leer("Iniciar_Sesion", sqlProps.ToArray());
         }
     }
 }

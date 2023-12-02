@@ -258,9 +258,10 @@ namespace UI.FRM_ADMIN
                     IDMembresia = CbxMembresias.SelectedIndex == -1 ? 0 : (int)CbxMembresias.SelectedValue //Si no eligio valor, que ponga un '0'. Luego, el validador le mostrara el error.
                 };
 
-                Generic_Validator<Combos>.ValidarPropiedades(combo);
+                if (productosAgregados.Count < 2) throw new Exception("La cantidad minima de prodcutos seleccionados debe ser de 2");
 
-                ComboProd_Transaction_BLL.AgregarEntidad(combo, productosAgregados);
+                Generic_Validator<Combos>.ValidarPropiedades(combo);
+                ComboProd_Transaction_BLL.AgregarEntidades(combo, productosAgregados);
 
                 MessageBox.Show("Combo creado exitosamente.");
 

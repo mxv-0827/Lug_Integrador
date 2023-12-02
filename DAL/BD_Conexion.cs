@@ -15,78 +15,79 @@ namespace DAL
         public static BD_Conexion instancia;
         private readonly SqlConnection conexion = new SqlConnection("Server=DESKTOP-GDEVITI\\SQLEXPRESS; Database=Lug_Integrador; Integrated Security= true");
 
-        public static BD_Conexion ObtenerInstancia()
-        {
-            if(instancia == null)
-            {
-                instancia = new BD_Conexion();
-            }
 
-            return instancia;
-        }
+        public static BD_Conexion ObtenerInstancia() => instancia ?? (instancia = new BD_Conexion());
+
 
         internal void AbrirConexion() => conexion.Open();
         internal void CerrarConexion() => conexion.Close();
 
-        public SqlTransaction GetTransaction() 
-        {
-            return conexion.BeginTransaction();
-        }
 
+        internal SqlTransaction GetTransaction() => conexion.BeginTransaction();
+        
 
-        internal int Escribir(string storedProc, SqlParameter[] props)
+        internal int Escribir(string sp, SqlParameter[] sqlProps)
         {
+            var transaccion = Transacciones_Gestor.ObtenerInstancia().GetTransaction();
             int linesAffected;
 
-            SqlCommand command = new SqlCommand(storedProc, conexion);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddRange(props);
-
-            var transaccion = Transacciones_Gestor.ObtenerInstancia();
-            command.Transaction = transaccion.GetTransaction();
-
-            try
+            using (SqlCommand command = new SqlCommand(sp, conexion))
             {
-                linesAffected = command.ExecuteNonQuery();
-            }
-            catch
-            {
-                linesAffected = -1;
-            }
+                try
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddRange(sqlProps);
+                    command.Transaction = transaccion;
 
-            return linesAffected;
+                    linesAffected = command.ExecuteNonQuery();
+                }
+                catch
+                {
+                    linesAffected = -1;
+                }
+
+                return linesAffected;
+            }
         }
 
 
-        internal DataTable Leer(string storedProc, SqlParameter[] props = null)
+        internal DataTable Leer(string sp, SqlParameter[] sqlProps = null)
         {
-            //El sqlDataAdapter gestiona internamente la conexion a la BD, por ende no es necesario poner los metodos de conexion aca.
+            //El sqlDataAdapter gestiona internamente la conexion a la BD en su metodo 'Fill', por ende no es necesario poner los metodos de conexion aca.
 
             DataTable tabla = new DataTable();
+            var transaccion = Transacciones_Gestor.ObtenerInstancia().GetTransaction();
 
-            SqlDataAdapter adapter = new SqlDataAdapter(storedProc, conexion);
-            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            
-            if(props != null) adapter.SelectCommand.Parameters.AddRange(props);
-            if (Transacciones_Gestor.ObtenerInstancia().GetTransaction() != null) adapter.SelectCommand.Transaction = Transacciones_Gestor.ObtenerInstancia().GetTransaction();
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sp, conexion))
+            {
+                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adapter.SelectCommand.Parameters.AddRange(sqlProps ?? Array.Empty<SqlParameter>());
+                adapter.SelectCommand.Transaction = transaccion;
 
-            adapter.Fill(tabla);
+                adapter.Fill(tabla);
 
-            return tabla;
+                return tabla;
+            }
         }
 
 
-        internal object ObtenerDato(string storedProc, SqlParameter[] props = null)
+        internal object ObtenerDato(string sp, SqlParameter[] sqlProps = null)
         {
-            AbrirConexion();
+            var transaccion = Transacciones_Gestor.ObtenerInstancia().GetTransaction();
+            object resultado;
 
-            SqlCommand command = new SqlCommand(storedProc, conexion);
-            command.CommandType = CommandType.StoredProcedure;
-            if (props != null) command.Parameters.AddRange(props);
+            if (transaccion == null) AbrirConexion();
+            
+            using (SqlCommand command = new SqlCommand(sp, conexion))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddRange(sqlProps ?? Array.Empty<SqlParameter>());
+                command.Transaction = transaccion;
 
-            object resultado = command.ExecuteScalar();
+                resultado = command.ExecuteScalar();
+            }
 
-            CerrarConexion();
+            if (transaccion == null) CerrarConexion();
 
             return resultado;
         }

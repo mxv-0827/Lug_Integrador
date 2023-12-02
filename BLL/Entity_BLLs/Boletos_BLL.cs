@@ -9,11 +9,9 @@ namespace BLL.Entity_BLLs
 {
     public class Boletos_BLL
     {
-        Boletos_Mapper Boletos_Mapper = new Boletos_Mapper();
+        private readonly Boletos_Mapper Boletos_Mapper = new Boletos_Mapper();
 
-        public int ObtenerCantBoletosPorIDCompra(int idCompra)
-        {
-            return Boletos_Mapper.ObtenerCantBoletosPorIDCompra(idCompra);
-        }
+
+        public int ObtenerCantBoletosPorIDCompra(int idCompra) => Boletos_Mapper.ObtenerCantBoletosPorIDCompra(idCompra);
     }
 }

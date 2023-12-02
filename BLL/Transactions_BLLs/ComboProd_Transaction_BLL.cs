@@ -11,49 +11,39 @@ using System.Threading.Tasks;
 
 namespace BLL.Transactions_BLLs
 {
-    public class ComboProd_Transaction_BLL
+    public class ComboProd_Transaction_BLL : Base_BLL
     {
-        Base_BLL Base_BLL = new Base_BLL();
-        Base_Mapper Base_Mapper = new Base_Mapper();
+        private readonly Producto_Mapper Producto_Mapper = new Producto_Mapper();
 
-        Producto_Mapper Producto_Mapper = new Producto_Mapper();
 
-        public int AgregarEntidad(Combos combo, List<Productos> listaProductos)
+        public int AgregarEntidades(Combos combo, List<Productos> lstProductos)
         {
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
 
             try
             {
-                if (listaProductos.Count < 2) throw new FormatException();
-
-                foreach (Productos prod in listaProductos)
-                {
-                    combo.Precio += Producto_Mapper.ObtenerPrecioProducto(prod.ID);
-                }
-                combo.Precio -= combo.Precio * 0.10m; //El precio total es 10% mas barato a comprar lo mismo por separado.
-
-                Base_BLL.AsignarID(combo);
-
                 transacciones_Gestor.IniciarTransaccion();
 
-                int cantCombosAfectados = Base_BLL.AgregarEntidad(combo);
+                int cantCombosAfectados = 0;
                 int cantProdCombAfectados = 0;
 
-                foreach (Productos prod in listaProductos)
+                lstProductos.ForEach(prod => combo.Precio += Producto_Mapper.ObtenerPrecioProducto(prod.ID));
+                combo.Precio -= combo.Precio * 0.10m; //El precio total es 10% mas barato a comprar lo mismo por separado.
+
+                base.AsignarID(combo);
+                cantCombosAfectados += base.AgregarEntidad(combo);
+
+
+                foreach (Productos prod in lstProductos)
                 {
                     var prodEnCombo = new ProductosEnCombos { IDCombo = combo.ID, IDProducto = prod.ID };
-                    cantProdCombAfectados += Base_Mapper.Agregar(prodEnCombo, "AgregarProductosEnCombos");
+                    cantProdCombAfectados += base.AgregarEntidad(prodEnCombo);
                 }
 
-                if (cantCombosAfectados + cantProdCombAfectados < listaProductos.Count + 1) throw new Exception();
+                if (cantCombosAfectados + cantProdCombAfectados < lstProductos.Count + 1) throw new Exception();
 
                 transacciones_Gestor.ConfirmarTransaccion();
                 return cantCombosAfectados + cantProdCombAfectados;
-            }
-
-            catch (FormatException)
-            {
-                throw new Exception("Es necesario agregar aunque sea 2 productos para crear un combo.");
             }
 
             catch (Exception)

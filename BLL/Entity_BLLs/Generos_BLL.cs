@@ -11,11 +11,9 @@ namespace BLL.Entity_BLLs
 {
     public class Generos_BLL : Base_BLL
     {
-        Generos_Mapper Generos_Mapper = new Generos_Mapper();
+        private readonly Generos_Mapper Generos_Mapper = new Generos_Mapper();
 
-        public DataTable ObtenerGenerosPorIdPelicula(int idPelicula)
-        {
-            return Generos_Mapper.ObtenerGenerosPorIDPelicula(idPelicula);
-        }
+
+        public DataTable ObtenerGenerosPorIdPelicula(int idPelicula) => Generos_Mapper.ObtenerGenerosPorIDPelicula(idPelicula);
     }
 }

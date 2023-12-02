@@ -585,7 +585,6 @@
             this.TbxCupon.Name = "TbxCupon";
             this.TbxCupon.PasswordChar = '\0';
             this.TbxCupon.PlaceholderText = "Opcional";
-            this.TbxCupon.ReadOnly = true;
             this.TbxCupon.SelectedText = "";
             this.TbxCupon.Size = new System.Drawing.Size(136, 36);
             this.TbxCupon.TabIndex = 29;

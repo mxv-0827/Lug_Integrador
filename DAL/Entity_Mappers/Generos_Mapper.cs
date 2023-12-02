@@ -12,14 +12,6 @@ namespace DAL.Entity_Mappers
 {
     public class Generos_Mapper : Base_Mapper
     {
-        public DataTable ObtenerGenerosPorIDPelicula(int idPelicula)
-        {
-            SqlParameter[] sqlProp = new SqlParameter[]
-            {
-                new SqlParameter("@IDPelicula", idPelicula)
-            };
-
-            return acceso.Leer("ObtenerGenerosPorIdPelicula", sqlProp);
-        }
+        public DataTable ObtenerGenerosPorIDPelicula(int idPelicula) => acceso.Leer("ObtenerGenerosPorIdPelicula", new SqlParameter[] { new SqlParameter("@IDPelicula", idPelicula) });
     }
 }

@@ -94,6 +94,10 @@
       <Project>{60db2601-dd1f-46f2-a1e5-10484c2d3f66}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SEC\SEC.csproj">
+      <Project>{e4a1cab5-41c4-4b6d-9f9c-5f9b5fed129b}</Project>
+      <Name>SEC</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

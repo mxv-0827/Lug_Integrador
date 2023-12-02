@@ -260,7 +260,7 @@ namespace UI.FRM_ADMIN
 
                 Generic_Validator<Peliculas>.ValidarPropiedades(pelicula);
 
-                GenPeli_Transaction_BLL.AgregarEntidad(pelicula, generosAgregados);
+                GenPeli_Transaction_BLL.AgregarEntidades(pelicula, generosAgregados);
 
                 ReiniciarGenerosCBX();
                 ObtenerGenerosCBX();
