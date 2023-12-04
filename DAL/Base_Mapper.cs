@@ -11,7 +11,10 @@ namespace DAL.Mappers
 {
     public class Base_Mapper
     {
-        internal BD_Conexion acceso = BD_Conexion.ObtenerInstancia();
+        private readonly BD_Conexion acceso = BD_Conexion.ObtenerInstancia();
+
+
+        //------------------------------------------------------------ALTA BAJA Y MODIFICACION----------------------------------------------------
 
         public void AsignarID(object entidad)
         {
@@ -21,30 +24,15 @@ namespace DAL.Mappers
             entidad.GetType().GetProperty("ID").SetValue(entidad, ID);
         }
 
-        public virtual int Agregar(object entidad, string storedProc)
-        {
-            PropertyInfo[] entityProps = entidad.GetType().GetProperties();
-            List<SqlParameter> sqlProps = new List<SqlParameter>();
+        public virtual int Agregar(object entidad, string sp) => acceso.Escribir(sp, GenerarSqlPropsArray(entidad));
 
-            foreach(PropertyInfo prop in entityProps)
-            {
-                string nombre = prop.Name;
-                object valor = prop.GetValue(entidad);
-
-                SqlParameter sqlProp = new SqlParameter($"{nombre}", valor);
-                sqlProps.Add(sqlProp);
-            }
-
-            return acceso.Escribir(storedProc, sqlProps.ToArray());
-        }
-
-        //Ambos metodos hacen lo mismo, simplemente cambia el storedProc a ejecutar.
-        public virtual int Modificar(object entidad, string storedProc) => Agregar(entidad, storedProc); 
+        public virtual int Modificar(object entidad, string sp) => acceso.Escribir(sp, GenerarSqlPropsArray(entidad)); 
         
         public int Eliminar(int id, string storedProc) => acceso.Escribir(storedProc, new SqlParameter[] { new SqlParameter("Id", id)});
-        
 
-        public DataTable ObtenerUnoPorId(dynamic id, string storedProc, string nombreEntidad) //Metodo que devuelve un registro en base a su ID.
+        //----------------------------------------------------------SOLO LECTURA------------------------------------------------------------------
+
+        public DataTable ObtenerUnoPorId(dynamic id, string storedProc, string nombreEntidad) 
         {
             SqlParameter[] sqlProp = new SqlParameter[]
             { 
@@ -55,7 +43,33 @@ namespace DAL.Mappers
             return acceso.Leer(storedProc, sqlProp);
         }
 
-        //Metodo que devuelve todos los registros (sin aplicar filtros).
         public DataTable ObtenerTodos(string storedProc, string nombreEntidad) => acceso.Leer(storedProc, new SqlParameter[] { new SqlParameter("@Tabla", nombreEntidad) });
+
+        public T EjecutarConsultaEspecifica<T>(string sp, object parametros = null)
+        {
+            SqlParameter[] sqlProps = GenerarSqlPropsArray(parametros);
+
+            if (typeof(T) == typeof(DataTable)) return (T)(object)acceso.Leer(sp, sqlProps);
+            else return (T)acceso.ObtenerDato(sp, sqlProps);
+        }
+
+        //--------------------------------------------------------AUXILIARES----------------------------------------------------------------------
+
+        private SqlParameter[] GenerarSqlPropsArray(object entidad)
+        {
+            PropertyInfo[] entityProps = entidad.GetType().GetProperties();
+            List<SqlParameter> lstProps = new List<SqlParameter>();
+
+            foreach (PropertyInfo prop in entityProps)
+            {
+                string nombre = prop.Name;
+                object valor = prop.GetValue(entidad);
+
+                SqlParameter sqlProp = new SqlParameter($"{nombre}", valor);
+                lstProps.Add(sqlProp);
+            }
+
+            return lstProps.ToArray();
+        }
     }
 }

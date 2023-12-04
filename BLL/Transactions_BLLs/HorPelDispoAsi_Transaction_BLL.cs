@@ -8,16 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using DAL.Entity_Mappers;
 
 namespace BLL.Transactions_BLLs
 {
     public class HorPelDispoAsi_Transaction_BLL : Base_BLL
     {
-        private readonly Peliculas_Mapper Peliculas_Mapper = new Peliculas_Mapper();
-        private readonly Asientos_Mapper Asientos_Mapper = new Asientos_Mapper();
-
-
         public int AgregarEntidades(HorarioPeliculas horarioPelicula)
         {
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
@@ -26,10 +21,10 @@ namespace BLL.Transactions_BLLs
             {
                 transacciones_Gestor.IniciarTransaccion();
 
-                DataTable registroAsientos = Asientos_Mapper.ObtenerAsientosPorSala(horarioPelicula.IDSala);
+                DataTable registroAsientos = base.EjecutarConsultaEspecifica<DataTable>("ObtenerAsientosPorSala", new { horarioPelicula.IDSala });
 
                 base.AsignarID(horarioPelicula);
-                horarioPelicula.HoraFin = horarioPelicula.HoraInicio + Peliculas_Mapper.ObtenerDuracion(horarioPelicula.IDPelicula);
+                horarioPelicula.HoraFin = horarioPelicula.HoraInicio + base.EjecutarConsultaEspecifica<TimeSpan>("ObtenerDuracionPelicula", new { horarioPelicula.IDPelicula });
 
                 int cantHorPeliAfectadas = base.AgregarEntidad(horarioPelicula);
                 int cantDispoAsiAfectadas = 0;

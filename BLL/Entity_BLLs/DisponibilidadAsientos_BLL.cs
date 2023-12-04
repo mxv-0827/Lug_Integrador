@@ -1,5 +1,4 @@
 ﻿using BE;
-using DAL.Entity_Mappers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,9 +10,6 @@ namespace BLL.Entity_BLLs
 {
     public class DisponibilidadAsientos_BLL : Base_BLL
     {
-        private readonly DisponibilidadAsientos_Mapper DisponibilidadAsientos_Mapper = new DisponibilidadAsientos_Mapper();
-
-
-        public DataTable ObtenerRegistrosPorIDHorarioPelicula(int idHorarioPelicula) => DisponibilidadAsientos_Mapper.ObtenerRegistrosPorIDHorarioPelicula(idHorarioPelicula);
+        public DataTable ObtenerRegistrosPorIDHorarioPelicula(int idHorarioPelicula) => base.EjecutarConsultaEspecifica<DataTable>("ObtenerRegistrosPorIDHorarioPelicula", new { IDHorarioPelicula = idHorarioPelicula });
     }
 }

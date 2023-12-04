@@ -1,7 +1,6 @@
 ﻿using BE;
 using BE.Tabla_Intermedia;
 using DAL;
-using DAL.Entity_Mappers;
 using DAL.Mappers;
 using System;
 using System.Collections.Generic;
@@ -13,9 +12,6 @@ namespace BLL.Transactions_BLLs
 {
     public class ComboProd_Transaction_BLL : Base_BLL
     {
-        private readonly Producto_Mapper Producto_Mapper = new Producto_Mapper();
-
-
         public int AgregarEntidades(Combos combo, List<Productos> lstProductos)
         {
             Transacciones_Gestor transacciones_Gestor = Transacciones_Gestor.ObtenerInstancia();
@@ -27,7 +23,8 @@ namespace BLL.Transactions_BLLs
                 int cantCombosAfectados = 0;
                 int cantProdCombAfectados = 0;
 
-                lstProductos.ForEach(prod => combo.Precio += Producto_Mapper.ObtenerPrecioProducto(prod.ID));
+                lstProductos.ForEach(prod => combo.Precio += prod.Precio);
+
                 combo.Precio -= combo.Precio * 0.10m; //El precio total es 10% mas barato a comprar lo mismo por separado.
 
                 base.AsignarID(combo);

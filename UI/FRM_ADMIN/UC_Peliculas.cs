@@ -321,7 +321,7 @@ namespace UI.FRM_ADMIN
 
                 Generic_Validator<HorarioPeliculas>.ValidarPropiedades(horarioPelicula);
 
-                HorPelDispoAsi_Transaction_BLL.AgregarEntidad(horarioPelicula);
+                HorPelDispoAsi_Transaction_BLL.AgregarEntidades(horarioPelicula);
 
                 MessageBox.Show("Horario almacenado correctamente.");
 

@@ -1,5 +1,5 @@
 ﻿using BE;
-using DAL.Entity_Mappers;
+using SEC;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,8 +11,10 @@ namespace BLL.Entity_BLLs
 {
     public class Credenciales_BLL : Base_BLL
     {
-        private readonly Credenciales_Mapper credenciales_Mapper = new Credenciales_Mapper();
-
-        public DataTable IniciarSesion(Credenciales credenciales) => credenciales_Mapper.IniciarSesion(credenciales);
+        public DataTable IniciarSesion(Credenciales credenciales) 
+        {
+            credenciales.Password = Password_Encriptador.EncriptarContraseña(credenciales.Password, credenciales.Email);
+            return base.EjecutarConsultaEspecifica<DataTable>("Iniciar_Sesion", new { credenciales.Email, credenciales.Password });
+        } 
     }
 }
