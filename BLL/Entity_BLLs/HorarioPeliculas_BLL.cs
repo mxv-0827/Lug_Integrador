@@ -1,5 +1,4 @@
 ﻿using BE;
-using DAL.Entity_Mappers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,11 +10,8 @@ namespace BLL.Entity_BLLs
 {
     public class HorarioPeliculas_BLL : Base_BLL
     {
-        private readonly HorarioPeliculas_Mapper HorarioPeliculas_Mapper = new HorarioPeliculas_Mapper();
+        public DataTable ObtenerHorariosCoincidentes(DateTime Fecha, int IDSala) => base.EjecutarConsultaEspecifica<DataTable>("ObtenerHorariosCoincidentes", new { Fecha, IDSala });
 
-
-        public DataTable ObtenerHorariosCoincidentes(DateTime fecha, int IDSala) => HorarioPeliculas_Mapper.ObtenerHorariosCoincidentes(fecha, IDSala);
-        
-        public DataTable ObtenerHorariosPorFechaYPelicula(int idPelicula) => HorarioPeliculas_Mapper.ObtenerHorariosPorFechaYPelicula(idPelicula);
+        public DataTable ObtenerHorariosPorFechaYPelicula(int IDPelicula) => base.EjecutarConsultaEspecifica<DataTable>("ObtenerHorariosPorFechaYPelicula", new { Fecha = DateTime.Now, IDPelicula });
     }
 }

@@ -1,7 +1,7 @@
 ﻿using BE;
 using DAL;
-using DAL.Entity_Mappers;
 using DAL.Mappers;
+using SEC;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,12 +13,23 @@ namespace BLL.Entity_BLLs
 {
     public class Cupones_BLL : Base_BLL
     {
-        Cupones_Mapper cupones_Mapper = new Cupones_Mapper();
+        public string ObtenerCodigo()
+        {
+            string codigoCupon;
+            bool valido;
 
-        public string ObtenerCodigo() => cupones_Mapper.ValidarCodigo();
+            do
+            {
+                codigoCupon = CodigoUnico_Generador.CrearCodigo();
+                valido = base.EjecutarConsultaEspecifica<int>("ValidarCodigo", new { Codigo = codigoCupon }) == 1;
+            }
+            while (!valido);
+
+            return codigoCupon;
+        }
         
 
-        public override int AgregarEntidad(object entidad)
+        public override int AgregarEntidad(object entidad) //Aplicamos transaccion.
         {
             Cupones cupon = (Cupones)entidad;
 
@@ -44,7 +55,7 @@ namespace BLL.Entity_BLLs
         }
 
 
-        public override int ModificarEntidad(object entidad)
+        public override int ModificarEntidad(object entidad) //Aplicamos transaccion.
         {
             Cupones cupon = (Cupones)entidad;
 
