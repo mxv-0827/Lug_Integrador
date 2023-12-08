@@ -64,14 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base_BLL.cs" />
-    <Compile Include="Entity_BLLs\Boletos_BLL.cs" />
-    <Compile Include="Entity_BLLs\Compras_BLL.cs" />
     <Compile Include="Entity_BLLs\Credenciales_BLL.cs" />
     <Compile Include="Entity_BLLs\Cupones_BLL.cs" />
-    <Compile Include="Entity_BLLs\DisponibilidadAsientos_BLL.cs" />
-    <Compile Include="Entity_BLLs\Generos_BLL.cs" />
-    <Compile Include="Entity_BLLs\HorarioPeliculas_BLL.cs" />
-    <Compile Include="Entity_BLLs\ProductosEnCombo_BLL.cs" />
     <Compile Include="Entity_BLLs\Productos_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transactions_BLLs\ComboProd_Transaction_BLL.cs" />

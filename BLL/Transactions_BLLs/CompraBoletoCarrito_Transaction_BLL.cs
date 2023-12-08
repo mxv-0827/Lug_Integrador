@@ -15,9 +15,6 @@ namespace BLL.Transactions_BLLs
 {
     public class CompraBoletoCarrito_Transaction_BLL : Base_BLL
     {
-        private readonly ProductosEnCombo_BLL ProductosEnCombo_BLL = new ProductosEnCombo_BLL();
-
-
         //Los descuentos de la entrada, productos y combos ya fueron aplicados previamente.
         public int AgregarEntidades(Compras compra, List<Boletos> lstBoletos, List<Carrito> lstCarrito)
         {
@@ -92,7 +89,7 @@ namespace BLL.Transactions_BLLs
 
                     else
                     {
-                        DataTable tableProdEnComb = ProductosEnCombo_BLL.ObteneRegistrosPorIDCombo((int)carrito.IDCombo);
+                        DataTable tableProdEnComb = base.EjecutarConsultaEspecifica<DataTable>("ObteneRegistrosPorIDCombo", new { IDCombo = (int)carrito.IDCombo });
                         prodEnComb += tableProdEnComb.Rows.Count;
 
                         int i = 0;

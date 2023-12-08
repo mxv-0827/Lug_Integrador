@@ -13,7 +13,7 @@ namespace DAL
     internal class BD_Conexion
     {
         public static BD_Conexion instancia;
-        private readonly SqlConnection conexion = new SqlConnection("Server=DESKTOP-GDEVITI\\SQLEXPRESS; Database=Lug_Integrador; Integrated Security= true");
+        private readonly SqlConnection conexion = new SqlConnection("Server=DESKTOP-UTQGD7A\\SQLEXPRESS; Database=Lug_Integrador; Integrated Security= true");
 
 
         public static BD_Conexion ObtenerInstancia() => instancia ?? (instancia = new BD_Conexion());

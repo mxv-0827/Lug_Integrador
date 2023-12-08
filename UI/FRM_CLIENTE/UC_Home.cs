@@ -29,11 +29,11 @@ namespace UI.FRM_CLIENTE
         int i = 1;
         string[] rutasImgs = new string[]
         {
-            "C:\\Users\\gvian\\OneDrive\\Documents\\Maxi\\MATERIAS CARRERA U.A.I\\6to CUATRIMESTRE\\LUG\\INTEGRADOR\\FONDOS\\hall_cine.png",
-            "C:\\Users\\gvian\\OneDrive\\Documents\\Maxi\\MATERIAS CARRERA U.A.I\\6to CUATRIMESTRE\\LUG\\INTEGRADOR\\FONDOS\\hall_cine_2.png",
-            "C:\\Users\\gvian\\OneDrive\\Documents\\Maxi\\MATERIAS CARRERA U.A.I\\6to CUATRIMESTRE\\LUG\\INTEGRADOR\\FONDOS\\hall_pedidos.png",
-            "C:\\Users\\gvian\\OneDrive\\Documents\\Maxi\\MATERIAS CARRERA U.A.I\\6to CUATRIMESTRE\\LUG\\INTEGRADOR\\FONDOS\\sala_cine.png",
-            "C:\\Users\\gvian\\OneDrive\\Documents\\Maxi\\MATERIAS CARRERA U.A.I\\6to CUATRIMESTRE\\LUG\\INTEGRADOR\\FONDOS\\sala_cine_2.png",
+            "C:\\Users\\maxim\\Documents\\Maxi\\U.A.I\\6to CUATRIMESTRE\\LENGUAJES DE ULTIMA GENERACION\\FONDOS\\hall_cine.png",
+            "C:\\Users\\maxim\\Documents\\Maxi\\U.A.I\\6to CUATRIMESTRE\\LENGUAJES DE ULTIMA GENERACION\\FONDOS\\hall_cine_2.png",
+            "C:\\Users\\maxim\\Documents\\Maxi\\U.A.I\\6to CUATRIMESTRE\\LENGUAJES DE ULTIMA GENERACION\\FONDOS\\hall_pedidos.png",
+            "C:\\Users\\maxim\\Documents\\Maxi\\U.A.I\\6to CUATRIMESTRE\\LENGUAJES DE ULTIMA GENERACION\\FONDOS\\sala_cine.png",
+            "C:\\Users\\maxim\\Documents\\Maxi\\U.A.I\\6to CUATRIMESTRE\\LENGUAJES DE ULTIMA GENERACION\\FONDOS\\sala_cine_2.png",
         };
 
         private void UC_Home_Enter(object sender, EventArgs e)
