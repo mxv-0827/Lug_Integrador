@@ -89,7 +89,7 @@ namespace UI.FRM_CLIENTE
                 Text = $"Hora de Fin: {horPeli.HoraFin}",
             };
 
-            int cantCompras = Boletos_BLL.ObtenerCantBoletosPorIDCompra(compra.ID);
+            int cantCompras = Base_BLL.EjecutarConsultaEspecifica<int>("ObtenerCantBoletosPorIDCompra", new { IDCompra = compra.ID });
 
             Guna2HtmlLabel lbl8 = new Guna2HtmlLabel
             {
@@ -116,12 +116,10 @@ namespace UI.FRM_CLIENTE
 
         Base_BLL Base_BLL = new Base_BLL();
 
-        Compras_BLL Compras_BLL = new Compras_BLL();
-        Boletos_BLL Boletos_BLL = new Boletos_BLL();
 
         private void UC_ComprasCliente_Enter(object sender, EventArgs e)
         {
-            DataTable tableCompras = Compras_BLL.ObtenerComprasPorDNI(Usuario.DNI);
+            DataTable tableCompras = Base_BLL.EjecutarConsultaEspecifica<DataTable>("ObtenerComprasPorDNI", new { Usuario_DNI = Usuario.DNI });
 
             foreach(DataRow row in tableCompras.Rows)
             {

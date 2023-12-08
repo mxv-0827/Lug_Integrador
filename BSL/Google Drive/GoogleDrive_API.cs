@@ -24,13 +24,13 @@ namespace BSL.Google_Drive
 
         public GoogleDrive_API()
         {
-            string credentialsPath = "C:\\Users\\gvian\\OneDrive\\Documents\\Maxi\\MATERIAS CARRERA U.A.I\\6to CUATRIMESTRE\\LUG\\INTEGRADOR";
+            string credentialsPath = "C:\\Users\\maxim\\Documents\\Maxi\\U.A.I\\6to CUATRIMESTRE\\LENGUAJES DE ULTIMA GENERACION";
 
             UserCredential credential;
 
             using (var stream = new FileStream(Path.Combine(credentialsPath, "mis-credenciales.json"), FileMode.Open, FileAccess.Read))
             {
-                string credPath = "C:\\Users\\gvian\\OneDrive\\Documents\\Maxi\\MATERIAS CARRERA U.A.I\\6to CUATRIMESTRE\\LUG\\INTEGRADOR";
+                string credPath = "C:\\Users\\maxim\\Documents\\Maxi\\U.A.I\\6to CUATRIMESTRE\\LENGUAJES DE ULTIMA GENERACION";
 
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.FromStream(stream).Secrets,

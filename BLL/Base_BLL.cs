@@ -16,7 +16,7 @@ namespace BLL
 
         //-------------------------------------------------------ALTA BAJA Y MODIFICACION---------------------------------------------------
 
-        public virtual void AsignarID(object entidad) => mapper.AsignarID(entidad);
+        internal virtual void AsignarID(object entidad) => mapper.AsignarID(entidad);
 
         public virtual int AgregarEntidad(object entidad)
         {
@@ -42,7 +42,7 @@ namespace BLL
 
         public DataTable ObtenerTodasEntidades(string nombreEntidad) => mapper.ObtenerTodos("ObtenerTotalidadRegistros", nombreEntidad);
 
-        protected T EjecutarConsultaEspecifica<T>(string sp, object parametros = null) => mapper.EjecutarConsultaEspecifica<T>(sp, parametros);
+        public T EjecutarConsultaEspecifica<T>(string sp, object parametros = null) => mapper.EjecutarConsultaEspecifica<T>(sp, parametros);
 
         //----------------------------------------------------AUXILIARES--------------------------------------------------------------------
 

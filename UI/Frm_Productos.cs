@@ -164,7 +164,7 @@ namespace UI
             };
 
             List<Productos> lstProds = new List<Productos>();
-            DataTable tableProdEnComb = ProductosEnCombo_BLL.ObteneRegistrosPorIDCombo(combo.ID);
+            DataTable tableProdEnComb = Base_BLL.EjecutarConsultaEspecifica<DataTable>("ObtenerRegistrosPorIDCombo", new { IDCombo = combo.ID });
 
             foreach(DataRow row in tableProdEnComb.Rows)
             {
@@ -258,8 +258,6 @@ namespace UI
         DataTable tableCombos = new DataTable();
 
         Base_BLL Base_BLL = new Base_BLL();
-
-        ProductosEnCombo_BLL ProductosEnCombo_BLL = new ProductosEnCombo_BLL();
 
 
         private void Frm_Productos_Load(object sender, EventArgs e)

@@ -28,10 +28,6 @@ namespace UI.FRM_CLIENTE
 
         Base_BLL Base_BLL = new Base_BLL();
 
-        Generos_BLL Generos_BLL = new Generos_BLL();
-
-        HorarioPeliculas_BLL HorarioPeliculas_BLL = new HorarioPeliculas_BLL();
-
 
         private void CrearLBLsGeneros(string genero, int locationY)
         {
@@ -86,7 +82,7 @@ namespace UI.FRM_CLIENTE
             WmpTrailer.URL = Pelicula.Trailer;
             WmpTrailer.close();
 
-            DataTable tableGeneros = Generos_BLL.ObtenerGenerosPorIdPelicula(Pelicula.ID);
+            DataTable tableGeneros = Base_BLL.EjecutarConsultaEspecifica<DataTable>("ObtenerGenerosPorIdPelicula", new { IDPelicula = Pelicula.ID });
             tableGeneros.Columns.Add("NombreGenero", typeof(string));
 
             int locationY = 67; //Ubicacion de Y del primer genero;
@@ -94,7 +90,7 @@ namespace UI.FRM_CLIENTE
             for(int i = 0; i < tableGeneros.Rows.Count; i++)
             {
                 int idGenero = (int)tableGeneros.Rows[i]["IDGenero"];
-                tableGeneros.Rows[i]["NombreGenero"] = Generos_BLL.ObtenerEntidadPorId("Generos", idGenero).Rows[0]["Nombre"]; //Asigna solo el nombre del genero segun su ID.
+                tableGeneros.Rows[i]["NombreGenero"] = Base_BLL.ObtenerEntidadPorId("Generos", idGenero).Rows[0]["Nombre"]; //Asigna solo el nombre del genero segun su ID.
                 string nombreGenero = tableGeneros.Rows[i]["NombreGenero"].ToString();
 
                 CrearLBLsGeneros(nombreGenero, locationY);
@@ -103,7 +99,7 @@ namespace UI.FRM_CLIENTE
 
             //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-            DataTable tableHorarios = HorarioPeliculas_BLL.ObtenerHorariosPorFechaYPelicula(Pelicula.ID); //Fecha actual => DateTime.Now
+            DataTable tableHorarios = Base_BLL.EjecutarConsultaEspecifica<DataTable>("ObtenerHorariosPorFechaYPelicula", new { Fecha = DateTime.Now, IDPelicula = Pelicula.ID }); //Fecha actual => DateTime.Now
             List<object> lstHorariosModificado = new List<object>();
 
             if(tableHorarios.Rows.Count == 0)

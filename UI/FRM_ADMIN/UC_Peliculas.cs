@@ -108,7 +108,7 @@ namespace UI.FRM_ADMIN
 
                 //Obtenemos todos los horarios que abarquen a esa fecha y sala escogidos.
 
-                DataTable disponibilidadAsientosObtenidos = HorarioPeliculas_BLL.ObtenerHorariosCoincidentes(fechaElegida, int.Parse(CbxSala.SelectedValue.ToString()));
+                DataTable disponibilidadAsientosObtenidos = Base_BLL.EjecutarConsultaEspecifica<DataTable>("ObtenerHorariosCoincidentes", new { Fecha = fechaElegida, IDSala = int.Parse(CbxSala.SelectedValue.ToString()) });
                 List<HorarioPeliculas> horariosOcupados = new List<HorarioPeliculas>();
 
                 foreach (DataRow row in disponibilidadAsientosObtenidos.Rows)
@@ -279,7 +279,6 @@ namespace UI.FRM_ADMIN
 
         //HorarioPelicula
         HorarioPeliculas horarioPelicula;
-        HorarioPeliculas_BLL HorarioPeliculas_BLL = new HorarioPeliculas_BLL();
 
         //HorarioPelicula y DisponibilidadAsientos
         HorPelDispoAsi_Transaction_BLL HorPelDispoAsi_Transaction_BLL = new HorPelDispoAsi_Transaction_BLL();

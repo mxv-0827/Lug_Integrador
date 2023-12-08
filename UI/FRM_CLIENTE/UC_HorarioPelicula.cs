@@ -31,11 +31,7 @@ namespace UI.FRM_CLIENTE
         public Usuarios Usuario { get; set; }
 
 
-        Base_BLL Base_BLL = new Base_BLL();
-
-
-        //Cupones_BLL Cupones_BLL = new Cupones_BLL();
-        DisponibilidadAsientos_BLL DisponibilidadAsientos_BLL = new DisponibilidadAsientos_BLL();
+        readonly Base_BLL Base_BLL = new Base_BLL();
 
 
         int locationX = 187, locationY = 71;
@@ -102,7 +98,7 @@ namespace UI.FRM_CLIENTE
             TbxHoraInicio.Text = HorarioPelicula.HoraInicio.ToString();
             TbxHoraCierre.Text = HorarioPelicula.HoraFin.ToString();
 
-            tableDisponibilidadAsientos = DisponibilidadAsientos_BLL.ObtenerRegistrosPorIDHorarioPelicula(HorarioPelicula.ID);
+            tableDisponibilidadAsientos = Base_BLL.EjecutarConsultaEspecifica<DataTable>("ObtenerRegistrosPorIDHorarioPelicula", new { IDHorarioPelicula = HorarioPelicula.ID });
 
             foreach(DataRow row in tableDisponibilidadAsientos.Rows)
             {
@@ -234,7 +230,7 @@ namespace UI.FRM_CLIENTE
                     row = new
                     {
                         Nombre = nombre,
-                        Cantidad = carrito.Cantidad,
+                        carrito.Cantidad,
                         SubTotal = carrito.Subtotal
                     };
                 }
